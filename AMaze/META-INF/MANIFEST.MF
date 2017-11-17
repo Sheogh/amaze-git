@@ -1,0 +1,61 @@
+Manifest-Version: 1.0
+Bundle-Description: A Java class library for graph-theory data structu
+ res and algorithms.
+Bundle-License: http://jgrapht.sourceforge.net/LGPL.html, http://www.e
+ clipse.org/legal/epl-v10.html
+Bundle-SymbolicName: org.jgrapht.core
+Archiver-Version: Plexus Archiver
+Built-By: jvs
+Bnd-LastModified: 1484609505052
+Bundle-ManifestVersion: 2
+Bundle-Vendor: Barak Naveh, John V. Sichi and contributors (seehttp://
+ sourceforge.net/projects/jgrapht/)
+Import-Package: org.jgrapht;version="[1.0,2)",org.jgrapht.alg;version=
+ "[1.0,2)",org.jgrapht.alg.cycle;version="[1.0,2)",org.jgrapht.alg.int
+ erfaces;version="[1.0,2)",org.jgrapht.alg.util;version="[1.0,2)",org.
+ jgrapht.alg.util.extension;version="[1.0,2)",org.jgrapht.alg.vertexco
+ ver.util;version="[1.0,2)",org.jgrapht.event;version="[1.0,2)",org.jg
+ rapht.experimental.alg;version="[1.0,2)",org.jgrapht.experimental.dag
+ ;version="[1.0,2)",org.jgrapht.graph;version="[1.0,2)",org.jgrapht.gr
+ aph.builder;version="[1.0,2)",org.jgrapht.graph.specifics;version="[1
+ .0,2)",org.jgrapht.traverse;version="[1.0,2)",org.jgrapht.util;versio
+ n="[1.0,2)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Tool: Bnd-3.0.0.201509101326
+Originally-Created-By: Apache Maven Bundle Plugin
+Export-Package: org.jgrapht.experimental;version="1.0.1";uses:="org.jg
+ rapht,org.jgrapht.graph",org.jgrapht.experimental.alg;version="1.0.1"
+ ;uses:="org.jgrapht",org.jgrapht.experimental.alg.color;version="1.0.
+ 1";uses:="org.jgrapht,org.jgrapht.experimental.alg",org.jgrapht.exper
+ imental.dag;version="1.0.1";uses:="org.jgrapht,org.jgrapht.graph",org
+ .jgrapht.graph;version="1.0.1";uses:="org.jgrapht,org.jgrapht.event,o
+ rg.jgrapht.graph.builder,org.jgrapht.graph.specifics,org.jgrapht.util
+ ",org.jgrapht.graph.builder;version="1.0.1";uses:="org.jgrapht,org.jg
+ rapht.graph",org.jgrapht.graph.specifics;version="1.0.1";uses:="org.j
+ grapht.alg.util,org.jgrapht.graph,org.jgrapht.util",org.jgrapht.alg;v
+ ersion="1.0.1";uses:="org.jgrapht,org.jgrapht.alg.interfaces,org.jgra
+ pht.event,org.jgrapht.experimental.dag,org.jgrapht.graph,org.jgrapht.
+ util",org.jgrapht.alg.cycle;version="1.0.1";uses:="org.jgrapht,org.jg
+ rapht.alg.interfaces",org.jgrapht.alg.flow;version="1.0.1";uses:="org
+ .jgrapht,org.jgrapht.alg.interfaces,org.jgrapht.alg.util.extension,or
+ g.jgrapht.graph",org.jgrapht.alg.spanning;version="1.0.1";uses:="org.
+ jgrapht,org.jgrapht.alg.interfaces",org.jgrapht.alg.matching;version=
+ "1.0.1";uses:="org.jgrapht,org.jgrapht.alg.interfaces",org.jgrapht.al
+ g.scoring;version="1.0.2";uses:="org.jgrapht,org.jgrapht.alg.interfac
+ es",org.jgrapht.alg.isomorphism;version="1.0.1";uses:="org.jgrapht",o
+ rg.jgrapht.alg.util;version="1.0.1";uses:="org.jgrapht",org.jgrapht.a
+ lg.util.extension;version="1.0.1",org.jgrapht.alg.interfaces;version=
+ "1.0.1";uses:="org.jgrapht,org.jgrapht.graph",org.jgrapht.alg.shortes
+ tpath;version="1.0.2";uses:="org.jgrapht,org.jgrapht.alg.interfaces,o
+ rg.jgrapht.alg.util,org.jgrapht.util",org.jgrapht.alg.vertexcover;ver
+ sion="1.0.1";uses:="org.jgrapht,org.jgrapht.alg.interfaces",org.jgrap
+ ht.alg.vertexcover.util;version="1.0.1",org.jgrapht;version="1.0.1";u
+ ses:="org.jgrapht.event",org.jgrapht.traverse;version="1.0.1";uses:="
+ org.jgrapht,org.jgrapht.event,org.jgrapht.util",org.jgrapht.event;ver
+ sion="1.0.1",org.jgrapht.util;version="1.0.1",org.jgrapht.generate;ve
+ rsion="1.0.1";uses:="org.jgrapht"
+Bundle-Name: JGraphT - Core
+Bundle-Version: 1.0.1
+Created-By: Apache Maven Bundle Plugin
+Build-Jdk: 1.8.0_111
+
