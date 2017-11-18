@@ -2,23 +2,13 @@ package model;
 
 public class Vertex {
 	
-	private int name;
 	private int x;
 	private int y;
 	
-	public Vertex(int name, int x, int y) {
+	public Vertex(int x, int y) {
 		super();
-		this.name = name;
 		this.x = x;
 		this.y = y;
-	}
-
-	public int getName() {
-		return name;
-	}
-	
-	public void setName(int name) {
-		this.name = name;
 	}
 
 	public int getX() {
@@ -38,7 +28,12 @@ public class Vertex {
 	}
 	
 	public String toString() {
-		return ""+name;
+		return "x="+this.x+"y="+this.y;
+	}
+	
+	public boolean compareTo(Vertex sommet) {
+		
+		return true;
 	}
 
 }
