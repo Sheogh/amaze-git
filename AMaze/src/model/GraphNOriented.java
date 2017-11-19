@@ -124,12 +124,11 @@ public class GraphNOriented {
 				Vertex v2= new Vertex(v.getX(),v.getY()-1);
 								
 				if(!inGraph.contains(v2) && v2.getY() >= TOP_BORDER) {
-					inGraph.add(v2);
 					
 					for(int j = 0; j < vertices.length;j++) {
-						if((vertices[j].toString().equals(v2.toString())))
-						{
+						if((vertices[j].toString().equals(v2.toString()))) {
 							if(!g.containsEdge(v,(Vertex) vertices[j])) {
+							inGraph.add(v2);
 							System.out.println("Add edge ("+v.toString()+","+vertices[j].toString() +") to graph");
 							g.addEdge(v,(Vertex) vertices[j]);
 							buildPath((Vertex) vertices[j],g,inGraph);
@@ -144,12 +143,11 @@ public class GraphNOriented {
 				Vertex v2= new Vertex(v.getX(),v.getY()+1);
 				
 				if(!inGraph.contains(v2) && v2.getY() < DOWN_BORDER) {
-					inGraph.add(v2);
-
+					
 					for(int j = 0; j< vertices.length;j++) {
-						if((vertices[j].toString().equals(v2.toString())))
-						{
+						if((vertices[j].toString().equals(v2.toString()))) {
 							if(!g.containsEdge(v,(Vertex) vertices[j]) && !inGraph.contains(v) ) {
+							inGraph.add(v2);
 							System.out.println("Add edge ("+v.toString()+","+vertices[j].toString() +") to graph");
 							g.addEdge(v,(Vertex) vertices[j]);
 							buildPath((Vertex) vertices[j],g,inGraph);
@@ -164,12 +162,12 @@ public class GraphNOriented {
 				Vertex v2 = new Vertex(v.getX()-1,v.getY());
 				
 				if(!inGraph.contains(v2) && v2.getX() >= LEFT_BORDER) {
-					inGraph.add(v2);
 					
 					for(int j = 0; j< vertices.length;j++) {
 						if((vertices[j].toString().equals(v2.toString())))
 						{
-							if(!g.containsEdge(v,(Vertex) vertices[j])	) {
+							if(!g.containsEdge(v,(Vertex) vertices[j])) {
+								inGraph.add(v2);
 							System.out.println("Add edge ("+v.toString()+","+vertices[j].toString() +") to graph");
 							g.addEdge(v,(Vertex) vertices[j]);
 							buildPath((Vertex) vertices[j],g,inGraph);
@@ -183,12 +181,12 @@ public class GraphNOriented {
 				Vertex v2 = new Vertex(v.getX()+1,v.getY());
 				
 				if(!inGraph.contains(v2) && v2.getX() < RIGHT_BORDER) {
-					inGraph.add(v2);
 					
 					for(int j = 0; j< vertices.length;j++) {
 						if((vertices[j].toString().equals(v2.toString())))
 						{
 							if(!g.containsEdge(v,(Vertex) vertices[j])) {
+								inGraph.add(v2);
 							System.out.println("Add edge ("+v.toString()+","+vertices[j].toString() +") to graph");
 							g.addEdge(v,(Vertex) vertices[j]);
 							buildPath((Vertex) vertices[j],g,inGraph);
