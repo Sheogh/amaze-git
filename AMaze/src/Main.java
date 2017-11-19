@@ -14,18 +14,11 @@ import model.GraphNOriented.direction;
 
 public class Main {
 	
-
-	
-
 	public static void main(String[] args) {
 		
 		//int[] a = {1,2};
 		//int[] b = {1,3};
 		//System.out.println(Arrays.equals(a,b));
-		
-		GraphNOriented g = new GraphNOriented();
-		Vertex v = new Vertex(1,0);
-		g.buildPath(v);
 		
 //		ArrayList al = new ArrayList();
 		
@@ -37,7 +30,21 @@ public class Main {
 //			System.out.println(al.get(i));
 //		}
 		
+		/* Generation du labyrinthe parfait*/
+		GraphNOriented g = new GraphNOriented(); //graph avec que des vertex
 		
+		int dim = 4;
+		g.generateStableGraph(dim);	// graph seulement avec les sommets
+		Object[] vertices = g.vertexSet(); // On recup ses sommets dans une table
+		int n1 = (int) (Math.random() * vertices.length); // On en prend un random
+		Vertex v = (Vertex) vertices[n1];
+				
+//		int x = (int) (Math.random() * dim);
+//		int y = (int) (Math.random() * dim);
+//		Vertex v = new Vertex(x,y);
+//		g.addVertex(v);
+		List<Vertex> inGraph = new ArrayList<>();
+		g.buildPath(v,g,inGraph); // On genere le labyrtinthe
 		
 	}	
 }

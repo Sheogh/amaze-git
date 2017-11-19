@@ -22,3 +22,6 @@ public class Labyrinthe{
 	public void buildPath() {
 	}
 }
+
+/* &&
+			   v.getX() >= TOP_BORDER && v.getY()-1 >= TOP_BORDER) {*/

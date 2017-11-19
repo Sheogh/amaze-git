@@ -12,25 +12,46 @@ import org.jgrapht.graph.SimpleGraph;
 
 public class GraphNOriented {
 	
+	private static final int TOP_BORDER = 0;
+	private static final int DOWN_BORDER = 4;
+	private static final int LEFT_BORDER = 0;
+	private static final int RIGHT_BORDER = 4;
+
 	private UndirectedGraph<Vertex, DefaultEdge> g;
 	
 	public enum direction{
 		North,
-		East,
 		South,
-		West;
+		West,
+		East;
 	}
 
 	public GraphNOriented() {
 		this.g = new SimpleGraph<Vertex, DefaultEdge>(DefaultEdge.class);
 	}
-	
+		
 	public void addVertex(Vertex v) {
 		this.g.addVertex(v);
 	}
 	
+	public boolean containsVertex(Vertex v) {
+		return this.g.containsVertex(v);
+	}
+	
+	public Object[] vertexSet() {
+		return this.g.vertexSet().toArray();
+	}
+	
 	public void addEdge(Vertex v1, Vertex v2) {
 		this.g.addEdge(v1, v2);
+	}
+	
+	public boolean containsEdge(Vertex v1, Vertex v2) {
+		return this.g.containsEdge(v1, v2);
+	}
+	
+	public String toString() {
+		return this.g.toString();
 	}
 	
 	public void toDot() {
@@ -52,10 +73,9 @@ public class GraphNOriented {
 			x = (int) (Math.random() * nbSommet);
 			y = (int) (Math.random() * nbSommet);
 			Vertex v = new Vertex(x, y);
-			
-			//v.toString();
 			g.addVertex(v);
 		}
+		
 		
 		Object[] vertices = g.vertexSet().toArray();
 		
@@ -65,6 +85,7 @@ public class GraphNOriented {
 			while (n1 == n2) {
 				n2 = (int) (Math.random() * nbSommet);
 			}
+			
 			Vertex v1 = (Vertex) vertices[n1];
 			Vertex v2 = (Vertex) vertices[n2];
 			if (!g.containsEdge(v1, v2)) {
@@ -74,46 +95,115 @@ public class GraphNOriented {
 		System.out.println(g.toString());
 	}
 	
-	public UndirectedGraph<Vertex, DefaultEdge> generateStableGraph(int dim) {
-		UndirectedGraph<Vertex, DefaultEdge> g = new SimpleGraph<Vertex, DefaultEdge>(DefaultEdge.class);
+	
+	public GraphNOriented generateStableGraph(int dim) {
+		GraphNOriented g = new GraphNOriented();
 		for (int i = 0; i < dim; i++) {
 			for (int j = 0; j < dim; j++) {
 				Vertex v = new Vertex(i, j);
-				g.addVertex(v);
+				this.g.addVertex(v);
 			}
 		}
 		return g;
 	}
 	
-	public void buildPath(Vertex v) {
-		UndirectedGraph<Vertex, DefaultEdge> g = generateStableGraph(4);
-		Object[] vertices = g.vertexSet().toArray();
-		
-		
-		int n1 = (int) (Math.random() * 4);
-		v = (Vertex) vertices[n1];
-		
-		List<Vertex> inGraph = new ArrayList<>();
-		
+	public void buildPath(Vertex v,GraphNOriented g, List<Vertex> inGraph) {
+		// permutations des directions
 		List<direction> direct = new ArrayList<>();
 		Collections.addAll(direct, direction.values());
 		Collections.shuffle(direct);
 		
-		for (int i = 0 ; i < 4 ; i++) {
-			if(direct.toArray()[i] == "North") {
-				Vertex v2 = new Vertex(v.getX(),v.getY()-1);
-				
-				if(!inGraph.contains(v2) && v.getY() > 0) {
+		System.out.println("start labyrinthe");
+		System.out.println("v = "+v.toString());
+		
+		Object[] vertices = g.vertexSet();
+	
+		for (int i = 0 ; i < direct.size() ; i++) {
+			
+			if(direct.get(i).toString().equals("North")) {
+				System.out.println("North");
+				Vertex v2= new Vertex(v.getX(),v.getY()-1);
+								
+				if(!inGraph.contains(v2) && v2.getY() >= TOP_BORDER) {
+					System.out.println("v2= "+v2.toString());
+					System.out.println("v= "+v.toString());
 					inGraph.add(v2);
-					g.addEdge(v, v2);	
+					
+					for(int j = 0; j< vertices.length;j++) {
+						if((vertices[j].toString().equals(v2.toString())))
+						{
+							System.out.println("AADD EEDDGE ("+v.toString()+","+vertices[j].toString() +") to graph");
+							g.addEdge(v,(Vertex) vertices[j]);
+							buildPath((Vertex) vertices[j],g,inGraph);
+						}
+					}
+					
 				}
 			}
-			
+			else if(direct.get(i).toString().equals("South")) {
+				System.out.println("South");
+				Vertex v2= new Vertex(v.getX(),v.getY()+1);
+				
+				if(!inGraph.contains(v2) && v2.getY() < DOWN_BORDER) {
+					System.out.println("v2= "+v2.toString());
+					System.out.println("v= "+v.toString());
+					inGraph.add(v2);
+
+					for(int j = 0; j< vertices.length;j++) {
+						if((vertices[j].toString().equals(v2.toString())))
+						{
+							System.out.println("AADD EEDDGE ("+v.toString()+","+vertices[j].toString() +") to graph");
+							g.addEdge(v,(Vertex) vertices[j]);
+							buildPath((Vertex) vertices[j],g,inGraph);
+						}
+					}
+				}
+			}
+			else if(direct.get(i).toString().equals("West")){
+				
+				System.out.println("West");
+				Vertex v2 = new Vertex(v.getX()-1,v.getY());
+				
+				if(!inGraph.contains(v2) && v2.getX() >= LEFT_BORDER) {
+					System.out.println("v2= "+v2.toString());
+					System.out.println("v= "+v.toString());
+					inGraph.add(v2);
+					
+					for(int j = 0; j< vertices.length;j++) {
+						if((vertices[j].toString().equals(v2.toString())))
+						{
+							System.out.println("AADD EEDDGE ("+v.toString()+","+vertices[j].toString() +") to graph");
+							g.addEdge(v,(Vertex) vertices[j]);
+							buildPath((Vertex) vertices[j],g,inGraph);
+						}
+					}
+				}
+			}
+			else if(direct.get(i).toString().equals("East")) {
+				System.out.println("East");
+				Vertex v2 = new Vertex(v.getX()+1,v.getY());
+				
+				if(!inGraph.contains(v2) && v2.getX() < RIGHT_BORDER) {
+					System.out.println("v2= "+v2.toString());
+					System.out.println("v= "+v.toString());
+					inGraph.add(v2);
+					
+					for(int j = 0; j< vertices.length;j++) {
+						if((vertices[j].toString().equals(v2.toString())))
+						{
+							System.out.println("AADD EEDDGE ("+v.toString()+","+vertices[j].toString() +") to graph");
+							g.addEdge(v,(Vertex) vertices[j]);
+							buildPath((Vertex) vertices[j],g,inGraph);
+						}
+					}
+				}
+			}
 		}
-		
-		
-		
-		
+		System.out.println("nouveau graphe : " + g.toString());
 	}
+
+
+
+	
 
 }
