@@ -113,10 +113,9 @@ public class GraphNOriented {
 		Collections.addAll(direct, direction.values());
 		Collections.shuffle(direct);
 		
-		System.out.println("start labyrinthe");
 		System.out.println("v = "+v.toString());
 		
-		Object[] vertices = g.vertexSet();
+		Object[] vertices = g.vertexSet(); // Pour avoir accès à la liste des sommets
 	
 		for (int i = 0 ; i < direct.size() ; i++) {
 			
@@ -125,16 +124,16 @@ public class GraphNOriented {
 				Vertex v2= new Vertex(v.getX(),v.getY()-1);
 								
 				if(!inGraph.contains(v2) && v2.getY() >= TOP_BORDER) {
-					System.out.println("v2= "+v2.toString());
-					System.out.println("v= "+v.toString());
 					inGraph.add(v2);
 					
-					for(int j = 0; j< vertices.length;j++) {
+					for(int j = 0; j < vertices.length;j++) {
 						if((vertices[j].toString().equals(v2.toString())))
 						{
-							System.out.println("AADD EEDDGE ("+v.toString()+","+vertices[j].toString() +") to graph");
+							if(!g.containsEdge(v,(Vertex) vertices[j])) {
+							System.out.println("Add edge ("+v.toString()+","+vertices[j].toString() +") to graph");
 							g.addEdge(v,(Vertex) vertices[j]);
 							buildPath((Vertex) vertices[j],g,inGraph);
+							}
 						}
 					}
 					
@@ -145,16 +144,16 @@ public class GraphNOriented {
 				Vertex v2= new Vertex(v.getX(),v.getY()+1);
 				
 				if(!inGraph.contains(v2) && v2.getY() < DOWN_BORDER) {
-					System.out.println("v2= "+v2.toString());
-					System.out.println("v= "+v.toString());
 					inGraph.add(v2);
 
 					for(int j = 0; j< vertices.length;j++) {
 						if((vertices[j].toString().equals(v2.toString())))
 						{
-							System.out.println("AADD EEDDGE ("+v.toString()+","+vertices[j].toString() +") to graph");
+							if(!g.containsEdge(v,(Vertex) vertices[j]) && !inGraph.contains(v) ) {
+							System.out.println("Add edge ("+v.toString()+","+vertices[j].toString() +") to graph");
 							g.addEdge(v,(Vertex) vertices[j]);
 							buildPath((Vertex) vertices[j],g,inGraph);
+							}
 						}
 					}
 				}
@@ -165,16 +164,16 @@ public class GraphNOriented {
 				Vertex v2 = new Vertex(v.getX()-1,v.getY());
 				
 				if(!inGraph.contains(v2) && v2.getX() >= LEFT_BORDER) {
-					System.out.println("v2= "+v2.toString());
-					System.out.println("v= "+v.toString());
 					inGraph.add(v2);
 					
 					for(int j = 0; j< vertices.length;j++) {
 						if((vertices[j].toString().equals(v2.toString())))
 						{
-							System.out.println("AADD EEDDGE ("+v.toString()+","+vertices[j].toString() +") to graph");
+							if(!g.containsEdge(v,(Vertex) vertices[j])	) {
+							System.out.println("Add edge ("+v.toString()+","+vertices[j].toString() +") to graph");
 							g.addEdge(v,(Vertex) vertices[j]);
 							buildPath((Vertex) vertices[j],g,inGraph);
+							}
 						}
 					}
 				}
@@ -184,22 +183,21 @@ public class GraphNOriented {
 				Vertex v2 = new Vertex(v.getX()+1,v.getY());
 				
 				if(!inGraph.contains(v2) && v2.getX() < RIGHT_BORDER) {
-					System.out.println("v2= "+v2.toString());
-					System.out.println("v= "+v.toString());
 					inGraph.add(v2);
 					
 					for(int j = 0; j< vertices.length;j++) {
 						if((vertices[j].toString().equals(v2.toString())))
 						{
-							System.out.println("AADD EEDDGE ("+v.toString()+","+vertices[j].toString() +") to graph");
+							if(!g.containsEdge(v,(Vertex) vertices[j])) {
+							System.out.println("Add edge ("+v.toString()+","+vertices[j].toString() +") to graph");
 							g.addEdge(v,(Vertex) vertices[j]);
 							buildPath((Vertex) vertices[j],g,inGraph);
+							}
 						}
 					}
 				}
 			}
 		}
-		System.out.println("nouveau graphe : " + g.toString());
 	}
 
 

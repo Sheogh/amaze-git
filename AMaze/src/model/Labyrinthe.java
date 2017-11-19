@@ -23,5 +23,16 @@ public class Labyrinthe{
 	}
 }
 
-/* &&
-			   v.getX() >= TOP_BORDER && v.getY()-1 >= TOP_BORDER) {*/
+//int[] a = {1,2};
+//int[] b = {1,3};
+//System.out.println(Arrays.equals(a,b));
+
+//ArrayList al = new ArrayList();
+
+//int[] tab = new int[2];
+//tab[0]=4;
+//tab[1]=5;
+//al.add(tab);
+//for(int i = 0; i < al.size();i++) {
+//	System.out.println(al.get(i));
+//}
