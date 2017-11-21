@@ -28,12 +28,12 @@ public class Vertex {
 	}
 	
 	public String toString() {
-		return "x="+this.x+"y="+this.y;
+		return "x="+this.x+" y="+this.y;
 	}
 	
-	public boolean compareTo(Vertex sommet) {
-		
-		return true;
+	@Override
+	public boolean equals(Object obj) {
+		return ((x == ((Vertex) obj).x) && (y == ((Vertex) obj).y));
 	}
 
 }

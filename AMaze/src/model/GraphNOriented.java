@@ -17,7 +17,7 @@ public class GraphNOriented {
 	private static final int LEFT_BORDER = 0;
 	private static final int RIGHT_BORDER = 4;
 
-	private UndirectedGraph<Vertex, DefaultEdge> g;
+	private SimpleGraph<Vertex, Edge> g;
 	
 	public enum direction{
 		North,
@@ -27,7 +27,8 @@ public class GraphNOriented {
 	}
 
 	public GraphNOriented() {
-		this.g = new SimpleGraph<Vertex, DefaultEdge>(DefaultEdge.class);
+		super();
+		this.g = new SimpleGraph<Vertex, Edge>(Edge.class);
 	}
 		
 	public void addVertex(Vertex v) {
@@ -43,7 +44,8 @@ public class GraphNOriented {
 	}
 	
 	public void addEdge(Vertex v1, Vertex v2) {
-		this.g.addEdge(v1, v2);
+		Edge e = new Edge(v1, v2);
+		this.g.addEdge(v1, v2, e);
 	}
 	
 	public boolean containsEdge(Vertex v1, Vertex v2) {
@@ -107,7 +109,7 @@ public class GraphNOriented {
 		return g;
 	}
 	
-	public void buildPath(Vertex v,GraphNOriented g, List<Vertex> inGraph) {
+	public void buildPath(Vertex v, GraphNOriented g, List<Vertex> inGraph) {
 		// permutations des directions
 		List<direction> direct = new ArrayList<>();
 		Collections.addAll(direct, direction.values());
