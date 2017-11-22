@@ -52,7 +52,7 @@ public class Labyrinthe{
 		
 		System.out.println("v = "+v.toString());
 		
-		//Object[] vertices = g.vertexSet(); // Pour avoir accès à la liste des sommets
+		//Object[] vertices = g.vertexSet(); // Pour avoir accï¿½s ï¿½ la liste des sommets
 	
 		for (int i = 0 ; i < direct.size() ; i++) {
 			Vertex v2;
@@ -79,11 +79,14 @@ public class Labyrinthe{
 				System.out.println("South");
 				v2 = new Vertex(v.getX(), v.getY()+1);
 				
+				
 				if (!inGraph.contains(v2) && v2.getY() <= DOWN_BORDER) {
 					
 					for (int j = 0 ; j < g.vertexSet().length ; j++) {
 						if ((g.vertexSet()[j].equals(v2))) {
-							if (!g.containsEdge(v,(Vertex) g.vertexSet()[j]) && !inGraph.contains(v)) {
+							if (!g.containsEdge(v,(Vertex) g.vertexSet()[j])) {
+								System.out.println("v2 3eme if : "+v2.toString());
+
 								inGraph.add(v2);
 								System.out.println("Add edge ("+v.toString()+","+g.vertexSet()[j].toString() +") to graph");
 								g.addEdge(v,(Vertex) g.vertexSet()[j]);
