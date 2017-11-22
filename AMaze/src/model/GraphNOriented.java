@@ -20,6 +20,10 @@ public class GraphNOriented {
 		super();
 		this.g = new SimpleGraph<Vertex, Edge>(Edge.class);
 	}
+	
+	public SimpleGraph<Vertex, Edge> getG() {
+		return g;
+	}
 		
 	public void addVertex(Vertex v) {
 		this.g.addVertex(v);
@@ -54,6 +58,13 @@ public class GraphNOriented {
 		}	
 	}
 	
+	public Vertex randomVertex() {
+		int n1 = (int) (Math.random() * Labyrinthe.RIGHT_BORDER);
+		int n2 = (int) (Math.random() * Labyrinthe.DOWN_BORDER);
+		Vertex v = new Vertex(n1, n2);
+		return v;
+	}
+	
 	public boolean vertexInGraph(Vertex v) {
 		Object[] tab = g.vertexSet().toArray();
 		for (Object v2 : tab) {
@@ -64,7 +75,17 @@ public class GraphNOriented {
 		return false;
 	}
 	
-	public boolean vertexDoesntExit(Vertex v, direction dir) {
+	public Vertex getEqualVertex(Vertex v) {
+		Object[] tab = g.vertexSet().toArray();
+		for (Object v2 : tab) {
+			if (v.equals((Vertex) v2)) {
+				return (Vertex) v2;
+			}
+		}
+		return null;
+	}
+	
+	public Vertex vertexByDir(Vertex v, direction dir) {
 		Vertex v2 = new Vertex(v.getX(), v.getY());
 		switch(dir) {
 		case North :
@@ -80,25 +101,21 @@ public class GraphNOriented {
 			v2.setX(v.getX()-1);
 			break;
 		}
+		if (v2.inBounds()) {
+			return v2;
+		}
+		else {
+			return null;
+		}
+	}
+	
+	public boolean vertexDoesntExist(Vertex v, direction dir) {
+		Vertex v2 = vertexByDir(v, dir);
 		return !this.vertexInGraph(v2);
 	}
 	
-	public boolean edgeDoesntExit(Vertex v, direction dir) {
-		Vertex v2 = new Vertex(v.getX(), v.getY());
-		switch(dir) {
-		case North :
-			v2.setY(v.getY()-1);
-			break;
-		case South :
-			v2.setY(v.getY()+1);
-			break;
-		case East :
-			v2.setX(v.getX()+1);
-			break;
-		case West :
-			v2.setX(v.getX()-1);
-			break;
-		}
+	public boolean edgeDoesntExist(Vertex v, direction dir) {
+		Vertex v2 = vertexByDir(v, dir);
 		return !this.containsEdge(v, v2);
 	}
 	

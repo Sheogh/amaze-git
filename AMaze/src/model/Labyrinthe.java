@@ -39,27 +39,38 @@ public class Labyrinthe{
 		Collections.shuffle(direct);
 		
 		for (int i = 0 ; i < direct.size() ; i++) {
-			Vertex v2 = new Vertex(v.getX(), v.getY());
+			Vertex v2;
 			direction dir = direct.get(i);
-			if (v.inBorders(dir) && g.vertexDoesntExit(v, dir) && g.edgeDoesntExit(v, dir)) {
-				switch (dir) {
-				case North :
-					v2.setY(v.getY()-1);
-					break;
-				case South :
-					v2.setY(v.getY()+1);
-					break;
-				case East :
-					v2.setX(v.getX()+1);
-					break;
-				case West :
-					v2.setX(v.getX()-1);
-					break;
-				}
+			if (v.inBorders(dir) && g.vertexDoesntExist(v, dir) && g.edgeDoesntExist(v, dir)) {
+				v2 = g.vertexByDir(v, dir);
 				g.addVertex(v2);
 				g.addEdge(v, v2);
-
+				System.out.println("edge : "+"("+v.toString()+","+v2.toString()+") "+dir);
 				buildPath(v2);
+			}
+		}
+	}
+	
+	public void opendDoorRandom() {
+		List<direction> direct = new ArrayList<>();
+		Collections.addAll(direct, direction.values());
+		
+		for (int i = 0 ; i < 1000 ; i++) {
+			Vertex v = g.getEqualVertex(g.randomVertex());
+			if (v != null) {
+				Collections.shuffle(direct);
+				direction dir = direct.get(i);
+				if (g.edgeDoesntExist(v,dir)) {
+					Vertex v2 = g.getEqualVertex(g.vertexByDir(v, dir));
+					if (v2 != null) {
+						Edge edge = g.getG().getEdge(v, v2);
+						if (edge == null) {
+							g.addEdge(v, v2);
+							System.out.println("added edge : "+"("+v.toString()+","+v2.toString()+")");
+							return;
+						}
+ 					}
+				}
 			}
 		}
 	}
