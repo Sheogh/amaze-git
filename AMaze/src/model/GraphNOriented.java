@@ -10,6 +10,8 @@ import org.jgrapht.UndirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
 
+import model.Labyrinthe.direction;
+
 public class GraphNOriented {
 
 	private SimpleGraph<Vertex, Edge> g;
@@ -50,6 +52,54 @@ public class GraphNOriented {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}	
+	}
+	
+	public boolean vertexInGraph(Vertex v) {
+		Object[] tab = g.vertexSet().toArray();
+		for (Object v2 : tab) {
+			if (v.equals((Vertex) v2)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean vertexDoesntExit(Vertex v, direction dir) {
+		Vertex v2 = new Vertex(v.getX(), v.getY());
+		switch(dir) {
+		case North :
+			v2.setY(v.getY()-1);
+			break;
+		case South :
+			v2.setY(v.getY()+1);
+			break;
+		case East :
+			v2.setX(v.getX()+1);
+			break;
+		case West :
+			v2.setX(v.getX()-1);
+			break;
+		}
+		return !this.vertexInGraph(v2);
+	}
+	
+	public boolean edgeDoesntExit(Vertex v, direction dir) {
+		Vertex v2 = new Vertex(v.getX(), v.getY());
+		switch(dir) {
+		case North :
+			v2.setY(v.getY()-1);
+			break;
+		case South :
+			v2.setY(v.getY()+1);
+			break;
+		case East :
+			v2.setX(v.getX()+1);
+			break;
+		case West :
+			v2.setX(v.getX()-1);
+			break;
+		}
+		return !this.containsEdge(v, v2);
 	}
 	
 	public void generateRandomGraph(int nbSommet, int nbArrete) {
