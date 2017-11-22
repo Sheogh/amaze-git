@@ -1,8 +1,10 @@
 package model;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Queue;
 
 import org.jgrapht.UndirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
@@ -43,6 +45,7 @@ public class Labyrinthe{
 			direction dir = direct.get(i);
 			if (v.inBorders(dir) && g.vertexDoesntExist(v, dir) && g.edgeDoesntExist(v, dir)) {
 				v2 = g.vertexByDir(v, dir);
+				v2.setNbr(v.getNbr()+1);
 				g.addVertex(v2);
 				g.addEdge(v, v2);
 				System.out.println("edge : "+"("+v.toString()+","+v2.toString()+") "+dir);
@@ -73,6 +76,33 @@ public class Labyrinthe{
 				}
 			}
 		}
+	}
+	
+	private void calculateManhattanDistance(Vertex source, Vertex target) {
+		Queue<Vertex> fifo = new ArrayDeque<Vertex>();
+		target.setNbr(1);
+		fifo.add(target);
+		while(!fifo.isEmpty()) {
+			Vertex actual = fifo.remove();
+			for (direction dir : direction.values()) {
+				if (!this.g.edgeDoesntExist(actual, dir)) {
+					Vertex next = g.vertexByDir(actual, dir);
+					if (next.getNbr() == 0) {
+						next.setNbr(actual.getNbr()+1);
+						if (next != source) {
+							fifo.add(next);
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	public void launchManhattan(Vertex source, Vertex target) {
+		for (Object vertex : g.vertexSet()) {
+			((Vertex) vertex).setNbr(0);
+		}
+		calculateManhattanDistance(source, target);
 	}
 	
 }

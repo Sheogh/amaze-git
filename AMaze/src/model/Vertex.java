@@ -6,11 +6,19 @@ public class Vertex {
 	
 	private int x;
 	private int y;
+	private int nbr;
 	
 	public Vertex(int x, int y) {
 		super();
 		this.x = x;
 		this.y = y;
+	}
+	
+	public Vertex(int x, int y, int nbr) {
+		super();
+		this.x = x;
+		this.y = y;
+		this.nbr = nbr;
 	}
 
 	public int getX() {
@@ -29,6 +37,14 @@ public class Vertex {
 		this.y = y;
 	}
 	
+	public int getNbr() {
+		return nbr;
+	}
+
+	public void setNbr(int nbr) {
+		this.nbr = nbr;
+	}
+
 	public String toString() {
 		return "x="+this.x+" y="+this.y;
 	}

@@ -18,6 +18,7 @@ public class Main {
 		Labyrinthe laby = new Labyrinthe(0);
 
 		Vertex v = laby.getG().randomVertex();
+		v.setNbr(0);
 		laby.getG().addVertex(v);
 				
 		laby.buildPath(v); // On genere le labyrinthe
