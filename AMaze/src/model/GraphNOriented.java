@@ -76,6 +76,9 @@ public class GraphNOriented {
 	}
 	
 	public Vertex getEqualVertex(Vertex v) {
+		if (v == null) {
+			return null;
+		}
 		Object[] tab = g.vertexSet().toArray();
 		for (Object v2 : tab) {
 			if (v.equals((Vertex) v2)) {
@@ -115,7 +118,7 @@ public class GraphNOriented {
 	}
 	
 	public boolean edgeDoesntExist(Vertex v, direction dir) {
-		Vertex v2 = vertexByDir(v, dir);
+		Vertex v2 = getEqualVertex(vertexByDir(v, dir));
 		return !this.containsEdge(v, v2);
 	}
 	

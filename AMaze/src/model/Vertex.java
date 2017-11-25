@@ -12,6 +12,7 @@ public class Vertex {
 		super();
 		this.x = x;
 		this.y = y;
+		this.nbr = 0;
 	}
 	
 	public Vertex(int x, int y, int nbr) {

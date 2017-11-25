@@ -26,6 +26,11 @@ public class Main {
 		laby.opendDoorRandom();
 		
 		System.out.println("nouveau graphe : " + laby.getG().toString());
+		
+		NiceGuy pacman = new NiceGuy();
+		pacman.setPosition(laby.getG().getEqualVertex(new Vertex(0, 0)));
+		pacman.startPosition(laby, laby.getG().getEqualVertex(new Vertex(3, 2)));
+		System.out.println("Pacman : je suis là "+pacman.getPosition(laby.getG()));
 
 	}	
 }

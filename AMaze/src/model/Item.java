@@ -1,9 +1,21 @@
 package model;
 
+/**
+ * 
+ * 
+ *
+ */
+
 public abstract class Item {
+	
 	Vertex position;
-	
-	abstract void startPosition();
-	
+
+	public Vertex getPosition(GraphNOriented graph) {
+		return graph.getEqualVertex(position);
+	}
+
+	public void setPosition(Vertex position) {
+		this.position = position;
+	}
 
 }

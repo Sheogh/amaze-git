@@ -62,7 +62,7 @@ public class Labyrinthe{
 			Vertex v = g.getEqualVertex(g.randomVertex());
 			if (v != null) {
 				Collections.shuffle(direct);
-				direction dir = direct.get(i);
+				direction dir = direct.get(0);
 				if (g.edgeDoesntExist(v,dir)) {
 					Vertex v2 = g.getEqualVertex(g.vertexByDir(v, dir));
 					if (v2 != null) {
@@ -86,7 +86,7 @@ public class Labyrinthe{
 			Vertex actual = fifo.remove();
 			for (direction dir : direction.values()) {
 				if (!this.g.edgeDoesntExist(actual, dir)) {
-					Vertex next = g.vertexByDir(actual, dir);
+					Vertex next = g.getEqualVertex(g.vertexByDir(actual, dir));
 					if (next.getNbr() == 0) {
 						next.setNbr(actual.getNbr()+1);
 						if (next != source) {

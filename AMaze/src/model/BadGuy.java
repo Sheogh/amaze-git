@@ -1,15 +1,35 @@
 package model;
 
-public class BadGuy extends Character {
+import model.Labyrinthe.direction;
 
-	@Override
-	void move() {
-		// TODO Auto-generated method stub
-		
+/**
+ * 
+ * @see Character
+ *
+ */
+
+public class BadGuy extends Character {
+	
+	/**
+	 * 
+	 * @param labyrinthe
+	 */
+	public void	move(Labyrinthe labyrinthe) {
+		Vertex vertex = this.getPosition(labyrinthe.getG());
+		for (direction dir : direction.values()) {
+			Vertex next = labyrinthe.getG().vertexByDir(vertex, dir);
+			if (labyrinthe.getG().containsEdge(vertex, next)
+			&& (next.getNbr() == vertex.getNbr()-1) && next != null) {
+				this.move(labyrinthe, dir);
+			}
+		}
 	}
 
+	/**
+	 * 
+	 */
 	@Override
-	void startPosition() {
+	void startPosition(Labyrinthe labyrinthe, Vertex niceGuyPosition) {
 		// TODO Auto-generated method stub
 		
 	}
