@@ -27,10 +27,10 @@ public class Main {
 		
 		System.out.println("nouveau graphe : " + laby.getG().toString());
 		
-		NiceGuy pacman = new NiceGuy();
-		pacman.setPosition(laby.getG().getEqualVertex(new Vertex(0, 0)));
-		pacman.startPosition(laby, laby.getG().getEqualVertex(new Vertex(3, 2)));
-		System.out.println("Pacman : je suis là "+pacman.getPosition(laby.getG()));
+		NiceGuy niceGuy = new NiceGuy();
+		niceGuy.setPosition(laby.getG().getEqualVertex(new Vertex(0, 0)));
+		niceGuy.startPosition(laby, laby.getG().getEqualVertex(v));
+		System.out.println("NiceGuy : je suis là "+niceGuy.getPosition(laby.getG()));
 
 	}	
 }

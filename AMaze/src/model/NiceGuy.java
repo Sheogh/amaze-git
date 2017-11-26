@@ -20,8 +20,8 @@ public class NiceGuy extends Character {
 		for (Object b : tab) {
 			v = (Vertex) b;
 			labyrinthe.launchManhattan(v, exitPosition);
-			if (exitPosition.getNbr() > greaterDist) {
-				greaterDist = exitPosition.getNbr();
+			if (v.getNbr() > greaterDist) {
+				greaterDist = v.getNbr();
 				farthest = v;
 			}
 		}
