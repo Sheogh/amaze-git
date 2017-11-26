@@ -1,10 +1,6 @@
 package model;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+//import java.io.PrintWriter;
 
 import org.jgrapht.UndirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
@@ -50,13 +46,13 @@ public class GraphNOriented {
 		return this.g.toString();
 	}
 	
-	public void toDot() {
+	/*public void toDot() {
 		try {
 			PrintWriter writer = new PrintWriter("graph.dot");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}	
-	}
+	}*/
 	
 	public Vertex randomVertex() {
 		int n1 = (int) (Math.random() * Labyrinthe.RIGHT_BORDER);

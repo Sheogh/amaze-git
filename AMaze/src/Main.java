@@ -1,21 +1,17 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
-
-import org.jgrapht.Graphs;
-import org.jgrapht.UndirectedGraph;
-import org.jgrapht.graph.DefaultEdge;
-import org.jgrapht.graph.SimpleGraph;
-
 import model.*;
+import controller.*;
 
-public class Main {
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+
+public class Main extends Application {
+	
+	static Controller controller;
 	
 	public static void main(String[] args) {
 		
-		Labyrinthe laby = new Labyrinthe(0);
+		/*Labyrinthe laby = new Labyrinthe(0);
 
 		Vertex v = laby.getG().randomVertex();
 		v.setNbr(0);
@@ -30,7 +26,15 @@ public class Main {
 		NiceGuy niceGuy = new NiceGuy();
 		niceGuy.setPosition(laby.getG().getEqualVertex(new Vertex(0, 0)));
 		niceGuy.startPosition(laby, laby.getG().getEqualVertex(v));
-		System.out.println("NiceGuy : je suis là "+niceGuy.getPosition(laby.getG()));
+		System.out.println("NiceGuy : je suis là "+niceGuy.getPosition(laby.getG()));*/
+		
+		controller = new Controller();
+		launch(args);
 
+	}
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		controller.start(primaryStage);
 	}	
 }
