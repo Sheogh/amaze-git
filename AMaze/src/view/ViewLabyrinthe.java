@@ -6,6 +6,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import model.Edge;
+import model.Labyrinthe;
+import model.Labyrinthe.direction;
+import model.Vertex;
 
 public class ViewLabyrinthe {
 	
@@ -15,12 +19,11 @@ public class ViewLabyrinthe {
 	public static final Paint WALLCOLOR = Color.BURLYWOOD;
 	public static final Paint SCENECOLOR = Color.WHITE;
 
-	private Stage stage;
 	private static Scene scene;
 	private static Pane pane;
 
 	
-	public static void drawLabyrinth(Stage stage, int nbrX, int nbrY) {
+	public static void drawFrame(Stage stage, int nbrX, int nbrY) {
 		pane = new Pane();
 		scene = new Scene(pane,
 				((WALL + CELL) * nbrX  + WALL) * SPAN - (WALL * SPAN)*1.5,
@@ -72,7 +75,36 @@ public class ViewLabyrinthe {
 		}
 	}
 	
-	public static void drawWall(Stage stage, int xs, int ys, int xt, int yt) {
+	public Edge getWall(Vertex s, Vertex t) {
+		Vertex v1 = new Vertex(0, 0);
+		Vertex v2 = new Vertex(0, 0);
+		Edge wall;
+		int a;
+		if (s.getY() == t.getY()) {
+			if (s.getX() > t.getX()) {
+				a = s.getX();
+			}
+			else {
+				a = t.getX();
+			}
+			v1 = new Vertex(a, s.getY());
+			v2 = new Vertex(a, s.getY()+1);
+		}
+		else if (s.getX() == t.getX()) {
+			if (s.getY() > t.getY()) {
+				a = s.getY();
+			}
+			else {
+				a = t.getY();
+			}
+			v1 = new Vertex(s.getX(), a);
+			v2 = new Vertex(s.getX()+1, a);
+		}
+		wall = new Edge(v1, v2);
+		return wall;
+	}
+	
+	public void drawWall(int xs, int ys, int xt, int yt) {
 		int x = 0, y= 0, xspan = 0, yspan = 0, xbase = 0, ybase = 0;
 		if (xs > xt) {
 			xbase = xt;
@@ -102,11 +134,34 @@ public class ViewLabyrinthe {
 		square.setFill(WALLCOLOR);
 		pane.getChildren().add(square);
 	}
+	
+	public void drawLabyrinthe(Labyrinthe laby) {
+		Vertex v, v2;
+		Edge e;
+		for (int i = 0 ; i <= laby.getRIGHT_BORDER() ; i++) {
+			for (int j = 0 ; j <= laby.getDOWN_BORDER() ; j++) {
+				v = new Vertex(i, j);
+				v = laby.getG().getEqualVertex(v);
+				for (direction dir : direction.values()) {
+					if (laby.getG().edgeDoesntExist(v, dir)) {
+						v2 = laby.getG().vertexByDir(v, dir);
+						if (v2 != null) {
+							e = getWall(v, v2);
+							drawWall(e.getA().getX(), e.getA().getY(), e.getB().getX(), e.getB().getY());
+						}
+					}
+				}
+			}
+		}
+	}
 
-	public void start(Stage primaryStage) {
-		drawLabyrinth(primaryStage, 12, 12);
-		//drawWall(primaryStage, 2, 3, 1, 3);
-		//drawWall(primaryStage, 2, 3, 2, 2);
+	public void start(Stage primaryStage, Labyrinthe laby) {
+		//int size = (CELL * SPAN)/2 + CELL/2;
+		drawFrame(primaryStage, laby.getRIGHT_BORDER()+1, laby.getDOWN_BORDER()+1);
+		drawLabyrinthe(laby);
+		//Rectangle square = new Rectangle(laby.getGuy().getPosition(laby.getG()).getX()*((WALL+CELL) * SPAN)+size, laby.getGuy().getPosition(laby.getG()).getY()*((WALL+CELL) * SPAN)+size, CELL, CELL);
+		//square.setFill(Color.RED);
+		//pane.getChildren().add(square);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("AMaaze");
 		primaryStage.setResizable(false);

@@ -7,6 +7,10 @@ package model;
  */
 
 public class NiceGuy extends Character {
+	
+	public NiceGuy() {
+		setPosition(new Vertex(0, 0));
+	}
 
 	/**
 	 * 

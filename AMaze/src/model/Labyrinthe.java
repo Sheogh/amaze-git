@@ -10,14 +10,15 @@ import org.jgrapht.UndirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
 
-public class Labyrinthe{
+public class Labyrinthe {
 	
 	protected static final int TOP_BORDER = 0;
-	protected static final int DOWN_BORDER = 3;
+	protected static final int DOWN_BORDER = 15;
 	protected static final int LEFT_BORDER = 0;
-	protected static final int RIGHT_BORDER = 3;
+	protected static final int RIGHT_BORDER = 15;
 	
 	protected GraphNOriented g;
+	protected NiceGuy guy;
 	
 	public enum direction {
 		North,
@@ -26,12 +27,25 @@ public class Labyrinthe{
 		West;
 	}
 	
-	public Labyrinthe(int dim) {
-		g = new GraphNOriented(); // vertices only
+	public Labyrinthe() {
+		g = new GraphNOriented();
+		guy = new NiceGuy();
 	}
 	
 	public GraphNOriented getG() {
 		return g;
+	}
+	
+	public NiceGuy getGuy() {
+		return guy;
+	}
+
+	public int getRIGHT_BORDER() {
+		return RIGHT_BORDER;
+	}
+	
+	public int getDOWN_BORDER() {
+		return DOWN_BORDER;
 	}
 
 	public void buildPath(Vertex v) {

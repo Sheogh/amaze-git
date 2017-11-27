@@ -11,7 +11,7 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		
-		/*Labyrinthe laby = new Labyrinthe(0);
+		/*Labyrinthe laby = new Labyrinthe();
 
 		Vertex v = laby.getG().randomVertex();
 		v.setNbr(0);
