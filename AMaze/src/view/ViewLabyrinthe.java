@@ -1,7 +1,7 @@
 package view;
 
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
@@ -17,21 +17,21 @@ public class ViewLabyrinthe {
 
 	private Stage stage;
 	private static Scene scene;
-	private static StackPane pane;
+	private static Pane pane;
 
 	
-	public static void drawLabyrinth(Stage stage, int nbrX,int nbrY) {
-		pane = new StackPane();
+	public static void drawLabyrinth(Stage stage, int nbrX, int nbrY) {
+		pane = new Pane();
 		scene = new Scene(pane,
-				((WALL +  CELL) * nbrX  + WALL) * SPAN,
-				((WALL +  CELL) * nbrY  + WALL) * SPAN) ;
+				((WALL + CELL) * nbrX  + WALL) * SPAN - (WALL * SPAN)*1.5,
+				((WALL + CELL) * nbrY  + WALL) * SPAN - (WALL * SPAN)*1.5) ;
 		
 		scene.setFill(SCENECOLOR);
 		
 		Rectangle square ;
 		stage.setScene(scene);
 		
-		square = new Rectangle(0,0,
+		square = new Rectangle(0+(WALL * SPAN)/2,0+(WALL * SPAN)/2,
 				((WALL +  CELL) * nbrX ) * SPAN,
 				((WALL +  CELL) * nbrY ) * SPAN);
 		square.setFill(Color.TRANSPARENT);
@@ -66,7 +66,7 @@ public class ViewLabyrinthe {
 				int offsetY = ((WALL + CELL) + (WALL + CELL) * y) * SPAN;
 				square = new Rectangle(offsetX, offsetY, 
 						WALL * SPAN, WALL * SPAN);
-				square.setFill(Color.BLACK);
+				square.setFill(WALLCOLOR);
 				pane.getChildren().add(square);
 			}
 		}
@@ -74,7 +74,7 @@ public class ViewLabyrinthe {
 	
 	public static void drawWall(Stage stage,int xs, int ys, int xt, int yt) {
 		int x = 0, y= 0, xspan = 0, yspan = 0;
-		pane = new StackPane();
+		pane = new Pane();
 		
 		if(ys == yt) {
 			x = ((WALL + CELL) + (WALL + CELL) * ((int)(xs+xt/2))) * SPAN;
@@ -98,9 +98,11 @@ public class ViewLabyrinthe {
 
 	public void start(Stage primaryStage) {
 		stage = new Stage();
+		stage.setResizable(false);
 		drawLabyrinth(stage,12,12);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("AMaaze");
+		primaryStage.setResizable(false);
 		primaryStage.show();
 	}
 
