@@ -72,34 +72,41 @@ public class ViewLabyrinthe {
 		}
 	}
 	
-	public static void drawWall(Stage stage,int xs, int ys, int xt, int yt) {
-		int x = 0, y= 0, xspan = 0, yspan = 0;
-		pane = new Pane();
-		
-		if(ys == yt) {
-			x = ((WALL + CELL) + (WALL + CELL) * ((int)(xs+xt/2))) * SPAN;
-			y = (WALL + ys * (WALL + CELL))	* SPAN;
-			xspan = WALL * SPAN;
-			yspan = CELL * SPAN;
-			Rectangle square = new Rectangle(x, y, xspan, yspan);
-			square.setFill(Color.BLACK);
-			pane.getChildren().add(square);
+	public static void drawWall(Stage stage, int xs, int ys, int xt, int yt) {
+		int x = 0, y= 0, xspan = 0, yspan = 0, xbase = 0, ybase = 0;
+		if (xs > xt) {
+			xbase = xt;
 		}
-		else if(xs == xt) {
-			x = (WALL + xs * (WALL + CELL))	* SPAN;
-			y = ((WALL + CELL) + (WALL + CELL) * ((int)(ys+yt/2))) * SPAN;
+		else {
+			xbase = xs;
+		}
+		if (ys > yt) {
+			ybase = yt;
+		}
+		else {
+			ybase = ys;
+		}
+		if (ys == yt) {
+			x = xbase * (WALL + CELL) * SPAN + (WALL * SPAN);
+			y = ybase * (WALL + CELL) * SPAN;
 			xspan = CELL * SPAN;
 			yspan = WALL * SPAN;
-			Rectangle square = new Rectangle(x, y, xspan, yspan);
-			square.setFill(Color.BLACK);
-			pane.getChildren().add(square);
 		}
+		else if (xs == xt) {
+			x = xbase * (WALL + CELL) * SPAN;
+			y = ybase * (WALL + CELL) * SPAN + (WALL * SPAN);
+			xspan = WALL * SPAN;
+			yspan = CELL * SPAN;
+		}
+		Rectangle square = new Rectangle(x, y, xspan, yspan);
+		square.setFill(WALLCOLOR);
+		pane.getChildren().add(square);
 	}
 
 	public void start(Stage primaryStage) {
-		stage = new Stage();
-		stage.setResizable(false);
-		drawLabyrinth(stage,12,12);
+		drawLabyrinth(primaryStage, 12, 12);
+		//drawWall(primaryStage, 2, 3, 1, 3);
+		//drawWall(primaryStage, 2, 3, 2, 2);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("AMaaze");
 		primaryStage.setResizable(false);
