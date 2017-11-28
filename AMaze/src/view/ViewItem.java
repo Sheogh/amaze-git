@@ -10,6 +10,11 @@ import javafx.stage.Stage;
 import model.Labyrinthe;
 import model.Vertex;
 
+/**
+ * 
+ * @see ViewElement
+ *
+ */
 public class ViewItem extends ViewElement {
 	
 	private ImageView viewSprite;

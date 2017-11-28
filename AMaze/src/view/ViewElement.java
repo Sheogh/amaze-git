@@ -5,6 +5,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
+/**
+ * 
+ * 
+ *
+ */
 public abstract class ViewElement {
 	
 	static final int SPAN =  4 ; //  Pixels  for  a  unit

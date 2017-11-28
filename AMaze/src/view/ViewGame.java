@@ -8,6 +8,13 @@ import javafx.stage.Stage;
 import model.Labyrinthe;
 import model.Vertex;
 
+/**
+ * 
+ * @see ViewElement
+ * @see ViewItem
+ * @see ViewLabyrinthe
+ *
+ */
 public class ViewGame extends ViewElement {
 	
 	protected ViewLabyrinthe viewLaby;

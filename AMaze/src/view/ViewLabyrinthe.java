@@ -11,6 +11,11 @@ import model.Labyrinthe;
 import model.Labyrinthe.direction;
 import model.Vertex;
 
+/**
+ * 
+ * @see ViewElement
+ *
+ */
 public class ViewLabyrinthe extends ViewElement {
 
 	public static void drawFrame(Stage stage, int nbrX, int nbrY) {
