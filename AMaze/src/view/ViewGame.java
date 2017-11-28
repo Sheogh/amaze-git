@@ -42,8 +42,8 @@ public class ViewGame extends ViewElement {
 	public void createScene(Stage stage, int nbrX, int nbrY) {
 		pane = new Pane();
 		scene = new Scene(pane,
-				((WALL + CELL) * nbrX  + WALL) * SPAN - (WALL * SPAN)*1.5+WALL*SPAN,
-				((WALL + CELL) * nbrY  + WALL) * SPAN - (WALL * SPAN)*1.5+WALL*SPAN);
+				((WALL + CELL) * nbrX  + WALL) * SPAN,
+				((WALL + CELL) * nbrY  + WALL) * SPAN);
 		stage.setScene(scene);
 	}
 	
