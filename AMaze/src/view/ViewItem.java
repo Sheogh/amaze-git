@@ -24,9 +24,7 @@ public class ViewItem extends ViewElement {
 	}
 	
 	public void drawSprite(Stage stage, String fileName) {
-		//scene = ViewLabyrinthe.getScene();
 		pane = ViewGame.getPane();
-		//stage.setScene(scene);
 		String imagePath = new File("Assets/"+fileName).toURI().toString();
 		Image sprite = new Image(imagePath, 36, 36, false, false);
 		viewSprite = new ImageView(sprite);
@@ -34,8 +32,6 @@ public class ViewItem extends ViewElement {
 	}
 	
 	public void start(Stage primaryStage, Labyrinthe laby, String fileName) {
-		//Vertex niceGuyPos = laby.getGuy().getPosition(laby.getG());
 		drawSprite(primaryStage, fileName);
-		//setPosition(niceGuyPos.getX(), niceGuyPos.getY());
 	}
 }

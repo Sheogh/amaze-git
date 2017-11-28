@@ -15,8 +15,6 @@ public class Controller implements EventHandler<ActionEvent> {
 	public Controller() {
 		view = new ViewGame();
 		laby = new Labyrinthe();
-		//Vertex v = laby.getG().randomVertex();
-		//v.setNbr(0);
 		laby.getExit().startPosition();
 		Vertex v = laby.getExit().getPosition();
 		System.out.println(v);
