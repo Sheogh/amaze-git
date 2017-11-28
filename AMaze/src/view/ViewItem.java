@@ -23,6 +23,10 @@ public class ViewItem extends ViewElement {
 		viewSprite = new ImageView();
 	}
 	
+	public ImageView getViewSprite() {
+		return viewSprite;
+	}
+
 	public void setPosition(int x, int y) {
 		viewSprite.setX(x*((WALL+CELL)*SPAN)+WALL*SPAN);
 		viewSprite.setY(y*((WALL+CELL)*SPAN)+WALL*SPAN);

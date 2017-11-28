@@ -5,6 +5,7 @@ import view.*;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 /**
@@ -13,7 +14,7 @@ import javafx.stage.Stage;
  * @see Labyrinthe
  *
  */
-public class Controller implements EventHandler<ActionEvent> {
+public class Controller {
 	
 	private ViewGame view;
 	private Labyrinthe laby;
@@ -36,15 +37,6 @@ public class Controller implements EventHandler<ActionEvent> {
 		laby.getGuy().startPosition(laby, laby.getG().getEqualVertex(v));
 		System.out.println("Door at "+v+", guy : "+laby.getGuy().getRealPosition(laby.getG()));
 	}
-	
-	/**
-	 * 
-	 * @param event
-	 */
-	public void handle(ActionEvent event) {
-		System.out.println(event.getSource().getClass());
-		// ici qu'on interagit avec le model
-	}
 
 	/**
 	 * 
@@ -52,7 +44,24 @@ public class Controller implements EventHandler<ActionEvent> {
 	 */
 	public void start(Stage primaryStage) {
 		view.start(primaryStage, laby);
-		//view.setOnAction(this);
+		ViewGame.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent key) {
+            	System.out.println(key.getCode());
+            	switch(key.getCode()) {
+                case RIGHT:
+                	break;
+                case LEFT:
+                	break;
+                case UP:
+                	break;
+                case DOWN:
+                	break;
+        		default:
+        			break;
+                }
+            }
+        });
 	}
 
 }

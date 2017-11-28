@@ -1,6 +1,11 @@
 package view;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -54,7 +59,7 @@ public class ViewGame extends ViewElement {
 		viewLaby.start(primaryStage, laby);
 		viewGuy.start(primaryStage, laby, "player.png");
 		viewExit.start(primaryStage, laby, "door_open.png");
-		viewGuy.setPosition(niceGuyPos.getX(), niceGuyPos.getY());
+		viewGuy.setPosition(niceGuyPos.getX(), niceGuyPos.getY());		
 		viewExit.setPosition(exitPos.getX(), exitPos.getY());
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("AMaaze");

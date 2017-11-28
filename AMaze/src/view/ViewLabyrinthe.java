@@ -24,7 +24,6 @@ public class ViewLabyrinthe extends ViewElement {
 		scene.setFill(SCENECOLOR);
 		
 		Rectangle square ;
-		//stage.setScene(scene);
 		
 		square = new Rectangle(0+(WALL * SPAN)/2,0+(WALL * SPAN)/2,
 				((WALL +  CELL) * nbrX ) * SPAN,
@@ -33,26 +32,6 @@ public class ViewLabyrinthe extends ViewElement {
 		square.setStroke(WALLCOLOR);
         square.setStrokeWidth(WALL * SPAN);
 		pane.getChildren().add(square);
-		
-		/*square = new Rectangle(0,
-				SPAN *( nbrY * (CELL + WALL)), 
-				SPAN *(nbrX * (CELL + WALL) + WALL),
-				WALL * SPAN);
-		square.setFill(WALLCOLOR);
-		pane.getChildren().add(square);
-		
-		square = new Rectangle(0, 0,
-				WALL * SPAN,
-				SPAN * (nbrY * (CELL + WALL) + WALL));
-		square.setFill(WALLCOLOR);
-		pane.getChildren().add(square);
-		
-		
-		square = new Rectangle(SPAN *(nbrX * (CELL + WALL)), 0,
-				WALL * SPAN,
-				SPAN * (nbrY * (CELL + WALL) + WALL));
-		square.setFill(WALLCOLOR);
-		pane.getChildren().add(square);*/
 		
 		for (int x = 0 ; x < nbrX - 1 ; ++x) {
 			int offsetX = ((WALL + CELL) + (WALL + CELL) * x) * SPAN;
