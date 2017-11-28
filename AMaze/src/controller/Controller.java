@@ -9,11 +9,11 @@ import javafx.stage.Stage;
 
 public class Controller implements EventHandler<ActionEvent> {
 	
-	private ViewLabyrinthe view;
+	private ViewGame view;
 	private Labyrinthe laby;
 	
 	public Controller() {
-		view = new ViewLabyrinthe();
+		view = new ViewGame();
 		laby = new Labyrinthe();
 		Vertex v = laby.getG().randomVertex();
 		v.setNbr(0);

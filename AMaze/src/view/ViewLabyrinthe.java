@@ -11,28 +11,15 @@ import model.Labyrinthe;
 import model.Labyrinthe.direction;
 import model.Vertex;
 
-public class ViewLabyrinthe {
-	
-	static final int SPAN =  4 ; //  Pixels  for  a  unit
-	static final int WALL =  2 ; //  thickness  of  the  walls  ( in  units )
-	static final int CELL =  9 ; //  size of the cell	 (in units)
-	public static final Paint WALLCOLOR = Color.BURLYWOOD;
-	public static final Paint SCENECOLOR = Color.WHITE;
+public class ViewLabyrinthe extends ViewElement {
 
-	private static Scene scene;
-	private static Pane pane;
-
-	
 	public static void drawFrame(Stage stage, int nbrX, int nbrY) {
-		pane = new Pane();
-		scene = new Scene(pane,
-				((WALL + CELL) * nbrX  + WALL) * SPAN - (WALL * SPAN)*1.5,
-				((WALL + CELL) * nbrY  + WALL) * SPAN - (WALL * SPAN)*1.5) ;
-		
+		pane = ViewGame.getPane();
+		scene = ViewGame.getScene();
 		scene.setFill(SCENECOLOR);
 		
 		Rectangle square ;
-		stage.setScene(scene);
+		//stage.setScene(scene);
 		
 		square = new Rectangle(0+(WALL * SPAN)/2,0+(WALL * SPAN)/2,
 				((WALL +  CELL) * nbrX ) * SPAN,
