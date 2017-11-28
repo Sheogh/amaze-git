@@ -150,10 +150,6 @@ public class ViewLabyrinthe extends ViewElement {
 	public void start(Stage primaryStage, Labyrinthe laby) {
 		drawFrame(primaryStage, laby.getRIGHT_BORDER()+1, laby.getDOWN_BORDER()+1);
 		drawLabyrinthe(laby);
-		primaryStage.setScene(scene);
-		primaryStage.setTitle("AMaaze");
-		primaryStage.setResizable(false);
-		primaryStage.show();
 	}
 
 }

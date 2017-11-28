@@ -42,8 +42,8 @@ public class ViewGame extends ViewElement {
 	public void createScene(Stage stage, int nbrX, int nbrY) {
 		pane = new Pane();
 		scene = new Scene(pane,
-				((WALL + CELL) * nbrX  + WALL) * SPAN - (WALL * SPAN)*1.5,
-				((WALL + CELL) * nbrY  + WALL) * SPAN - (WALL * SPAN)*1.5);
+				((WALL + CELL) * nbrX  + WALL) * SPAN - (WALL * SPAN)*1.5+WALL*SPAN,
+				((WALL + CELL) * nbrY  + WALL) * SPAN - (WALL * SPAN)*1.5+WALL*SPAN);
 		stage.setScene(scene);
 	}
 	
@@ -56,6 +56,11 @@ public class ViewGame extends ViewElement {
 		viewExit.start(primaryStage, laby, "door_open.png");
 		viewGuy.setPosition(niceGuyPos.getX(), niceGuyPos.getY());
 		viewExit.setPosition(exitPos.getX(), exitPos.getY());
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("AMaaze");
+		primaryStage.setResizable(false);
+		primaryStage.sizeToScene();
+		primaryStage.show();
 	}
 
 }
