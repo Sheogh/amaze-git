@@ -14,6 +14,10 @@ public class ViewItem extends ViewElement {
 	
 	private ImageView viewSprite;
 	
+	public ViewItem() {
+		viewSprite = new ImageView();
+	}
+	
 	public void setPosition(int x, int y) {
 		viewSprite.setX(x*((WALL+CELL)*SPAN)+WALL*SPAN);
 		viewSprite.setY(y*((WALL+CELL)*SPAN)+WALL*SPAN);
@@ -30,8 +34,8 @@ public class ViewItem extends ViewElement {
 	}
 	
 	public void start(Stage primaryStage, Labyrinthe laby, String fileName) {
-		Vertex niceGuyPos = laby.getGuy().getPosition(laby.getG());
+		//Vertex niceGuyPos = laby.getGuy().getPosition(laby.getG());
 		drawSprite(primaryStage, fileName);
-		setPosition(niceGuyPos.getX(), niceGuyPos.getY());
+		//setPosition(niceGuyPos.getX(), niceGuyPos.getY());
 	}
 }

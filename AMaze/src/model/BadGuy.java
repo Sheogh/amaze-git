@@ -15,7 +15,7 @@ public class BadGuy extends Character {
 	 * @param labyrinthe
 	 */
 	public void	move(Labyrinthe labyrinthe) {
-		Vertex vertex = this.getPosition(labyrinthe.getG());
+		Vertex vertex = this.getRealPosition(labyrinthe.getG());
 		for (direction dir : direction.values()) {
 			Vertex next = labyrinthe.getG().vertexByDir(vertex, dir);
 			if (labyrinthe.getG().containsEdge(vertex, next)

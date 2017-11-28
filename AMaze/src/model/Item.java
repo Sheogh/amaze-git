@@ -9,8 +9,12 @@ package model;
 public abstract class Item {
 	
 	Vertex position;
+	
+	public Vertex getPosition() {
+		return position;
+	}
 
-	public Vertex getPosition(GraphNOriented graph) {
+	public Vertex getRealPosition(GraphNOriented graph) {
 		return graph.getEqualVertex(position);
 	}
 

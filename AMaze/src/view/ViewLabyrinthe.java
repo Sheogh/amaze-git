@@ -143,12 +143,8 @@ public class ViewLabyrinthe extends ViewElement {
 	}
 
 	public void start(Stage primaryStage, Labyrinthe laby) {
-		//int size = (CELL * SPAN)/2 + CELL/2;
 		drawFrame(primaryStage, laby.getRIGHT_BORDER()+1, laby.getDOWN_BORDER()+1);
 		drawLabyrinthe(laby);
-		//Rectangle square = new Rectangle(laby.getGuy().getPosition(laby.getG()).getX()*((WALL+CELL) * SPAN)+size, laby.getGuy().getPosition(laby.getG()).getY()*((WALL+CELL) * SPAN)+size, CELL, CELL);
-		//square.setFill(Color.RED);
-		//pane.getChildren().add(square);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("AMaaze");
 		primaryStage.setResizable(false);

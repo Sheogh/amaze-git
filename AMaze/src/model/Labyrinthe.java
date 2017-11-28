@@ -19,6 +19,7 @@ public class Labyrinthe {
 	
 	protected GraphNOriented g;
 	protected NiceGuy guy;
+	protected Exit exit;
 	
 	public enum direction {
 		North,
@@ -30,6 +31,7 @@ public class Labyrinthe {
 	public Labyrinthe() {
 		g = new GraphNOriented();
 		guy = new NiceGuy();
+		exit = new Exit();
 	}
 	
 	public GraphNOriented getG() {
@@ -38,6 +40,10 @@ public class Labyrinthe {
 	
 	public NiceGuy getGuy() {
 		return guy;
+	}
+
+	public Exit getExit() {
+		return exit;
 	}
 
 	public int getRIGHT_BORDER() {

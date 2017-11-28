@@ -15,13 +15,16 @@ public class Controller implements EventHandler<ActionEvent> {
 	public Controller() {
 		view = new ViewGame();
 		laby = new Labyrinthe();
-		Vertex v = laby.getG().randomVertex();
-		v.setNbr(0);
+		//Vertex v = laby.getG().randomVertex();
+		//v.setNbr(0);
+		laby.getExit().startPosition();
+		Vertex v = laby.getExit().getPosition();
+		System.out.println(v);
 		laby.getG().addVertex(v);
 		laby.buildPath(v);
 		laby.opendDoorRandom();
 		laby.getGuy().startPosition(laby, laby.getG().getEqualVertex(v));
-		System.out.println("Door at "+v+", guy : "+laby.getGuy().getPosition(laby.getG()));
+		System.out.println("Door at "+v+", guy : "+laby.getGuy().getRealPosition(laby.getG()));
 	}
 	
 	public void handle(ActionEvent event) {
