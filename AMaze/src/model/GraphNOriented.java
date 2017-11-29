@@ -46,14 +46,6 @@ public class GraphNOriented {
 		return this.g.toString();
 	}
 	
-	/*public void toDot() {
-		try {
-			PrintWriter writer = new PrintWriter("graph.dot");
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}	
-	}*/
-	
 	public Vertex randomVertex() {
 		int n1 = (int) (Math.random() * Labyrinthe.RIGHT_BORDER);
 		int n2 = (int) (Math.random() * Labyrinthe.DOWN_BORDER);
@@ -116,50 +108,6 @@ public class GraphNOriented {
 	public boolean edgeDoesntExist(Vertex v, direction dir) {
 		Vertex v2 = getEqualVertex(vertexByDir(v, dir));
 		return !this.containsEdge(v, v2);
-	}
-	
-	public void generateRandomGraph(int nbSommet, int nbArrete) {
-		
-		UndirectedGraph<Vertex, DefaultEdge> g = new SimpleGraph<Vertex, DefaultEdge>(DefaultEdge.class);
-		int x;
-		int y;
-		
-		for (int i = 0 ; i < nbSommet ; i++) {
-			x = (int) (Math.random() * nbSommet);
-			y = (int) (Math.random() * nbSommet);
-			Vertex v = new Vertex(x, y);
-			g.addVertex(v);
-		}
-		
-		
-		Object[] vertices = g.vertexSet().toArray();
-		
-		for (int l = 0 ; l < nbArrete ; l++) {
-			int n1 = (int) (Math.random() * nbSommet);
-			int n2 = (int) (Math.random() * nbSommet);
-			while (n1 == n2) {
-				n2 = (int) (Math.random() * nbSommet);
-			}
-			
-			Vertex v1 = (Vertex) vertices[n1];
-			Vertex v2 = (Vertex) vertices[n2];
-			if (!g.containsEdge(v1, v2)) {
-				g.addEdge(v1, v2);
-			}
-		}
-		System.out.println(g.toString());
-	}
-	
-	
-	public GraphNOriented generateStableGraph(int dim) {
-		GraphNOriented g = new GraphNOriented();
-		for (int i = 0; i < dim; i++) {
-			for (int j = 0; j < dim; j++) {
-				Vertex v = new Vertex(i, j);
-				this.g.addVertex(v);
-			}
-		}
-		return g;
 	}
 	
 }

@@ -72,13 +72,13 @@ public class Labyrinthe {
 				v2.setNbr(v.getNbr()+1);
 				g.addVertex(v2);
 				g.addEdge(v, v2);
-				System.out.println("edge : "+"("+v.toString()+","+v2.toString()+") "+dir);
+				//System.out.println("edge : "+"("+v.toString()+","+v2.toString()+") "+dir);
 				buildPath(v2);
 			}
 		}
 	}
 	
-	public void opendDoorRandom() {
+	public void openDoorRandom() {
 		List<direction> direct = new ArrayList<>();
 		Collections.addAll(direct, direction.values());
 		
@@ -93,7 +93,7 @@ public class Labyrinthe {
 						Edge edge = g.getG().getEdge(v, v2);
 						if (edge == null) {
 							g.addEdge(v, v2);
-							System.out.println("added edge : "+"("+v.toString()+","+v2.toString()+")");
+							//System.out.println("added edge : "+"("+v.toString()+","+v2.toString()+")");
 							return;
 						}
  					}

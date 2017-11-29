@@ -20,23 +20,53 @@ public class Controller {
 	private ViewGame view;
 	private Labyrinthe laby;
 	
+	private static Controller instance = new Controller();
+	
 	/**
 	 * 
 	 */
-	public Controller() {
+	private Controller() {
+		/*view = new ViewGame();
+		laby = new Labyrinthe();
+		laby.getExit().startPosition();
+		Vertex v = laby.getExit().getPosition();
+		//System.out.println(v);
+		laby.getG().addVertex(v);
+		laby.buildPath(v);
+		laby.openDoorRandom();
+		laby.openDoorRandom();
+		laby.openDoorRandom();
+		laby.openDoorRandom();
+		laby.getGuy().startPosition(laby, laby.getG().getEqualVertex(v));
+		System.out.println("Door at "+v+", guy : "+laby.getGuy().getRealPosition(laby.getG()));*/
+		refreshInstance();
+	}
+	
+	/**
+	 * 
+	 */
+	private void refreshInstance() {
 		view = new ViewGame();
 		laby = new Labyrinthe();
 		laby.getExit().startPosition();
 		Vertex v = laby.getExit().getPosition();
-		System.out.println(v);
+		//System.out.println(v);
 		laby.getG().addVertex(v);
 		laby.buildPath(v);
-		laby.opendDoorRandom();
-		laby.opendDoorRandom();
-		laby.opendDoorRandom();
-		laby.opendDoorRandom();
+		laby.openDoorRandom();
+		laby.openDoorRandom();
+		laby.openDoorRandom();
+		laby.openDoorRandom();
 		laby.getGuy().startPosition(laby, laby.getG().getEqualVertex(v));
 		System.out.println("Door at "+v+", guy : "+laby.getGuy().getRealPosition(laby.getG()));
+	}
+	
+	/**
+	 * 
+	 * @return instance
+	 */
+	public static Controller getInstance() {
+		return instance;
 	}
 
 	/**
@@ -70,6 +100,12 @@ public class Controller {
             	if (v != null && !laby.isWall(laby.getGuy().getRealPosition(laby.getG()), dir)) {
             		laby.getGuy().setPosition(v);
             		view.getViewGuy().setPosition(v);
+            		if (v.equals(laby.getExit().getRealPosition(laby.getG()))) {
+                		System.out.println("YOU WON !");
+                		// Recreate a new labyrinth :
+                		refreshInstance();
+                		start(primaryStage);
+                	}
             	}
             }
         });

@@ -11,7 +11,7 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		
-		controller = new Controller();
+		controller = Controller.getInstance();
 		launch(args);
 
 	}
