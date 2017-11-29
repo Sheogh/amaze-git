@@ -32,6 +32,10 @@ public class ViewItem extends ViewElement {
 		viewSprite.setY(y*((WALL+CELL)*SPAN)+WALL*SPAN);
 	}
 	
+	public void setPosition(Vertex v) {
+		setPosition(v.getX(), v.getY());
+	}
+	
 	public void drawSprite(Stage stage, String fileName) {
 		pane = ViewGame.getPane();
 		String imagePath = new File("Assets/"+fileName).toURI().toString();

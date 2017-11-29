@@ -44,6 +44,10 @@ public class ViewGame extends ViewElement {
 		return pane;
 	}
 	
+	public ViewItem getViewGuy() {
+		return viewGuy;
+	}
+
 	public void createScene(Stage stage, int nbrX, int nbrY) {
 		pane = new Pane();
 		scene = new Scene(pane,

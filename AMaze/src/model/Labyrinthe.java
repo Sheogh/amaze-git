@@ -53,6 +53,10 @@ public class Labyrinthe {
 	public int getDOWN_BORDER() {
 		return DOWN_BORDER;
 	}
+	
+	public boolean isWall(Vertex v, direction dir) {
+		return g.edgeDoesntExist(v, dir);
+	}
 
 	public void buildPath(Vertex v) {
 		// permutations des directions
