@@ -1,5 +1,6 @@
 package view;
 
+import controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -25,15 +26,15 @@ public class ViewGame extends ViewElement {
 	protected ViewLabyrinthe viewLaby;
 	protected ViewItem viewGuy;
 	protected ViewItem viewExit;
-	
-	private static Scene scene;
-	private static Pane pane;
+	protected ViewItem viewBaddies[];
 	
 	public ViewGame() {
 		super();
 		this.viewLaby = new ViewLabyrinthe();
 		this.viewGuy = new ViewItem();
 		this.viewExit = new ViewItem();
+		this.viewBaddies = new ViewItem[Controller.badNbr];
+		this.viewBaddies[0] = new ViewItem();
 	}
 
 	public static Scene getScene() {
@@ -48,6 +49,10 @@ public class ViewGame extends ViewElement {
 		return viewGuy;
 	}
 
+	public ViewItem[] getViewBaddies() {
+		return viewBaddies;
+	}
+
 	public void createScene(Stage stage, int nbrX, int nbrY) {
 		pane = new Pane();
 		scene = new Scene(pane,
@@ -59,17 +64,20 @@ public class ViewGame extends ViewElement {
 	public void start(Stage primaryStage, Labyrinthe laby) {
 		Vertex niceGuyPos = laby.getGuy().getRealPosition(laby.getG());
 		Vertex exitPos = laby.getExit().getRealPosition(laby.getG());
+		Vertex baddiesPos[] = new Vertex[Controller.badNbr];
+		baddiesPos[0] = laby.getBadBoys()[0].getRealPosition(laby.getG());
 		createScene(primaryStage, laby.getRIGHT_BORDER()+1, laby.getDOWN_BORDER()+1);
 		viewLaby.start(primaryStage, laby);
 		viewGuy.start(primaryStage, laby, "player.png");
 		viewExit.start(primaryStage, laby, "door_open.png");
-		viewGuy.setPosition(niceGuyPos.getX(), niceGuyPos.getY());		
-		viewExit.setPosition(exitPos.getX(), exitPos.getY());
+		viewBaddies[0].start(primaryStage, laby, "bad.png");
+		viewGuy.setPosition(niceGuyPos);		
+		viewExit.setPosition(exitPos);
+		viewBaddies[0].setPosition(baddiesPos[0]);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("AMaaze");
 		primaryStage.setResizable(false);
 		primaryStage.sizeToScene();
 		primaryStage.show();
 	}
-
 }

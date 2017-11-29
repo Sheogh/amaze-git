@@ -20,25 +20,14 @@ public class Controller {
 	private ViewGame view;
 	private Labyrinthe laby;
 	
+	public static final int badNbr = 4;
+	
 	private static Controller instance = new Controller();
 	
 	/**
 	 * 
 	 */
 	private Controller() {
-		/*view = new ViewGame();
-		laby = new Labyrinthe();
-		laby.getExit().startPosition();
-		Vertex v = laby.getExit().getPosition();
-		//System.out.println(v);
-		laby.getG().addVertex(v);
-		laby.buildPath(v);
-		laby.openDoorRandom();
-		laby.openDoorRandom();
-		laby.openDoorRandom();
-		laby.openDoorRandom();
-		laby.getGuy().startPosition(laby, laby.getG().getEqualVertex(v));
-		System.out.println("Door at "+v+", guy : "+laby.getGuy().getRealPosition(laby.getG()));*/
 		refreshInstance();
 	}
 	
@@ -59,6 +48,8 @@ public class Controller {
 		laby.openDoorRandom();
 		laby.getGuy().startPosition(laby, laby.getG().getEqualVertex(v));
 		System.out.println("Door at "+v+", guy : "+laby.getGuy().getRealPosition(laby.getG()));
+		laby.getBadBoys()[0].startPosition(laby, laby.getGuy().getRealPosition(laby.getG()));
+		System.out.println("Baddy is at "+laby.getBadBoys()[0].getRealPosition(laby.getG()));
 	}
 	
 	/**
@@ -96,12 +87,27 @@ public class Controller {
         		default:
         			break;
                 }
-            	v = laby.getG().getEqualVertex(laby.getG().vertexByDir(laby.getGuy().getRealPosition(laby.getG()), dir));
-            	if (v != null && !laby.isWall(laby.getGuy().getRealPosition(laby.getG()), dir)) {
+            	Vertex niceGuyPos = laby.getGuy().getRealPosition(laby.getG());
+            	Vertex exitPos = laby.getExit().getRealPosition(laby.getG());
+            	Vertex baddiesPos[] = new Vertex[badNbr];
+            	baddiesPos[0] = laby.getBadBoys()[0].getRealPosition(laby.getG());
+            	v = laby.getG().getEqualVertex(laby.getG().vertexByDir(niceGuyPos, dir));
+            	if (v != null && !laby.isWall(niceGuyPos, dir)) {
             		laby.getGuy().setPosition(v);
+            		niceGuyPos = laby.getGuy().getRealPosition(laby.getG());
             		view.getViewGuy().setPosition(v);
-            		if (v.equals(laby.getExit().getRealPosition(laby.getG()))) {
+            		if (v.equals(exitPos)) {
                 		System.out.println("YOU WON !");
+                		// Recreate a new labyrinth :
+                		refreshInstance();
+                		start(primaryStage);
+                	}
+            		laby.launchManhattan(baddiesPos[0], niceGuyPos);
+                	laby.getBadBoys()[0].move(laby);
+                	baddiesPos[0] = laby.getBadBoys()[0].getRealPosition(laby.getG());
+                	view.getViewBaddies()[0].setPosition(baddiesPos[0]);
+                	if (niceGuyPos.equals(baddiesPos[0])) {
+                		System.out.println("You lose !");
                 		// Recreate a new labyrinth :
                 		refreshInstance();
                 		start(primaryStage);

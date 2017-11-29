@@ -10,6 +10,8 @@ import model.Labyrinthe.direction;
 
 public class BadGuy extends Character {
 	
+	static final int minDist = 8;
+	
 	/**
 	 * 
 	 * @param labyrinthe
@@ -17,7 +19,7 @@ public class BadGuy extends Character {
 	public void	move(Labyrinthe labyrinthe) {
 		Vertex vertex = this.getRealPosition(labyrinthe.getG());
 		for (direction dir : direction.values()) {
-			Vertex next = labyrinthe.getG().vertexByDir(vertex, dir);
+			Vertex next = labyrinthe.getG().getEqualVertex(labyrinthe.getG().vertexByDir(vertex, dir));
 			if (labyrinthe.getG().containsEdge(vertex, next)
 			&& (next.getNbr() == vertex.getNbr()-1) && next != null) {
 				this.move(labyrinthe, dir);
@@ -29,9 +31,13 @@ public class BadGuy extends Character {
 	 * 
 	 */
 	@Override
-	void startPosition(Labyrinthe labyrinthe, Vertex niceGuyPosition) {
-		// TODO Auto-generated method stub
-		
+	public void startPosition(Labyrinthe labyrinthe, Vertex niceGuyPosition) {
+		Vertex v;
+		do {
+			v = labyrinthe.getG().getEqualVertex(labyrinthe.getG().randomVertex());
+			labyrinthe.launchManhattan(v, niceGuyPosition);
+		} while (v.getNbr() < minDist);
+		setPosition(v);
 	}
 
 }

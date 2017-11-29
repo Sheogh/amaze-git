@@ -10,6 +10,8 @@ import org.jgrapht.UndirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
 
+import controller.Controller;
+
 public class Labyrinthe {
 	
 	protected static final int TOP_BORDER = 0;
@@ -20,6 +22,7 @@ public class Labyrinthe {
 	protected GraphNOriented g;
 	protected NiceGuy guy;
 	protected Exit exit;
+	protected BadGuy badBoys[];
 	
 	public enum direction {
 		North,
@@ -32,6 +35,8 @@ public class Labyrinthe {
 		g = new GraphNOriented();
 		guy = new NiceGuy();
 		exit = new Exit();
+		badBoys = new BadGuy[Controller.badNbr];
+		badBoys[0] = new BadGuy();
 	}
 	
 	public GraphNOriented getG() {
@@ -44,6 +49,10 @@ public class Labyrinthe {
 
 	public Exit getExit() {
 		return exit;
+	}
+
+	public BadGuy[] getBadBoys() {
+		return badBoys;
 	}
 
 	public int getRIGHT_BORDER() {
