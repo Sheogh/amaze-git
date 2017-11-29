@@ -48,46 +48,29 @@ public class Controller {
 		ViewGame.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent key) {
-            	//System.out.println(key.getCode());
-            	direction dir;
+            	direction dir = direction.North; // to initialize variable.
             	Vertex v;
             	switch(key.getCode()) {
                 case RIGHT:
                 	dir = direction.East;
-                	v = laby.getG().getEqualVertex(laby.getG().vertexByDir(laby.getGuy().getRealPosition(laby.getG()), dir));
-                	if (v != null && !laby.isWall(laby.getGuy().getRealPosition(laby.getG()), dir)) {
-                		laby.getGuy().setPosition(v);
-                		view.getViewGuy().setPosition(v);
-                	}
                 	break;
                 case LEFT:
                 	dir = direction.West;
-                	v = laby.getG().getEqualVertex(laby.getG().vertexByDir(laby.getGuy().getRealPosition(laby.getG()), dir));
-                	if (v != null && !laby.isWall(laby.getGuy().getRealPosition(laby.getG()), dir)) {
-                		laby.getGuy().setPosition(v);
-                		view.getViewGuy().setPosition(v);
-                	}
                 	break;
                 case UP:
                 	dir = direction.North;
-                	v = laby.getG().getEqualVertex(laby.getG().vertexByDir(laby.getGuy().getRealPosition(laby.getG()), dir));
-                	if (v != null && !laby.isWall(laby.getGuy().getRealPosition(laby.getG()), dir)) {
-                		laby.getGuy().setPosition(v);
-                		view.getViewGuy().setPosition(v);
-                	}
                 	break;
                 case DOWN:
                 	dir = direction.South;
-                	v = laby.getG().getEqualVertex(laby.getG().vertexByDir(laby.getGuy().getRealPosition(laby.getG()), dir));
-                	if (v != null && !laby.isWall(laby.getGuy().getRealPosition(laby.getG()), dir)) {
-                		laby.getGuy().setPosition(v);
-                		view.getViewGuy().setPosition(v);
-                	}
                 	break;
         		default:
         			break;
                 }
-            	
+            	v = laby.getG().getEqualVertex(laby.getG().vertexByDir(laby.getGuy().getRealPosition(laby.getG()), dir));
+            	if (v != null && !laby.isWall(laby.getGuy().getRealPosition(laby.getG()), dir)) {
+            		laby.getGuy().setPosition(v);
+            		view.getViewGuy().setPosition(v);
+            	}
             }
         });
 	}
