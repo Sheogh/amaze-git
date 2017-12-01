@@ -12,9 +12,6 @@ public class NiceGuy extends Character {
 		setPosition(new Vertex(0, 0));
 	}
 
-	/**
-	 * 
-	 */
 	@Override
 	public void startPosition(Labyrinthe labyrinthe, Vertex exitPosition) {
 		Vertex farthest = new Vertex(0, 0);
