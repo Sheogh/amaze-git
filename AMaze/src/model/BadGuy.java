@@ -23,12 +23,15 @@ public class BadGuy extends Character {
 			if (labyrinthe.getG().containsEdge(vertex, next)
 			&& (next.getNbr() == vertex.getNbr()-1) && next != null) {
 				this.move(labyrinthe, dir);
+				return;
 			}
 		}
 	}
 
 	/**
 	 * 
+	 * @param labyrinthe
+	 * @param niceGuyPosition
 	 */
 	@Override
 	public void startPosition(Labyrinthe labyrinthe, Vertex niceGuyPosition) {
