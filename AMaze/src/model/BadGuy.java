@@ -10,7 +10,7 @@ import model.Labyrinthe.direction;
 
 public class BadGuy extends Character {
 	
-	static final int minDist = 8;
+	static final int minDist = 16;
 	
 	/**
 	 * 

@@ -42,10 +42,9 @@ public class Controller {
 		//System.out.println(v);
 		laby.getG().addVertex(v);
 		laby.buildPath(v);
-		laby.openDoorRandom();
-		laby.openDoorRandom();
-		laby.openDoorRandom();
-		laby.openDoorRandom();
+		for (int i = 0 ; i<40 ; i++) {
+			laby.openDoorRandom();
+		}
 		laby.getGuy().startPosition(laby, laby.getG().getEqualVertex(v));
 		System.out.println("Door at "+v+", guy : "+laby.getGuy().getRealPosition(laby.getG()));
 		laby.getBadBoys()[0].startPosition(laby, laby.getGuy().getRealPosition(laby.getG()));
