@@ -34,7 +34,9 @@ public class ViewGame extends ViewElement {
 		this.viewGuy = new ViewItem();
 		this.viewExit = new ViewItem();
 		this.viewBaddies = new ViewItem[Controller.badNbr];
-		this.viewBaddies[0] = new ViewItem();
+		for (int i = 0 ; i < Controller.badNbr ; i++) {
+			this.viewBaddies[i] = new ViewItem();
+		}
 	}
 
 	public static Scene getScene() {
@@ -65,15 +67,21 @@ public class ViewGame extends ViewElement {
 		Vertex niceGuyPos = laby.getGuy().getRealPosition(laby.getG());
 		Vertex exitPos = laby.getExit().getRealPosition(laby.getG());
 		Vertex baddiesPos[] = new Vertex[Controller.badNbr];
-		baddiesPos[0] = laby.getBadBoys()[0].getRealPosition(laby.getG());
+		for (int i = 0 ; i < Controller.badNbr ; i++) {
+			baddiesPos[i] = laby.getBadBoys()[i].getRealPosition(laby.getG());
+		}
 		createScene(primaryStage, laby.getRIGHT_BORDER()+1, laby.getDOWN_BORDER()+1);
 		viewLaby.start(primaryStage, laby);
 		viewGuy.start(primaryStage, laby, "player.png");
 		viewExit.start(primaryStage, laby, "door_open.png");
-		viewBaddies[0].start(primaryStage, laby, "bad.png");
+		for (int i = 0 ; i < Controller.badNbr ; i++) {
+			viewBaddies[i].start(primaryStage, laby, "bad.png");
+		}
 		viewGuy.setPosition(niceGuyPos);		
 		viewExit.setPosition(exitPos);
-		viewBaddies[0].setPosition(baddiesPos[0]);
+		for (int i = 0 ; i < Controller.badNbr ; i++) {
+			viewBaddies[i].setPosition(baddiesPos[i]);
+		}
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("AMaaze");
 		primaryStage.setResizable(false);

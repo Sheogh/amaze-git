@@ -36,7 +36,9 @@ public class Labyrinthe {
 		guy = new NiceGuy();
 		exit = new Exit();
 		badBoys = new BadGuy[Controller.badNbr];
-		badBoys[0] = new BadGuy();
+		for (int i = 0 ; i < Controller.badNbr ; i++) {
+			badBoys[i] = new BadGuy();
+		}
 	}
 	
 	public GraphNOriented getG() {

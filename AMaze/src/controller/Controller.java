@@ -47,8 +47,10 @@ public class Controller {
 		}
 		laby.getGuy().startPosition(laby, laby.getG().getEqualVertex(v));
 		System.out.println("Door at "+v+", guy : "+laby.getGuy().getRealPosition(laby.getG()));
-		laby.getBadBoys()[0].startPosition(laby, laby.getGuy().getRealPosition(laby.getG()));
-		System.out.println("Baddy is at "+laby.getBadBoys()[0].getRealPosition(laby.getG()));
+		for (int j = 0 ; j < badNbr ; j++) {
+			laby.getBadBoys()[j].startPosition(laby, laby.getGuy().getRealPosition(laby.getG()));
+			System.out.println("Baddy is at "+laby.getBadBoys()[j].getRealPosition(laby.getG()));
+		}
 	}
 	
 	/**
@@ -89,7 +91,9 @@ public class Controller {
             	Vertex niceGuyPos = laby.getGuy().getRealPosition(laby.getG());
             	Vertex exitPos = laby.getExit().getRealPosition(laby.getG());
             	Vertex baddiesPos[] = new Vertex[badNbr];
-            	baddiesPos[0] = laby.getBadBoys()[0].getRealPosition(laby.getG());
+            	for (int i = 0 ; i < badNbr ; i++) {
+            		baddiesPos[i] = laby.getBadBoys()[i].getRealPosition(laby.getG());
+            	}
             	v = laby.getG().getEqualVertex(laby.getG().vertexByDir(niceGuyPos, dir));
             	if (v != null && !laby.isWall(niceGuyPos, dir)) {
             		laby.getGuy().setPosition(v);
@@ -101,16 +105,18 @@ public class Controller {
                 		refreshInstance();
                 		start(primaryStage);
                 	}
-            		laby.launchManhattan(baddiesPos[0], niceGuyPos);
-                	laby.getBadBoys()[0].move(laby);
-                	baddiesPos[0] = laby.getBadBoys()[0].getRealPosition(laby.getG());
-                	view.getViewBaddies()[0].setPosition(baddiesPos[0]);
-                	if (niceGuyPos.equals(baddiesPos[0])) {
-                		System.out.println("You lose !");
-                		// Recreate a new labyrinth :
-                		refreshInstance();
-                		start(primaryStage);
-                	}
+            		for (int j = 0 ; j < badNbr ; j++) {
+            			laby.launchManhattan(baddiesPos[j], niceGuyPos);
+                		laby.getBadBoys()[j].move(laby);
+                		baddiesPos[j] = laby.getBadBoys()[j].getRealPosition(laby.getG());
+                		view.getViewBaddies()[j].setPosition(baddiesPos[j]);
+	                	if (niceGuyPos.equals(baddiesPos[j])) {
+	                		System.out.println("You lose !");
+	                		// Recreate a new labyrinth :
+	                		refreshInstance();
+	                		start(primaryStage);
+	                	}
+            		}
             	}
             }
         });
