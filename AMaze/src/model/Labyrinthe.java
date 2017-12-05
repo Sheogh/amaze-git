@@ -68,6 +68,18 @@ public class Labyrinthe {
 	public boolean isWall(Vertex v, direction dir) {
 		return g.edgeDoesntExist(v, dir);
 	}
+	
+	public boolean collisionBad(BadGuy baddy, int id) {
+		Vertex arrival = baddy.futureMove(this);
+		if (arrival != null) {
+			for (int i = 0 ; i < id ; i++) {
+				if (arrival.equals(badBoys[i].getPosition())) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 
 	public void buildPath(Vertex v) {
 		// permutations des directions

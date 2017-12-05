@@ -17,7 +17,7 @@ public class BadGuy extends Character {
 	 * @param labyrinthe
 	 */
 	public void	move(Labyrinthe labyrinthe) {
-		Vertex vertex = this.getRealPosition(labyrinthe.getG());
+		/*Vertex vertex = this.getRealPosition(labyrinthe.getG());
 		for (direction dir : direction.values()) {
 			Vertex next = labyrinthe.getG().getEqualVertex(labyrinthe.getG().vertexByDir(vertex, dir));
 			if (labyrinthe.getG().containsEdge(vertex, next)
@@ -25,7 +25,27 @@ public class BadGuy extends Character {
 				this.move(labyrinthe, dir);
 				return;
 			}
+		}*/
+		Vertex v = futureMove(labyrinthe);
+		if (v != null) {
+			setPosition(v);
 		}
+	}
+	
+	/**
+	 * 
+	 * @param labyrinthe
+	 */
+	public Vertex futureMove(Labyrinthe labyrinthe) {
+		Vertex vertex = this.getRealPosition(labyrinthe.getG());
+		for (direction dir : direction.values()) {
+			Vertex next = labyrinthe.getG().getEqualVertex(labyrinthe.getG().vertexByDir(vertex, dir));
+			if (labyrinthe.getG().containsEdge(vertex, next)
+			&& (next.getNbr() == vertex.getNbr()-1) && next != null) {
+				return labyrinthe.getG().getEqualVertex(labyrinthe.getG().vertexByDir(position, dir));
+			}
+		}
+		return null;
 	}
 
 	/**

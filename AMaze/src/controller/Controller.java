@@ -20,7 +20,7 @@ public class Controller {
 	private ViewGame view;
 	private Labyrinthe laby;
 	
-	public static final int badNbr = 4;
+	public static int badNbr = 4;
 	
 	private static Controller instance = new Controller();
 	
@@ -42,14 +42,14 @@ public class Controller {
 		//System.out.println(v);
 		laby.getG().addVertex(v);
 		laby.buildPath(v);
-		for (int i = 0 ; i<40 ; i++) {
+		for (int i = 0 ; i < 40 ; i++) {
 			laby.openDoorRandom();
 		}
 		laby.getGuy().startPosition(laby, laby.getG().getEqualVertex(v));
-		System.out.println("Door at "+v+", guy : "+laby.getGuy().getRealPosition(laby.getG()));
+		//System.out.println("Door at "+v+", guy : "+laby.getGuy().getRealPosition(laby.getG()));
 		for (int j = 0 ; j < badNbr ; j++) {
 			laby.getBadBoys()[j].startPosition(laby, laby.getGuy().getRealPosition(laby.getG()));
-			System.out.println("Baddy is at "+laby.getBadBoys()[j].getRealPosition(laby.getG()));
+			//System.out.println("Baddy is at "+laby.getBadBoys()[j].getRealPosition(laby.getG()));
 		}
 	}
 	
@@ -107,11 +107,13 @@ public class Controller {
                 	}
             		for (int j = 0 ; j < badNbr ; j++) {
             			laby.launchManhattan(baddiesPos[j], niceGuyPos);
-                		laby.getBadBoys()[j].move(laby);
-                		baddiesPos[j] = laby.getBadBoys()[j].getRealPosition(laby.getG());
-                		view.getViewBaddies()[j].setPosition(baddiesPos[j]);
+            			if (!laby.collisionBad(laby.getBadBoys()[j], j)) {
+            				laby.getBadBoys()[j].move(laby);
+                    		baddiesPos[j] = laby.getBadBoys()[j].getRealPosition(laby.getG());
+                    		view.getViewBaddies()[j].setPosition(baddiesPos[j]);
+            			}
 	                	if (niceGuyPos.equals(baddiesPos[j])) {
-	                		System.out.println("You lose !");
+	                		System.out.println("YOU LOSE !");
 	                		// Recreate a new labyrinth :
 	                		refreshInstance();
 	                		start(primaryStage);
