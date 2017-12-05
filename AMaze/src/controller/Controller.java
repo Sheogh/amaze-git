@@ -3,11 +3,13 @@ package controller;
 import model.*;
 import model.Labyrinthe.direction;
 import view.*;
-
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  * 
@@ -19,6 +21,7 @@ public class Controller {
 	
 	private ViewGame view;
 	private Labyrinthe laby;
+	private Timeline timeline;
 	
 	public static int badNbr = 4;
 	
@@ -33,10 +36,33 @@ public class Controller {
 	
 	/**
 	 * 
+	 * @return instance
+	 */
+	public static Controller getInstance() {
+		return instance;
+	}
+	
+	public final EventHandler<ActionEvent> EventHandlerTimeline = new EventHandler<ActionEvent>() {
+		@Override
+		public void handle(ActionEvent arg0) {
+			Vertex niceGuyPos = laby.getGuy().getRealPosition(laby.getG());
+        	Vertex baddiesPos[] = new Vertex[badNbr];
+        	for (int i = 0 ; i < badNbr ; i++) {
+        		baddiesPos[i] = laby.getBadBoys()[i].getRealPosition(laby.getG());
+        	}
+        	moveBaddies(baddiesPos, niceGuyPos);
+		}
+	};
+	
+	/**
+	 * 
 	 */
 	private void refreshInstance() {
 		view = new ViewGame();
 		laby = new Labyrinthe();
+		timeline = new Timeline();
+		KeyFrame kf = new KeyFrame(Duration.millis(500), EventHandlerTimeline);
+		timeline.getKeyFrames().add(kf);
 		laby.getExit().startPosition();
 		Vertex v = laby.getExit().getPosition();
 		//System.out.println(v);
@@ -52,13 +78,21 @@ public class Controller {
 			//System.out.println("Baddy is at "+laby.getBadBoys()[j].getRealPosition(laby.getG()));
 		}
 	}
-	
+
 	/**
 	 * 
-	 * @return instance
+	 * @param baddiesPos
+	 * @param niceGuyPos
 	 */
-	public static Controller getInstance() {
-		return instance;
+	public void moveBaddies(Vertex baddiesPos[], Vertex niceGuyPos) {
+		for (int j = 0 ; j < badNbr ; j++) {
+			laby.launchManhattan(baddiesPos[j], niceGuyPos);
+			if (!laby.collisionBad(laby.getBadBoys()[j], j)) {
+				laby.getBadBoys()[j].move(laby);
+        		baddiesPos[j] = laby.getBadBoys()[j].getRealPosition(laby.getG());
+        		view.getViewBaddies()[j].setPosition(baddiesPos[j]);
+			}
+		}
 	}
 
 	/**
@@ -67,6 +101,7 @@ public class Controller {
 	 */
 	public void start(Stage primaryStage) {
 		view.start(primaryStage, laby);
+		//view.getScene().;
 		ViewGame.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent key) {
@@ -106,12 +141,12 @@ public class Controller {
                 		start(primaryStage);
                 	}
             		for (int j = 0 ; j < badNbr ; j++) {
-            			laby.launchManhattan(baddiesPos[j], niceGuyPos);
+            			/*laby.launchManhattan(baddiesPos[j], niceGuyPos);
             			if (!laby.collisionBad(laby.getBadBoys()[j], j)) {
             				laby.getBadBoys()[j].move(laby);
                     		baddiesPos[j] = laby.getBadBoys()[j].getRealPosition(laby.getG());
                     		view.getViewBaddies()[j].setPosition(baddiesPos[j]);
-            			}
+            			}*/
 	                	if (niceGuyPos.equals(baddiesPos[j])) {
 	                		System.out.println("YOU LOSE !");
 	                		// Recreate a new labyrinth :
