@@ -65,10 +65,22 @@ public class Labyrinthe {
 		return DOWN_BORDER;
 	}
 	
+	/**
+	 * 
+	 * @param v
+	 * @param dir
+	 * @return boolean
+	 */
 	public boolean isWall(Vertex v, direction dir) {
 		return g.edgeDoesntExist(v, dir);
 	}
 	
+	/**
+	 * 
+	 * @param baddy
+	 * @param id
+	 * @return boolean
+	 */
 	public boolean collisionBad(BadGuy baddy, int id) {
 		Vertex arrival = baddy.futureMove(this);
 		if (arrival != null) {
@@ -145,6 +157,11 @@ public class Labyrinthe {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param source
+	 * @param target
+	 */
 	public void launchManhattan(Vertex source, Vertex target) {
 		for (Object vertex : g.vertexSet()) {
 			((Vertex) vertex).setNbr(0);
