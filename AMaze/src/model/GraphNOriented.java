@@ -1,51 +1,91 @@
 package model;
 
-//import java.io.PrintWriter;
-
-import org.jgrapht.UndirectedGraph;
-import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
-
 import model.Labyrinthe.direction;
 
+/**
+ * Classe qui défini un graphe simple
+ * Composé de plusieurs arêtes/sommets
+ * 
+ * @see SimpleGraph<>
+ * @see Vertex
+ * @see Edge
+ *
+ */
 public class GraphNOriented {
 
 	private SimpleGraph<Vertex, Edge> g;
 
+	/**
+	 * Constructeur vide
+	 */
 	public GraphNOriented() {
 		super();
 		this.g = new SimpleGraph<Vertex, Edge>(Edge.class);
 	}
-	
+	/**
+	 * @return g
+	 */
 	public SimpleGraph<Vertex, Edge> getG() {
 		return g;
 	}
-		
+	
+	/**
+	 * Ajoute un sommet dans le graphe
+	 * @param v
+	 */
 	public void addVertex(Vertex v) {
 		this.g.addVertex(v);
 	}
 	
+	/**
+	 * Vérifie si le graphe contient le sommet v
+	 * @param v
+	 * @return boolean
+	 */
 	public boolean containsVertex(Vertex v) {
 		return this.g.containsVertex(v);
 	}
 	
+	/**
+	 * Retourne un tableau de sommets
+	 * @return Object[]
+	 */
 	public Object[] vertexSet() {
 		return this.g.vertexSet().toArray();
 	}
 	
+	/**
+	 * Ajoute une arête entre deux sommets
+	 * @param v1
+	 * @param v2
+	 */
 	public void addEdge(Vertex v1, Vertex v2) {
 		Edge e = new Edge(v1, v2);
 		this.g.addEdge(v1, v2, e);
 	}
 	
+	/**
+	 * Vérifie s'il existe une arête entre v1 et v2
+	 * @param v1
+	 * @param v2
+	 * @return boolean
+	 */
 	public boolean containsEdge(Vertex v1, Vertex v2) {
 		return this.g.containsEdge(v1, v2);
 	}
 	
+	/**
+	 * @return String
+	 */
 	public String toString() {
 		return this.g.toString();
 	}
 	
+	/**
+	 * Retourne un sommet aléatoire
+	 * @return v
+	 */
 	public Vertex randomVertex() {
 		int n1 = (int) (Math.random() * Labyrinthe.RIGHT_BORDER);
 		int n2 = (int) (Math.random() * Labyrinthe.DOWN_BORDER);
@@ -53,6 +93,11 @@ public class GraphNOriented {
 		return v;
 	}
 	
+	/**
+	 * Regarde si un sommet est dans le graphe (?)
+	 * @param v
+	 * @return boolean
+	 */
 	public boolean vertexInGraph(Vertex v) {
 		Object[] tab = g.vertexSet().toArray();
 		for (Object v2 : tab) {
@@ -63,6 +108,12 @@ public class GraphNOriented {
 		return false;
 	}
 	
+	/**
+	 * Retourne le vertex du graphe égal au vertex en
+	 * paramètre
+	 * @param v
+	 * @return v2
+	 */
 	public Vertex getEqualVertex(Vertex v) {
 		if (v == null) {
 			return null;
@@ -76,6 +127,13 @@ public class GraphNOriented {
 		return null;
 	}
 	
+	/**
+	 * Retourne le sommet se trouvant dans la direction
+	 * donné en argument
+	 * @param v
+	 * @param dir
+	 * @return v2
+	 */
 	public Vertex vertexByDir(Vertex v, direction dir) {
 		Vertex v2 = new Vertex(v.getX(), v.getY());
 		switch(dir) {
@@ -100,11 +158,23 @@ public class GraphNOriented {
 		}
 	}
 	
+	/**
+	 * Vérifie si un sommet existe dans la direction donnée
+	 * @param v
+	 * @param dir
+	 * @return boolean
+	 */
 	public boolean vertexDoesntExist(Vertex v, direction dir) {
 		Vertex v2 = vertexByDir(v, dir);
 		return !this.vertexInGraph(v2);
 	}
 	
+	/**
+	 * Vérifie si une arête existe dans la direction donnée
+	 * @param v
+	 * @param dir
+	 * @return boolean
+	 */
 	public boolean edgeDoesntExist(Vertex v, direction dir) {
 		Vertex v2 = getEqualVertex(vertexByDir(v, dir));
 		return !this.containsEdge(v, v2);

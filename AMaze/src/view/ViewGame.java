@@ -39,22 +39,43 @@ public class ViewGame extends ViewElement {
 		}
 	}
 
+	/**
+	 * @return scene
+	 */
 	public static Scene getScene() {
 		return scene;
 	}
-
+	
+	/**
+	 * 
+	 * @return pane
+	 */
 	public static Pane getPane() {
 		return pane;
 	}
 	
+	/**
+	 * 
+	 * @return viewGuy
+	 */
 	public ViewItem getViewGuy() {
 		return viewGuy;
 	}
 
+	/**
+	 * 
+	 * @return viewBaddies
+	 */
 	public ViewItem[] getViewBaddies() {
 		return viewBaddies;
 	}
 
+	/**
+	 * 
+	 * @param stage
+	 * @param nbrX
+	 * @param nbrY
+	 */
 	public void createScene(Stage stage, int nbrX, int nbrY) {
 		pane = new Pane();
 		scene = new Scene(pane,
@@ -63,6 +84,11 @@ public class ViewGame extends ViewElement {
 		stage.setScene(scene);
 	}
 	
+	/**
+	 * 
+	 * @param primaryStage
+	 * @param laby
+	 */
 	public void start(Stage primaryStage, Labyrinthe laby) {
 		Vertex niceGuyPos = laby.getGuy().getRealPosition(laby.getG());
 		Vertex exitPos = laby.getExit().getRealPosition(laby.getG());

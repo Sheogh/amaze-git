@@ -23,19 +23,37 @@ public class ViewItem extends ViewElement {
 		viewSprite = new ImageView();
 	}
 	
+	/**
+	 * 
+	 * @return viewSprite
+	 */
 	public ImageView getViewSprite() {
 		return viewSprite;
 	}
-
+	
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 */
 	public void setPosition(int x, int y) {
 		viewSprite.setX(x*((WALL+CELL)*SPAN)+WALL*SPAN);
 		viewSprite.setY(y*((WALL+CELL)*SPAN)+WALL*SPAN);
 	}
 	
+	/**
+	 * 
+	 * @param v
+	 */
 	public void setPosition(Vertex v) {
 		setPosition(v.getX(), v.getY());
 	}
 	
+	/**
+	 * 
+	 * @param stage
+	 * @param fileName
+	 */
 	public void drawSprite(Stage stage, String fileName) {
 		pane = ViewGame.getPane();
 		String imagePath = new File("Assets/"+fileName).toURI().toString();
@@ -44,6 +62,12 @@ public class ViewItem extends ViewElement {
 		pane.getChildren().add(viewSprite);
 	}
 	
+	/**
+	 * 
+	 * @param primaryStage
+	 * @param laby
+	 * @param fileName
+	 */
 	public void start(Stage primaryStage, Labyrinthe laby, String fileName) {
 		drawSprite(primaryStage, fileName);
 	}

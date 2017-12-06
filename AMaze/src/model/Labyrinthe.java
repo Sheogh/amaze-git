@@ -12,6 +12,15 @@ import org.jgrapht.graph.SimpleGraph;
 
 import controller.Controller;
 
+/**
+ * Classe qui définit le jeu
+ * 
+ * @see GraphNOriented
+ * @see NiceGuy
+ * @see Exit
+ * @see BadGuy
+ *
+ */
 public class Labyrinthe {
 	
 	protected static final int TOP_BORDER = 0;
@@ -31,6 +40,9 @@ public class Labyrinthe {
 		West;
 	}
 	
+	/**
+	 * Constructeur vide
+	 */
 	public Labyrinthe() {
 		g = new GraphNOriented();
 		guy = new NiceGuy();
@@ -41,32 +53,56 @@ public class Labyrinthe {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return g
+	 */
 	public GraphNOriented getG() {
 		return g;
 	}
 	
+	/**
+	 * 
+	 * @return guy
+	 */
 	public NiceGuy getGuy() {
 		return guy;
 	}
-
+	
+	/**
+	 * 
+	 * @return exit
+	 */
 	public Exit getExit() {
 		return exit;
 	}
-
+	
+	/**
+	 * 
+	 * @return badboys
+	 */
 	public BadGuy[] getBadBoys() {
 		return badBoys;
 	}
 
+	/**
+	 * 
+	 * @return RIGHT_BORDER
+	 */
 	public int getRIGHT_BORDER() {
 		return RIGHT_BORDER;
 	}
 	
+	/**
+	 * 
+	 * @return DOWN_BORDER
+	 */
 	public int getDOWN_BORDER() {
 		return DOWN_BORDER;
 	}
 	
 	/**
-	 * 
+	 * Verifie si il y a un mur sur la position donnée
 	 * @param v
 	 * @param dir
 	 * @return boolean
@@ -76,7 +112,8 @@ public class Labyrinthe {
 	}
 	
 	/**
-	 * 
+	 * Permet d'eviter que les mechants entrent
+	 * en collision
 	 * @param baddy
 	 * @param id
 	 * @return boolean
@@ -93,6 +130,11 @@ public class Labyrinthe {
 		return false;
 	}
 
+	/**
+	 * Construit le chemin parfait du labyrtinhe à 
+	 * partir du sommet donnée en paramètre
+	 * @param v
+	 */
 	public void buildPath(Vertex v) {
 		// permutations des directions
 		List<direction> direct = new ArrayList<>();
@@ -113,6 +155,11 @@ public class Labyrinthe {
 		}
 	}
 	
+	/**
+	 * Permet de rajouter des chemins dans le 
+	 * labyrinthe : enlève des murs de manière
+	 * aléatoire
+	 */
 	public void openDoorRandom() {
 		List<direction> direct = new ArrayList<>();
 		Collections.addAll(direct, direction.values());
@@ -137,6 +184,12 @@ public class Labyrinthe {
 		}
 	}
 	
+	/**
+	 * Calcul l'algorithme de manhattan entre
+	 * deux sommets
+	 * @param source
+	 * @param target
+	 */
 	private void calculateManhattanDistance(Vertex source, Vertex target) {
 		Queue<Vertex> fifo = new ArrayDeque<Vertex>();
 		target.setNbr(1);
@@ -158,7 +211,8 @@ public class Labyrinthe {
 	}
 	
 	/**
-	 * 
+	 * lance l'algorithme de manhattan entre 
+	 * deux sommets
 	 * @param source
 	 * @param target
 	 */

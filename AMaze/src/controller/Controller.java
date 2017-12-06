@@ -12,7 +12,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
- * 
+ * Classe qui intéragira avec la vue et le modèle
+ * Singleton
  * @see ViewGame
  * @see Labyrinthe
  *
@@ -28,7 +29,7 @@ public class Controller {
 	private static Controller instance = new Controller();
 	
 	/**
-	 * 
+	 *  Constructeur privé
 	 */
 	private Controller() {
 		refreshInstance();
@@ -55,7 +56,7 @@ public class Controller {
 	};
 	
 	/**
-	 * 
+	 *  Relance le jeu
 	 */
 	private void refreshInstance() {
 		view = new ViewGame();
@@ -80,9 +81,11 @@ public class Controller {
 	}
 
 	/**
+	 * Gère les mouvement des méchants à l'aide de
+	 * l'algorithme de manhattan
 	 * 
-	 * @param baddiesPos
-	 * @param niceGuyPos
+	 * @param baddiesPos 	position des méchants qui se déplacent
+	 * @param niceGuyPos	position du gentil
 	 */
 	public void moveBaddies(Vertex baddiesPos[], Vertex niceGuyPos) {
 		for (int j = 0 ; j < badNbr ; j++) {
@@ -96,7 +99,10 @@ public class Controller {
 	}
 
 	/**
-	 * 
+	 * Initialise le labyrinthe avec les personnages
+	 * et la porte de sortie
+	 * Handle	Directions récupérées du clavier
+	 * Vérifie si le joueur a gagné ou non
 	 * @param primaryStage
 	 */
 	public void start(Stage primaryStage) {

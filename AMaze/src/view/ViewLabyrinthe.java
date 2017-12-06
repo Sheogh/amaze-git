@@ -46,6 +46,12 @@ public class ViewLabyrinthe extends ViewElement {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param s
+	 * @param t
+	 * @return wall
+	 */
 	public Edge getWall(Vertex s, Vertex t) {
 		Vertex v1 = new Vertex(0, 0);
 		Vertex v2 = new Vertex(0, 0);
@@ -75,6 +81,13 @@ public class ViewLabyrinthe extends ViewElement {
 		return wall;
 	}
 	
+	/**
+	 * 
+	 * @param xs
+	 * @param ys
+	 * @param xt
+	 * @param yt
+	 */
 	public void drawWall(int xs, int ys, int xt, int yt) {
 		int x = 0, y= 0, xspan = 0, yspan = 0, xbase = 0, ybase = 0;
 		if (xs > xt) {
@@ -106,6 +119,10 @@ public class ViewLabyrinthe extends ViewElement {
 		pane.getChildren().add(square);
 	}
 	
+	/**
+	 * 
+	 * @param laby
+	 */
 	public void drawLabyrinthe(Labyrinthe laby) {
 		Vertex v, v2;
 		Edge e;
@@ -125,7 +142,13 @@ public class ViewLabyrinthe extends ViewElement {
 			}
 		}
 	}
+	
 
+	/**
+	 * 
+	 * @param primaryStage
+	 * @param laby
+	 */
 	public void start(Stage primaryStage, Labyrinthe laby) {
 		drawFrame(primaryStage, laby.getRIGHT_BORDER()+1, laby.getDOWN_BORDER()+1);
 		drawLabyrinthe(laby);
