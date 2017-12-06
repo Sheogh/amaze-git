@@ -44,7 +44,19 @@ public class Controller {
 	public static Controller getInstance() {
 		return instance;
 	}
-
+	
+	/**
+	 * 
+	 */
+	private void stop() {
+		timeline.stop();
+		timeline = null;
+		Main.restart(Main.primaryStage);
+	}
+	
+	/**
+	 * 
+	 */
 	public void collide() {
 		Vertex niceGuyPos = laby.getGuy().getRealPosition(laby.getG());
     	Vertex baddiesPos[] = new Vertex[badNbr];
@@ -52,12 +64,7 @@ public class Controller {
 			baddiesPos[j] = laby.getBadBoys()[j].getRealPosition(laby.getG());
         	if (niceGuyPos.equals(baddiesPos[j])) {
         		System.out.println("YOU LOSE !");
-        		// Recreate a new labyrinth :
-        		//refreshInstance();
-        		//start(Main.primaryStage);
-        		timeline.stop();
-        		timeline = null;
-        		Main.restart(Main.primaryStage);
+        		stop();
         	}
 		}
 	}
@@ -105,17 +112,14 @@ public class Controller {
 		timeline.getKeyFrames().add(kf);
 		laby.getExit().startPosition();
 		Vertex v = laby.getExit().getPosition();
-		//System.out.println(v);
 		laby.getG().addVertex(v);
 		laby.buildPath(v);
 		for (int i = 0 ; i < 40 ; i++) {
 			laby.openDoorRandom();
 		}
 		laby.getGuy().startPosition(laby, laby.getG().getEqualVertex(v));
-		//System.out.println("Door at "+v+", guy : "+laby.getGuy().getRealPosition(laby.getG()));
 		for (int j = 0 ; j < badNbr ; j++) {
 			laby.getBadBoys()[j].startPosition(laby, laby.getGuy().getRealPosition(laby.getG()));
-			//System.out.println("Baddy is at "+laby.getBadBoys()[j].getRealPosition(laby.getG()));
 		}
 	}
 
@@ -162,22 +166,12 @@ public class Controller {
             		view.getViewGuy().setPosition(v);
             		if (v.equals(exitPos)) {
                 		System.out.println("YOU WON !");
-                		// Recreate a new labyrinth :
-                		//refreshInstance();
-                		//start(primaryStage);
-                		timeline.stop();
-                		timeline = null;
-                		Main.restart(primaryStage);
+                		stop();
                 	}
             		for (int j = 0 ; j < badNbr ; j++) {
 	                	if (niceGuyPos.equals(baddiesPos[j])) {
 	                		System.out.println("YOU LOSE !");
-	                		// Recreate a new labyrinth :
-	                		//refreshInstance();
-	                		//start(primaryStage);
-	                		timeline.stop();
-	                		timeline = null;
-	                		Main.restart(primaryStage);
+	                		stop();
 	                	}
             		}
             	}

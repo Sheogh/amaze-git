@@ -23,7 +23,6 @@ public class Main extends Application {
 	}	
 	
 	public static void restart(Stage stage) {
-		//stage.close();
 		Main.primaryStage = stage;
 		controller.refreshInstance();
 		controller.start(primaryStage);
