@@ -40,6 +40,7 @@ public class GraphNOriented {
 	
 	/**
 	 * Vérifie si le graphe contient le sommet v
+	 * (à ne pas confondre avec vertexInGraph)
 	 * @param v
 	 * @return boolean
 	 */
@@ -94,7 +95,8 @@ public class GraphNOriented {
 	}
 	
 	/**
-	 * Regarde si un sommet est dans le graphe (?)
+	 * Regarde si le graphe contient un sommet équivalent au sommet en entrée
+	 * (à ne pas confondre avec containsVertex)
 	 * @param v
 	 * @return boolean
 	 */

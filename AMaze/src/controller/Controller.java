@@ -1,8 +1,10 @@
 package controller;
 
+import App.Main;
 import model.*;
 import model.Labyrinthe.direction;
 import view.*;
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -42,6 +44,41 @@ public class Controller {
 	public static Controller getInstance() {
 		return instance;
 	}
+
+	public void collide() {
+		Vertex niceGuyPos = laby.getGuy().getRealPosition(laby.getG());
+    	Vertex baddiesPos[] = new Vertex[badNbr];
+		for (int j = 0 ; j < badNbr ; j++) {
+			baddiesPos[j] = laby.getBadBoys()[j].getRealPosition(laby.getG());
+        	if (niceGuyPos.equals(baddiesPos[j])) {
+        		System.out.println("YOU LOSE !");
+        		// Recreate a new labyrinth :
+        		//refreshInstance();
+        		//start(Main.primaryStage);
+        		timeline.stop();
+        		timeline = null;
+        		Main.restart(Main.primaryStage);
+        	}
+		}
+	}
+	
+	/**
+	 * Gère les mouvements des méchants à l'aide de
+	 * l'algorithme de manhattan
+	 * 
+	 * @param baddiesPos 	position des méchants qui se déplacent
+	 * @param niceGuyPos	position du gentil
+	 */
+	public void moveBaddies(Vertex baddiesPos[], Vertex niceGuyPos) {
+		for (int j = 0 ; j < badNbr ; j++) {
+			laby.launchManhattan(baddiesPos[j], niceGuyPos);
+			if (!laby.collisionBad(laby.getBadBoys()[j], j)) {
+				laby.getBadBoys()[j].move(laby);
+        		baddiesPos[j] = laby.getBadBoys()[j].getRealPosition(laby.getG());
+        		view.getViewBaddies()[j].setPosition(baddiesPos[j]);
+			}
+		}
+	}
 	
 	public final EventHandler<ActionEvent> EventHandlerTimeline = new EventHandler<ActionEvent>() {
 		@Override
@@ -52,17 +89,19 @@ public class Controller {
         		baddiesPos[i] = laby.getBadBoys()[i].getRealPosition(laby.getG());
         	}
         	moveBaddies(baddiesPos, niceGuyPos);
+        	collide();
 		}
 	};
 	
 	/**
 	 *  Relance le jeu
 	 */
-	private void refreshInstance() {
+	public void refreshInstance() {
 		view = new ViewGame();
 		laby = new Labyrinthe();
 		timeline = new Timeline();
-		KeyFrame kf = new KeyFrame(Duration.millis(500), EventHandlerTimeline);
+		timeline.setCycleCount(Animation.INDEFINITE);
+		KeyFrame kf = new KeyFrame(Duration.seconds(1), EventHandlerTimeline);
 		timeline.getKeyFrames().add(kf);
 		laby.getExit().startPosition();
 		Vertex v = laby.getExit().getPosition();
@@ -81,24 +120,6 @@ public class Controller {
 	}
 
 	/**
-	 * Gère les mouvement des méchants à l'aide de
-	 * l'algorithme de manhattan
-	 * 
-	 * @param baddiesPos 	position des méchants qui se déplacent
-	 * @param niceGuyPos	position du gentil
-	 */
-	public void moveBaddies(Vertex baddiesPos[], Vertex niceGuyPos) {
-		for (int j = 0 ; j < badNbr ; j++) {
-			laby.launchManhattan(baddiesPos[j], niceGuyPos);
-			if (!laby.collisionBad(laby.getBadBoys()[j], j)) {
-				laby.getBadBoys()[j].move(laby);
-        		baddiesPos[j] = laby.getBadBoys()[j].getRealPosition(laby.getG());
-        		view.getViewBaddies()[j].setPosition(baddiesPos[j]);
-			}
-		}
-	}
-
-	/**
 	 * Initialise le labyrinthe avec les personnages
 	 * et la porte de sortie
 	 * Handle	Directions récupérées du clavier
@@ -107,7 +128,6 @@ public class Controller {
 	 */
 	public void start(Stage primaryStage) {
 		view.start(primaryStage, laby);
-		//view.getScene().;
 		ViewGame.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent key) {
@@ -143,26 +163,27 @@ public class Controller {
             		if (v.equals(exitPos)) {
                 		System.out.println("YOU WON !");
                 		// Recreate a new labyrinth :
-                		refreshInstance();
-                		start(primaryStage);
+                		//refreshInstance();
+                		//start(primaryStage);
+                		timeline.stop();
+                		timeline = null;
+                		Main.restart(primaryStage);
                 	}
             		for (int j = 0 ; j < badNbr ; j++) {
-            			/*laby.launchManhattan(baddiesPos[j], niceGuyPos);
-            			if (!laby.collisionBad(laby.getBadBoys()[j], j)) {
-            				laby.getBadBoys()[j].move(laby);
-                    		baddiesPos[j] = laby.getBadBoys()[j].getRealPosition(laby.getG());
-                    		view.getViewBaddies()[j].setPosition(baddiesPos[j]);
-            			}*/
 	                	if (niceGuyPos.equals(baddiesPos[j])) {
 	                		System.out.println("YOU LOSE !");
 	                		// Recreate a new labyrinth :
-	                		refreshInstance();
-	                		start(primaryStage);
+	                		//refreshInstance();
+	                		//start(primaryStage);
+	                		timeline.stop();
+	                		timeline = null;
+	                		Main.restart(primaryStage);
 	                	}
             		}
             	}
             }
         });
+		timeline.play();
 	}
 
 }
