@@ -1,5 +1,4 @@
 package App;
-import model.*;
 import controller.*;
 
 import javafx.application.Application;

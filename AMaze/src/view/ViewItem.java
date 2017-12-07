@@ -2,16 +2,15 @@ package view;
 
 import java.io.File;
 
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.Labyrinthe;
 import model.Vertex;
 
 /**
- * 
+ * Classe qui affiche les items 
+ * du jeu
  * @see ViewElement
  *
  */
@@ -19,12 +18,14 @@ public class ViewItem extends ViewElement {
 	
 	private ImageView viewSprite;
 	
+	/**
+	 * 	Constructeur vide
+	 */
 	public ViewItem() {
 		viewSprite = new ImageView();
 	}
 	
 	/**
-	 * 
 	 * @return viewSprite
 	 */
 	public ImageView getViewSprite() {
@@ -32,7 +33,8 @@ public class ViewItem extends ViewElement {
 	}
 	
 	/**
-	 * 
+	 * Positionne un item dans une cellule
+	 * du labyrinthe
 	 * @param x
 	 * @param y
 	 */
@@ -42,7 +44,8 @@ public class ViewItem extends ViewElement {
 	}
 	
 	/**
-	 * 
+	 * Positionne un item par rapport
+	 * à un sommets
 	 * @param v
 	 */
 	public void setPosition(Vertex v) {
@@ -50,7 +53,7 @@ public class ViewItem extends ViewElement {
 	}
 	
 	/**
-	 * 
+	 * Affiche un item
 	 * @param stage
 	 * @param fileName
 	 */
@@ -63,7 +66,7 @@ public class ViewItem extends ViewElement {
 	}
 	
 	/**
-	 * 
+	 * Lance l'affichage des items
 	 * @param primaryStage
 	 * @param laby
 	 * @param fileName

@@ -46,7 +46,7 @@ public class Controller {
 	}
 	
 	/**
-	 * 
+	 * Arrête la timeline et relance le jeu
 	 */
 	private void stop() {
 		timeline.stop();
@@ -55,7 +55,8 @@ public class Controller {
 	}
 	
 	/**
-	 * 
+	 * Vérifie si un méchant entre en collision 
+	 * avec un gentil
 	 */
 	public void collide() {
 		Vertex niceGuyPos = laby.getGuy().getRealPosition(laby.getG());
@@ -87,6 +88,10 @@ public class Controller {
 		}
 	}
 	
+	/**
+	 * Fonction qui sera effectuée toutes les secondes dans le timeline :
+	 * Mouvement des méchants
+	 */
 	public final EventHandler<ActionEvent> EventHandlerTimeline = new EventHandler<ActionEvent>() {
 		@Override
 		public void handle(ActionEvent arg0) {

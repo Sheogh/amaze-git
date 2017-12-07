@@ -1,9 +1,6 @@
 package view;
 
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import model.Edge;
@@ -12,12 +9,19 @@ import model.Labyrinthe.direction;
 import model.Vertex;
 
 /**
+ * Classe qui affiche le labyrinthe
  * 
  * @see ViewElement
  *
  */
 public class ViewLabyrinthe extends ViewElement {
-
+	
+	/**
+	 * Affiche le corps du labyrtinthe
+	 * @param stage
+	 * @param nbrX
+	 * @param nbrY
+	 */
 	public static void drawFrame(Stage stage, int nbrX, int nbrY) {
 		pane = ViewGame.getPane();
 		scene = ViewGame.getScene();
@@ -47,7 +51,7 @@ public class ViewLabyrinthe extends ViewElement {
 	}
 	
 	/**
-	 * 
+	 * Définit où placer le mur
 	 * @param s
 	 * @param t
 	 * @return wall
@@ -82,7 +86,7 @@ public class ViewLabyrinthe extends ViewElement {
 	}
 	
 	/**
-	 * 
+	 * Création du mur
 	 * @param xs
 	 * @param ys
 	 * @param xt
@@ -120,7 +124,7 @@ public class ViewLabyrinthe extends ViewElement {
 	}
 	
 	/**
-	 * 
+	 * Place les murs dans le labyrinthe
 	 * @param laby
 	 */
 	public void drawLabyrinthe(Labyrinthe laby) {
@@ -145,7 +149,7 @@ public class ViewLabyrinthe extends ViewElement {
 	
 
 	/**
-	 * 
+	 * Affichage du labyrinthe
 	 * @param primaryStage
 	 * @param laby
 	 */

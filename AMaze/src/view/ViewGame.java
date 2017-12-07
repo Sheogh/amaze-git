@@ -1,21 +1,15 @@
 package view;
 
 import controller.Controller;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import model.Labyrinthe;
 import model.Vertex;
 
 /**
- * 
+ * Classe qui affiche les différents élements
+ * du jeu (labyrtinhe, items)
  * @see ViewElement
  * @see ViewItem
  * @see ViewLabyrinthe
@@ -28,6 +22,9 @@ public class ViewGame extends ViewElement {
 	protected ViewItem viewExit;
 	protected ViewItem viewBaddies[];
 	
+	/**
+	 * Constructeur par défaut
+	 */
 	public ViewGame() {
 		super();
 		this.viewLaby = new ViewLabyrinthe();
@@ -55,7 +52,6 @@ public class ViewGame extends ViewElement {
 	}
 	
 	/**
-	 * 
 	 * @return viewGuy
 	 */
 	public ViewItem getViewGuy() {
@@ -63,7 +59,6 @@ public class ViewGame extends ViewElement {
 	}
 
 	/**
-	 * 
 	 * @return viewBaddies
 	 */
 	public ViewItem[] getViewBaddies() {
@@ -71,7 +66,7 @@ public class ViewGame extends ViewElement {
 	}
 
 	/**
-	 * 
+	 * Créer le cadre du labyrinthe
 	 * @param stage
 	 * @param nbrX
 	 * @param nbrY
@@ -85,7 +80,7 @@ public class ViewGame extends ViewElement {
 	}
 	
 	/**
-	 * 
+	 * Affiche le labyrinthe et les items
 	 * @param primaryStage
 	 * @param laby
 	 */
