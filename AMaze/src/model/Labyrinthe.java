@@ -9,7 +9,7 @@ import java.util.Queue;
 import controller.Controller;
 
 /**
- * Classe qui définit le jeu
+ * Classe qui definit le plateau jeu
  * 
  * @see GraphNOriented
  * @see NiceGuy
@@ -98,7 +98,7 @@ public class Labyrinthe {
 	}
 	
 	/**
-	 * Verifie si il y a un mur sur la position donnée
+	 * Verifie si il y a un mur sur la position donnee
 	 * @param v
 	 * @param dir
 	 * @return boolean
@@ -127,8 +127,8 @@ public class Labyrinthe {
 	}
 
 	/**
-	 * Construit le chemin parfait du labyrtinhe à 
-	 * partir du sommet donnée en paramètre
+	 * Construit le chemin parfait du labyrtinhe a 
+	 * partir du sommet donnee en parametre
 	 * @param v
 	 */
 	public void buildPath(Vertex v) {
@@ -153,8 +153,8 @@ public class Labyrinthe {
 	
 	/**
 	 * Permet de rajouter des chemins dans le 
-	 * labyrinthe : enlève des murs de manière
-	 * aléatoire
+	 * labyrinthe : enleve des murs de maniere
+	 * aleatoire
 	 */
 	public void openDoorRandom() {
 		List<direction> direct = new ArrayList<>();

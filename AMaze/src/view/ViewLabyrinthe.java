@@ -17,7 +17,7 @@ import model.Vertex;
 public class ViewLabyrinthe extends ViewElement {
 	
 	/**
-	 * Affiche le corps du labyrtinthe
+	 * Affiche le squelette du labyrtinthe
 	 * @param stage
 	 * @param nbrX
 	 * @param nbrY
@@ -51,7 +51,7 @@ public class ViewLabyrinthe extends ViewElement {
 	}
 	
 	/**
-	 * Définit où placer le mur
+	 * Defini ou placer le mur
 	 * @param s
 	 * @param t
 	 * @return wall
@@ -86,7 +86,7 @@ public class ViewLabyrinthe extends ViewElement {
 	}
 	
 	/**
-	 * Création du mur
+	 * Creation d'un mur
 	 * @param xs
 	 * @param ys
 	 * @param xt

@@ -2,7 +2,7 @@ package model;
 
 /**
  * Definit la porte de sortie
- * Hérite de la classe abstraite Item
+ * Herite de la classe abstraite Item
  * @see Item
  *
  */
@@ -17,8 +17,8 @@ public class Exit extends Item {
 	}
 
 	/**
-	 *  Définis la position de la porte 
-	 *  lancement du jeu. Par défaut, elle 
+	 *  Definis la position de la porte 
+	 *  lancement du jeu. Par defaut, elle 
 	 *	se trouve sur le premier sommet du
 	 *	chemin
 	 */

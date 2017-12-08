@@ -3,7 +3,7 @@ package model;
 import model.Labyrinthe.direction;
 
 /**
- * Classe des méchants, hérite de la 
+ * Classe des mechants, herite de la 
  * classe abstraite des personnages
  * @see Character
  *
@@ -14,7 +14,7 @@ public class BadGuy extends Character {
 	static final int minDist = 16;
 	
 	/**
-	 * Fait bouger un méchant
+	 * Fait bouger un mechant
 	 * @param labyrinthe
 	 */
 	public void	move(Labyrinthe labyrinthe) {
@@ -25,8 +25,8 @@ public class BadGuy extends Character {
 	}
 	
 	/**
-	 * Prédis le mouvement futur du méchant. 
-	 * Si déjà occupé, le méchant reste sur place
+	 * Predis le mouvement futur du mechant. 
+	 * Si deja occupe, le mechant reste sur place
 	 * @param labyrinthe
 	 */
 	public Vertex futureMove(Labyrinthe labyrinthe) {
@@ -42,7 +42,7 @@ public class BadGuy extends Character {
 	}
 
 	/**
-	 * Initialise la position du méchant au lancement
+	 * Initialise la position du mechant au lancement
 	 * du jeu
 	 * @param labyrinthe
 	 * @param niceGuyPosition

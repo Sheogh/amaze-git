@@ -45,7 +45,7 @@ public class ViewItem extends ViewElement {
 	
 	/**
 	 * Positionne un item par rapport
-	 * à un sommets
+	 * a un sommets
 	 * @param v
 	 */
 	public void setPosition(Vertex v) {

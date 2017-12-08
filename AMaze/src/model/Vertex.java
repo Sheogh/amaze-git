@@ -3,9 +3,9 @@ package model;
 import model.Labyrinthe.direction;
 
 /**
- * Classe qui définit un sommet
- * Contient des coordonnées x et y
- * ainsi qu'un numéro
+ * Classe qui definit un sommet
+ * Contient des coordonnees x et y
+ * ainsi qu'un numero
  *
  */
 public class Vertex {
@@ -15,8 +15,8 @@ public class Vertex {
 	private int nbr;
 	
 	/**
-	 * Constructeur par défaut
-	 * Sans numéros
+	 * Constructeur par defaut
+	 * Sans numeros
 	 * @param x
 	 * @param y
 	 */
@@ -28,7 +28,7 @@ public class Vertex {
 	}
 	
 	/**
-	 * Constructeur avec numéro
+	 * Constructeur avec numero
 	 * @param x
 	 * @param y
 	 * @param nbr
@@ -112,7 +112,7 @@ public class Vertex {
 	}
 	
 	/**
-	 * Verifie si la direction en paramètre se trouve
+	 * Verifie si la direction en parametre se trouve
 	 * dans le labyrinthe ou non
 	 * @param dir
 	 * @return boolean
@@ -137,7 +137,7 @@ public class Vertex {
 	}
 	
 	/**
-	 * Regarde si deux sommets sont égaux
+	 * Teste si deux sommets sont egaux
 	 * @param obj
 	 * @return boolean
 	 */

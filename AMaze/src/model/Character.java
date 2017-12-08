@@ -11,7 +11,7 @@ import model.Labyrinthe.direction;
 public abstract class Character extends Item {
 	
 	/**
-	 * Définis la position d'un personnage au
+	 * Definis la position d'un personnage au
 	 * lancement du jeu
 	 * @param labyrinthe
 	 * @param v

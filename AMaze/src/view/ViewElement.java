@@ -7,7 +7,7 @@ import javafx.scene.paint.Paint;
 
 /**
  * Classe abstraite comprenant les constantes
- * partagées dans la vue 
+ * partagees dans la vue 
  *
  */
 public abstract class ViewElement {

@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
- * Classe qui intéragira avec la vue et le modèle
+ * Classe qui interagira avec la vue et le modele
  * Singleton
  * @see ViewGame
  * @see Labyrinthe
@@ -31,7 +31,7 @@ public class Controller {
 	private static Controller instance = new Controller();
 	
 	/**
-	 *  Constructeur privé
+	 *  Constructeur prive
 	 */
 	private Controller() {
 		refreshInstance();
@@ -46,7 +46,7 @@ public class Controller {
 	}
 	
 	/**
-	 * Arrête la timeline et relance le jeu
+	 * Arrete la timeline et relance le jeu
 	 */
 	private void stop() {
 		timeline.stop();
@@ -55,7 +55,7 @@ public class Controller {
 	}
 	
 	/**
-	 * Vérifie si un méchant entre en collision 
+	 * Verifie si un mechant entre en collision 
 	 * avec un gentil
 	 */
 	public void collide() {
@@ -71,10 +71,10 @@ public class Controller {
 	}
 	
 	/**
-	 * Gère les mouvements des méchants à l'aide de
+	 * Gere les mouvements des mechants a l'aide de
 	 * l'algorithme de manhattan
 	 * 
-	 * @param baddiesPos 	position des méchants qui se déplacent
+	 * @param baddiesPos 	position des mechants qui se deplacent
 	 * @param niceGuyPos	position du gentil
 	 */
 	public void moveBaddies(Vertex baddiesPos[], Vertex niceGuyPos) {
@@ -89,8 +89,8 @@ public class Controller {
 	}
 	
 	/**
-	 * Fonction qui sera effectuée toutes les secondes dans le timeline :
-	 * Mouvement des méchants
+	 * Fonction qui sera effectuee toutes les secondes dans le timeline :
+	 * Mouvement des mechants
 	 */
 	public final EventHandler<ActionEvent> EventHandlerTimeline = new EventHandler<ActionEvent>() {
 		@Override
@@ -131,8 +131,8 @@ public class Controller {
 	/**
 	 * Initialise le labyrinthe avec les personnages
 	 * et la porte de sortie
-	 * Handle	Directions récupérées du clavier
-	 * Vérifie si le joueur a gagné ou non
+	 * Handle	Directions recuperees du clavier
+	 * Verifie si le joueur a gagne ou non
 	 * @param primaryStage
 	 */
 	public void start(Stage primaryStage) {

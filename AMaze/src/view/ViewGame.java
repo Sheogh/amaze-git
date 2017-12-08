@@ -8,7 +8,7 @@ import model.Labyrinthe;
 import model.Vertex;
 
 /**
- * Classe qui affiche les différents élements
+ * Classe qui affiche les differents elements
  * du jeu (labyrtinhe, items)
  * @see ViewElement
  * @see ViewItem
@@ -23,7 +23,7 @@ public class ViewGame extends ViewElement {
 	protected ViewItem viewBaddies[];
 	
 	/**
-	 * Constructeur par défaut
+	 * Constructeur par defaut
 	 */
 	public ViewGame() {
 		super();
@@ -66,7 +66,7 @@ public class ViewGame extends ViewElement {
 	}
 
 	/**
-	 * Créer le cadre du labyrinthe
+	 * Cree le cadre du labyrinthe
 	 * @param stage
 	 * @param nbrX
 	 * @param nbrY

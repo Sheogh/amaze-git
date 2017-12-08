@@ -4,8 +4,8 @@ import org.jgrapht.graph.SimpleGraph;
 import model.Labyrinthe.direction;
 
 /**
- * Classe qui défini un graphe simple
- * Composé de plusieurs arêtes/sommets
+ * Classe qui defini un graphe simple
+ * Compose de plusieurs aretes/sommets
  * 
  * @see SimpleGraph<>
  * @see Vertex
@@ -39,8 +39,8 @@ public class GraphNOriented {
 	}
 	
 	/**
-	 * Vérifie si le graphe contient le sommet v
-	 * (à ne pas confondre avec vertexInGraph)
+	 * Verifie si le graphe contient le sommet v
+	 * (a ne pas confondre avec vertexInGraph)
 	 * @param v
 	 * @return boolean
 	 */
@@ -57,7 +57,7 @@ public class GraphNOriented {
 	}
 	
 	/**
-	 * Ajoute une arête entre deux sommets
+	 * Ajoute une arete entre deux sommets
 	 * @param v1
 	 * @param v2
 	 */
@@ -67,7 +67,7 @@ public class GraphNOriented {
 	}
 	
 	/**
-	 * Vérifie s'il existe une arête entre v1 et v2
+	 * Verifie s'il existe une arete entre v1 et v2
 	 * @param v1
 	 * @param v2
 	 * @return boolean
@@ -84,7 +84,7 @@ public class GraphNOriented {
 	}
 	
 	/**
-	 * Retourne un sommet aléatoire
+	 * Retourne un sommet aleatoire
 	 * @return v
 	 */
 	public Vertex randomVertex() {
@@ -95,8 +95,8 @@ public class GraphNOriented {
 	}
 	
 	/**
-	 * Regarde si le graphe contient un sommet équivalent au sommet en entrée
-	 * (à ne pas confondre avec containsVertex)
+	 * Regarde si le graphe contient un sommet equivalent au sommet en entree
+	 * (a ne pas confondre avec containsVertex)
 	 * @param v
 	 * @return boolean
 	 */
@@ -111,8 +111,8 @@ public class GraphNOriented {
 	}
 	
 	/**
-	 * Retourne le vertex du graphe égal au vertex en
-	 * paramètre
+	 * Retourne le vertex du graphe egal au vertex en
+	 * parametre
 	 * @param v
 	 * @return v2
 	 */
@@ -131,7 +131,7 @@ public class GraphNOriented {
 	
 	/**
 	 * Retourne le sommet se trouvant dans la direction
-	 * donné en argument
+	 * donne en argument
 	 * @param v
 	 * @param dir
 	 * @return v2
@@ -161,7 +161,7 @@ public class GraphNOriented {
 	}
 	
 	/**
-	 * Vérifie si un sommet existe dans la direction donnée
+	 * Verifie si un sommet existe dans la direction donnee
 	 * @param v
 	 * @param dir
 	 * @return boolean
@@ -172,7 +172,7 @@ public class GraphNOriented {
 	}
 	
 	/**
-	 * Vérifie si une arête existe dans la direction donnée
+	 * Verifie si une arete existe dans la direction donnee
 	 * @param v
 	 * @param dir
 	 * @return boolean

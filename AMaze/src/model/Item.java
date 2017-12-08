@@ -1,7 +1,7 @@
 package model;
 
 /**
- * Classe abstraite pour les différents
+ * Classe abstraite pour les differents
  * items du labyrinthe
  * @see Vertex
  *
@@ -21,7 +21,7 @@ public abstract class Item {
 	
 	/**
 	 * Retourne la position dans le graphe
-	 * du sommet en paramètre
+	 * du sommet en parametre
 	 * @param graph
 	 * @return position
 	 */

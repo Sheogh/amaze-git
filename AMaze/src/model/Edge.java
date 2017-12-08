@@ -1,8 +1,8 @@
 package model;
 
 /**
- * Classe définissant une arête
- * Possède deux Vertex en attribut
+ * Classe definissant une arete
+ * Possede deux Vertex en attribut
  * @see Vertex
  *
  */
