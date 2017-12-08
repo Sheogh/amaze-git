@@ -1,7 +1,8 @@
 package view;
 
-import java.io.File;
+//import java.io.File;
 
+import App.Main;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -59,7 +60,8 @@ public class ViewItem extends ViewElement {
 	 */
 	public void drawSprite(Stage stage, String fileName) {
 		pane = ViewGame.getPane();
-		String imagePath = new File("Assets/"+fileName).toURI().toString();
+		//String imagePath = new File("Assets/"+fileName).toURI().toString();
+		String imagePath = Main.class.getResource("/"+fileName).toString();
 		Image sprite = new Image(imagePath, 36, 36, false, false);
 		viewSprite = new ImageView(sprite);
 		pane.getChildren().add(viewSprite);
