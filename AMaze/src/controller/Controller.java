@@ -55,6 +55,18 @@ public class Controller {
 	}
 	
 	/**
+	 * Met le jeu en pause le temps d'afficher un écran de fin
+	 * suivi d'un appel à stop() pour relancer une partie
+	 * @param end
+	 */
+	private void endGame(boolean end) {
+		timeline.stop();
+		ViewGame.getScene().setOnKeyPressed(null);
+		view.drawEnd(laby.getRIGHT_BORDER(), end);
+		view.getBeat().setOnFinished(e -> stop());
+	}
+	
+	/**
 	 * Verifie si un mechant entre en collision 
 	 * avec un gentil
 	 */
@@ -65,9 +77,7 @@ public class Controller {
 			baddiesPos[j] = laby.getBadBoys()[j].getRealPosition(laby.getG());
         	if (niceGuyPos.equals(baddiesPos[j])) {
         		System.out.println("YOU LOSE !");
-        		timeline.stop();
-        		view.drawEnd(laby.getRIGHT_BORDER(), false);
-        		view.getBeat().setOnFinished(e -> stop());
+        		endGame(false);
         	}
 		}
 	}
@@ -173,15 +183,9 @@ public class Controller {
             		view.getViewGuy().setPosition(v);
             		if (v.equals(exitPos)) {
                 		System.out.println("YOU WON !");
-                		timeline.stop();
-                		view.drawEnd(laby.getRIGHT_BORDER(), true);
-                		view.getBeat().setOnFinished(e -> stop());
+                		endGame(true);
                 	}
-            		for (int j = 0 ; j < badNbr ; j++) {
-	                	if (niceGuyPos.equals(baddiesPos[j])) {
-	                		collide();
-	                	}
-            		}
+            		collide();
             	}
             }
         });
