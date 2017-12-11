@@ -1,9 +1,17 @@
 package view;
 
+import App.Main;
 import controller.Controller;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import model.Labyrinthe;
 import model.Vertex;
 
@@ -21,6 +29,7 @@ public class ViewGame extends ViewElement {
 	protected ViewItem viewGuy;
 	protected ViewItem viewExit;
 	protected ViewItem viewBaddies[];
+	protected Timeline beat;
 	
 	/**
 	 * Constructeur par defaut
@@ -63,6 +72,47 @@ public class ViewGame extends ViewElement {
 	 */
 	public ViewItem[] getViewBaddies() {
 		return viewBaddies;
+	}
+	
+	/**
+	 * 
+	 * @return beat
+	 */
+	public Timeline getBeat() {
+		return beat;
+	}
+
+	/**
+	 * Affiche le resultat de la partie : victoire ou defaite
+	 * @param size
+	 * @param end
+	 */
+	public void drawEnd(int size, boolean end) {
+		pane = ViewGame.getPane();
+		ImageView viewSprite = new ImageView();
+		String imagePath;
+		if (end) {
+			imagePath = Main.class.getResource("/victoire.png").toString();
+		}
+		else {
+			imagePath = Main.class.getResource("/defaite.png").toString();
+		}
+		Image sprite = new Image(imagePath, size * CELL * SPAN, size * CELL * SPAN, false, false);
+		viewSprite = new ImageView(sprite);
+		pane.getChildren().add(viewSprite);
+		viewSprite.setX(pane.getWidth() / 2 - size * CELL * SPAN / 2);
+		viewSprite.setY(pane.getHeight() / 2 - size * CELL * SPAN / 2);
+		DoubleProperty scale = new SimpleDoubleProperty(1);
+        viewSprite.scaleXProperty().bind(scale);
+        viewSprite.scaleYProperty().bind(scale);
+		beat = new Timeline(
+            new KeyFrame(Duration.ZERO,         event -> scale.setValue(1)),
+            new KeyFrame(Duration.seconds(0.5), event -> scale.setValue(1.1))
+        );
+        beat.setAutoReverse(true);
+        //beat.setCycleCount(Timeline.INDEFINITE);
+        beat.setCycleCount(6);
+        beat.play();
 	}
 
 	/**

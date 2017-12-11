@@ -49,8 +49,8 @@ public class Controller {
 	 * Arrete la timeline et relance le jeu
 	 */
 	private void stop() {
-		timeline.stop();
 		timeline = null;
+		Thread.yield();
 		Main.restart(Main.primaryStage);
 	}
 	
@@ -65,7 +65,9 @@ public class Controller {
 			baddiesPos[j] = laby.getBadBoys()[j].getRealPosition(laby.getG());
         	if (niceGuyPos.equals(baddiesPos[j])) {
         		System.out.println("YOU LOSE !");
-        		stop();
+        		timeline.stop();
+        		view.drawEnd(laby.getRIGHT_BORDER(), false);
+        		view.getBeat().setOnFinished(e -> stop());
         	}
 		}
 	}
@@ -171,12 +173,13 @@ public class Controller {
             		view.getViewGuy().setPosition(v);
             		if (v.equals(exitPos)) {
                 		System.out.println("YOU WON !");
-                		stop();
+                		timeline.stop();
+                		view.drawEnd(laby.getRIGHT_BORDER(), true);
+                		view.getBeat().setOnFinished(e -> stop());
                 	}
             		for (int j = 0 ; j < badNbr ; j++) {
 	                	if (niceGuyPos.equals(baddiesPos[j])) {
-	                		System.out.println("YOU LOSE !");
-	                		stop();
+	                		collide();
 	                	}
             		}
             	}
