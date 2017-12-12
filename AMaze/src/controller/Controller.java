@@ -55,8 +55,8 @@ public class Controller {
 	}
 	
 	/**
-	 * Met le jeu en pause le temps d'afficher un écran de fin
-	 * suivi d'un appel à stop() pour relancer une partie
+	 * Met le jeu en pause le temps d'afficher un ecran de fin
+	 * suivi d'un appel a stop() pour relancer une partie
 	 * @param end
 	 */
 	private void endGame(boolean end) {

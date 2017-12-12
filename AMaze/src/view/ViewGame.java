@@ -46,7 +46,7 @@ public class ViewGame extends ViewElement {
 	}
 
 	/**
-	 * @return scene
+	 * @return Scene
 	 */
 	public static Scene getScene() {
 		return scene;
@@ -54,21 +54,21 @@ public class ViewGame extends ViewElement {
 	
 	/**
 	 * 
-	 * @return pane
+	 * @return Pane
 	 */
 	public static Pane getPane() {
 		return pane;
 	}
 	
 	/**
-	 * @return viewGuy
+	 * @return ViewItem
 	 */
 	public ViewItem getViewGuy() {
 		return viewGuy;
 	}
 
 	/**
-	 * @return viewBaddies
+	 * @return ViewItem
 	 */
 	public ViewItem[] getViewBaddies() {
 		return viewBaddies;
@@ -76,7 +76,7 @@ public class ViewGame extends ViewElement {
 	
 	/**
 	 * 
-	 * @return beat
+	 * @return Timeline
 	 */
 	public Timeline getBeat() {
 		return beat;

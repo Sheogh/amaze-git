@@ -207,7 +207,7 @@ public class Labyrinthe {
 	}
 	
 	/**
-	 * lance l'algorithme de manhattan entre 
+	 * Lance l'algorithme de manhattan entre 
 	 * deux sommets
 	 * @param source
 	 * @param target
