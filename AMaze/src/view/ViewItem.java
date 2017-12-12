@@ -20,7 +20,7 @@ public class ViewItem extends ViewElement {
 	private ImageView viewSprite;
 	
 	/**
-	 * 	Constructeur vide
+	 * 	Constructeur par defaut
 	 */
 	public ViewItem() {
 		viewSprite = new ImageView();
@@ -36,8 +36,8 @@ public class ViewItem extends ViewElement {
 	/**
 	 * Positionne un item dans une cellule
 	 * du labyrinthe
-	 * @param x
-	 * @param y
+	 * @param x coordonnee x
+	 * @param y coordonnee y
 	 */
 	public void setPosition(int x, int y) {
 		viewSprite.setX(x*((WALL+CELL)*SPAN)+WALL*SPAN);
@@ -47,7 +47,7 @@ public class ViewItem extends ViewElement {
 	/**
 	 * Positionne un item par rapport
 	 * a un sommets
-	 * @param v
+	 * @param v sera le sommet en question
 	 */
 	public void setPosition(Vertex v) {
 		setPosition(v.getX(), v.getY());
@@ -56,7 +56,7 @@ public class ViewItem extends ViewElement {
 	/**
 	 * Affiche un item
 	 * @param stage
-	 * @param fileName
+	 * @param fileName nom du fichier
 	 */
 	public void drawSprite(Stage stage, String fileName) {
 		pane = ViewGame.getPane();
@@ -70,8 +70,8 @@ public class ViewItem extends ViewElement {
 	/**
 	 * Lance l'affichage des items
 	 * @param primaryStage
-	 * @param laby
-	 * @param fileName
+	 * @param laby labyrinthe du jeu
+	 * @param fileName nom du fichier
 	 */
 	public void start(Stage primaryStage, Labyrinthe laby, String fileName) {
 		drawSprite(primaryStage, fileName);

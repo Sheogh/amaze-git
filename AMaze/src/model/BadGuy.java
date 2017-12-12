@@ -27,7 +27,7 @@ public class BadGuy extends Character {
 	/**
 	 * Predis le mouvement futur du mechant. 
 	 * Si deja occupe, le mechant reste sur place
-	 * @param labyrinthe
+	 * @param labyrinthe du jeu
 	 */
 	public Vertex futureMove(Labyrinthe labyrinthe) {
 		Vertex vertex = this.getRealPosition(labyrinthe.getG());
@@ -44,8 +44,8 @@ public class BadGuy extends Character {
 	/**
 	 * Initialise la position du mechant au lancement
 	 * du jeu
-	 * @param labyrinthe
-	 * @param niceGuyPosition
+	 * @param labyrinthe du jeu
+	 * @param niceGuyPosition de type Vertex correspond à la position du gentil
 	 */
 	@Override
 	public void startPosition(Labyrinthe labyrinthe, Vertex niceGuyPosition) {

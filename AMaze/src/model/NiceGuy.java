@@ -10,7 +10,7 @@ package model;
 public class NiceGuy extends Character {
 	
 	/**
-	 * Constructeur vide
+	 * Constructeur par defaut
 	 */
 	public NiceGuy() {
 		setPosition(new Vertex(0, 0));
@@ -18,9 +18,9 @@ public class NiceGuy extends Character {
 	
 	/**
 	 * Positionne le personnage au lancement
-	 * du jeu
-	 * @param labyrinthe
-	 * @param exitPosition
+	 * du jeu, en fonction de la position de la porte de sortie
+	 * @param labyrinthe du jeu
+	 * @param exitPosition position de la porte de sortie
 	 */
 	@Override
 	public void startPosition(Labyrinthe labyrinthe, Vertex exitPosition) {

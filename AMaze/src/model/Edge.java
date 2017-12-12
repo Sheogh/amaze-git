@@ -13,7 +13,7 @@ public class Edge {
 	
 	/**
 	 * Constructeur avec deux arguments
-	 * @param a
+	 * @param a 
 	 * @param b
 	 */
 	public Edge(Vertex a, Vertex b) {

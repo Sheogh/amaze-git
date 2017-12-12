@@ -37,7 +37,7 @@ public class Labyrinthe {
 	}
 	
 	/**
-	 * Constructeur vide
+	 * Constructeur par defaut
 	 */
 	public Labyrinthe() {
 		g = new GraphNOriented();
@@ -50,7 +50,7 @@ public class Labyrinthe {
 	}
 	
 	/**
-	 * 
+	 * Retourne le graphe g
 	 * @return g
 	 */
 	public GraphNOriented getG() {
@@ -58,7 +58,7 @@ public class Labyrinthe {
 	}
 	
 	/**
-	 * 
+	 * Retourne le gentil qui se trouve dans le labyrinthe
 	 * @return guy
 	 */
 	public NiceGuy getGuy() {
@@ -66,7 +66,7 @@ public class Labyrinthe {
 	}
 	
 	/**
-	 * 
+	 * Retourne la porte de sortie qui se trouve dans le labyrinthe
 	 * @return exit
 	 */
 	public Exit getExit() {
@@ -74,7 +74,8 @@ public class Labyrinthe {
 	}
 	
 	/**
-	 * 
+	 * Retourne un tableau contenant les mechants
+	 * qui se trouve dans le labyrinthe
 	 * @return badboys
 	 */
 	public BadGuy[] getBadBoys() {
@@ -82,7 +83,7 @@ public class Labyrinthe {
 	}
 
 	/**
-	 * 
+	 * Retourne le bord droit du labyrinthe
 	 * @return RIGHT_BORDER
 	 */
 	public int getRIGHT_BORDER() {
@@ -90,7 +91,7 @@ public class Labyrinthe {
 	}
 	
 	/**
-	 * 
+	 * Retourne le bord en bas du labyrinthe
 	 * @return DOWN_BORDER
 	 */
 	public int getDOWN_BORDER() {
@@ -100,7 +101,7 @@ public class Labyrinthe {
 	/**
 	 * Verifie si il y a un mur sur la position donnee
 	 * @param v
-	 * @param dir
+	 * @param dir 
 	 * @return boolean
 	 */
 	public boolean isWall(Vertex v, direction dir) {
@@ -110,7 +111,7 @@ public class Labyrinthe {
 	/**
 	 * Permet d'eviter que les mechants entrent
 	 * en collision
-	 * @param baddy
+	 * @param baddy le mechant en question
 	 * @param id
 	 * @return boolean
 	 */
@@ -183,8 +184,8 @@ public class Labyrinthe {
 	/**
 	 * Calcul l'algorithme de manhattan entre
 	 * deux sommets
-	 * @param source
-	 * @param target
+	 * @param source sommet de depart
+	 * @param target sommet cible
 	 */
 	private void calculateManhattanDistance(Vertex source, Vertex target) {
 		Queue<Vertex> fifo = new ArrayDeque<Vertex>();
@@ -209,8 +210,8 @@ public class Labyrinthe {
 	/**
 	 * Lance l'algorithme de manhattan entre 
 	 * deux sommets
-	 * @param source
-	 * @param target
+	 * @param source sommet de depart
+	 * @param target sommet cible
 	 */
 	public void launchManhattan(Vertex source, Vertex target) {
 		for (Object vertex : g.vertexSet()) {

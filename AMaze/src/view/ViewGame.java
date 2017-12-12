@@ -46,6 +46,7 @@ public class ViewGame extends ViewElement {
 	}
 
 	/**
+	 * Retourne la scene
 	 * @return Scene
 	 */
 	public static Scene getScene() {
@@ -53,7 +54,7 @@ public class ViewGame extends ViewElement {
 	}
 	
 	/**
-	 * 
+	 * Retourne le pane
 	 * @return Pane
 	 */
 	public static Pane getPane() {
@@ -61,6 +62,7 @@ public class ViewGame extends ViewElement {
 	}
 	
 	/**
+	 * Retoune la vue correpondant au gentil
 	 * @return ViewItem
 	 */
 	public ViewItem getViewGuy() {
@@ -68,6 +70,7 @@ public class ViewGame extends ViewElement {
 	}
 
 	/**
+	 * Retoune la vue correpondant aux mechants
 	 * @return ViewItem
 	 */
 	public ViewItem[] getViewBaddies() {
@@ -84,8 +87,8 @@ public class ViewGame extends ViewElement {
 
 	/**
 	 * Affiche le resultat de la partie : victoire ou defaite
-	 * @param size
-	 * @param end
+	 * @param size taille de l'image
+	 * @param end determine si le jeu est fini ou non
 	 */
 	public void drawEnd(int size, boolean end) {
 		pane = ViewGame.getPane();
@@ -110,7 +113,6 @@ public class ViewGame extends ViewElement {
             new KeyFrame(Duration.seconds(0.5), event -> scale.setValue(1.1))
         );
         beat.setAutoReverse(true);
-        //beat.setCycleCount(Timeline.INDEFINITE);
         beat.setCycleCount(6);
         beat.play();
 	}
@@ -118,8 +120,8 @@ public class ViewGame extends ViewElement {
 	/**
 	 * Cree le cadre du labyrinthe
 	 * @param stage
-	 * @param nbrX
-	 * @param nbrY
+	 * @param nbrX longueur max 
+	 * @param nbrY largeur max
 	 */
 	public void createScene(Stage stage, int nbrX, int nbrY) {
 		pane = new Pane();
@@ -132,7 +134,7 @@ public class ViewGame extends ViewElement {
 	/**
 	 * Affiche le labyrinthe et les items
 	 * @param primaryStage
-	 * @param laby
+	 * @param laby le labyrinthe du jeu
 	 */
 	public void start(Stage primaryStage, Labyrinthe laby) {
 		Vertex niceGuyPos = laby.getGuy().getRealPosition(laby.getG());

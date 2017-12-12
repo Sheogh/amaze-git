@@ -17,7 +17,7 @@ public class GraphNOriented {
 	private SimpleGraph<Vertex, Edge> g;
 
 	/**
-	 * Constructeur vide
+	 * Constructeur par defaut
 	 */
 	public GraphNOriented() {
 		super();
@@ -32,7 +32,7 @@ public class GraphNOriented {
 	
 	/**
 	 * Ajoute un sommet dans le graphe
-	 * @param v
+	 * @param v le sommet a ajouter
 	 */
 	public void addVertex(Vertex v) {
 		this.g.addVertex(v);
@@ -42,14 +42,14 @@ public class GraphNOriented {
 	 * Verifie si le graphe contient le sommet v
 	 * (a ne pas confondre avec vertexInGraph)
 	 * @param v
-	 * @return boolean
+	 * @return boolean si contient le sommet ou non
 	 */
 	public boolean containsVertex(Vertex v) {
 		return this.g.containsVertex(v);
 	}
 	
 	/**
-	 * Retourne un tableau de sommets
+	 * Retourne un tableau des sommets du graphe
 	 * @return Object[]
 	 */
 	public Object[] vertexSet() {

@@ -57,7 +57,7 @@ public class Controller {
 	/**
 	 * Met le jeu en pause le temps d'afficher un ecran de fin
 	 * suivi d'un appel a stop() pour relancer une partie
-	 * @param end
+	 * @param end booleen qui signifie si c'est la fin du jeu ou non
 	 */
 	private void endGame(boolean end) {
 		timeline.stop();
@@ -86,8 +86,8 @@ public class Controller {
 	 * Gere les mouvements des mechants a l'aide de
 	 * l'algorithme de manhattan
 	 * 
-	 * @param baddiesPos 	position des mechants qui se deplacent
-	 * @param niceGuyPos	position du gentil
+	 * @param baddiesPos position des mechants qui se deplacent
+	 * @param niceGuyPos position du gentil
 	 */
 	public void moveBaddies(Vertex baddiesPos[], Vertex niceGuyPos) {
 		for (int j = 0 ; j < badNbr ; j++) {
@@ -145,7 +145,7 @@ public class Controller {
 	 * et la porte de sortie
 	 * Handle	Directions recuperees du clavier
 	 * Verifie si le joueur a gagne ou non
-	 * @param primaryStage
+	 * @param primaryStage de type Stage
 	 */
 	public void start(Stage primaryStage) {
 		view.start(primaryStage, laby);

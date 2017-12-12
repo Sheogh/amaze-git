@@ -41,7 +41,7 @@ public class Vertex {
 	}
 	
 	/**
-	 * 
+	 * Retourne la coordonnee x 
 	 * @return x
 	 */
 	public int getX() {
@@ -49,14 +49,14 @@ public class Vertex {
 	}
 	
 	/**
-	 * 
+	 * Modifie la coordonnnee x
 	 * @param x
 	 */
 	public void setX(int x) {
 		this.x = x;
 	}
 	/**
-	 * 
+	 * Retourne la coordonnee y
 	 * @return y
 	 */
 	public int getY() {
@@ -64,7 +64,7 @@ public class Vertex {
 	}
 	
 	/**
-	 * 
+	 * Modifie la coordonnnee y
 	 * @param y
 	 */
 	public void setY(int y) {
@@ -72,7 +72,7 @@ public class Vertex {
 	}
 	
 	/**
-	 * 
+	 * Retourne le numero nbr
 	 * @return nbr
 	 */
 	public int getNbr() {
@@ -80,7 +80,7 @@ public class Vertex {
 	}
 	
 	/**
-	 * 
+	 * Modifie le numero nbr
 	 * @param nbr
 	 */
 	public void setNbr(int nbr) {
@@ -88,6 +88,7 @@ public class Vertex {
 	}
 	
 	/**
+	 * Affiche les coordonnees du sommet
 	 * return String
 	 */
 	public String toString() {
@@ -114,7 +115,7 @@ public class Vertex {
 	/**
 	 * Verifie si la direction en parametre se trouve
 	 * dans le labyrinthe ou non
-	 * @param dir
+	 * @param dir la direction
 	 * @return boolean
 	 */
 	public boolean inBorders(direction dir) {

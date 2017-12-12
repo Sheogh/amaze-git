@@ -19,8 +19,8 @@ public class ViewLabyrinthe extends ViewElement {
 	/**
 	 * Affiche le squelette du labyrtinthe
 	 * @param stage
-	 * @param nbrX
-	 * @param nbrY
+	 * @param nbrX longueur max
+	 * @param nbrY largeur max
 	 */
 	public static void drawFrame(Stage stage, int nbrX, int nbrY) {
 		pane = ViewGame.getPane();
@@ -51,9 +51,9 @@ public class ViewLabyrinthe extends ViewElement {
 	}
 	
 	/**
-	 * Defini ou placer le mur
-	 * @param s
-	 * @param t
+	 * Definit ou placer le mur par rapport a deux sommets
+	 * @param s sommet source
+	 * @param t sommet cible
 	 * @return wall
 	 */
 	public Edge getWall(Vertex s, Vertex t) {
@@ -87,7 +87,7 @@ public class ViewLabyrinthe extends ViewElement {
 	
 	/**
 	 * Creation d'un mur
-	 * @param xs
+	 * @param xs 
 	 * @param ys
 	 * @param xt
 	 * @param yt
@@ -125,7 +125,7 @@ public class ViewLabyrinthe extends ViewElement {
 	
 	/**
 	 * Place les murs dans le labyrinthe
-	 * @param laby
+	 * @param laby le labyrinthe du jeu
 	 */
 	public void drawLabyrinthe(Labyrinthe laby) {
 		Vertex v, v2;
@@ -151,7 +151,7 @@ public class ViewLabyrinthe extends ViewElement {
 	/**
 	 * Affichage du labyrinthe
 	 * @param primaryStage
-	 * @param laby
+	 * @param laby le labyrinthe du jeu
 	 */
 	public void start(Stage primaryStage, Labyrinthe laby) {
 		drawFrame(primaryStage, laby.getRIGHT_BORDER()+1, laby.getDOWN_BORDER()+1);

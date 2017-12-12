@@ -10,7 +10,7 @@ package model;
 public class Exit extends Item {
 	
 	/**
-	 *  Constructeur vide
+	 *  Constructeur par defaut
 	 */
 	public Exit() {
 		setPosition(new Vertex(0, 0, 0));
