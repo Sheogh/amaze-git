@@ -21,6 +21,10 @@ public class Main extends Application {
 		controller.start(primaryStage);
 	}	
 	
+	/**
+	 * Recree une nouvelle partie
+	 * @param stage
+	 */
 	public static void restart(Stage stage) {
 		Main.primaryStage = stage;
 		controller.refreshInstance();

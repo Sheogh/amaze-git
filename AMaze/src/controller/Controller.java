@@ -101,7 +101,7 @@ public class Controller {
 	}
 	
 	/**
-	 * Fonction qui sera effectuee toutes les secondes dans le timeline :
+	 * Fonction qui sera effectuee toutes les secondes par la timeline :
 	 * Mouvement des mechants
 	 */
 	public final EventHandler<ActionEvent> EventHandlerTimeline = new EventHandler<ActionEvent>() {
