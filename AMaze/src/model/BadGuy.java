@@ -15,7 +15,7 @@ public class BadGuy extends Character {
 	
 	/**
 	 * Fait bouger un mechant
-	 * @param labyrinthe
+	 * @param labyrinthe du jeu
 	 */
 	public void	move(Labyrinthe labyrinthe) {
 		Vertex v = futureMove(labyrinthe);
@@ -28,6 +28,7 @@ public class BadGuy extends Character {
 	 * Predis le mouvement futur du mechant. 
 	 * Si deja occupe, le mechant reste sur place
 	 * @param labyrinthe du jeu
+	 * @return sommet d'arrivee du futur mouvement
 	 */
 	public Vertex futureMove(Labyrinthe labyrinthe) {
 		Vertex vertex = this.getRealPosition(labyrinthe.getG());
@@ -45,7 +46,7 @@ public class BadGuy extends Character {
 	 * Initialise la position du mechant au lancement
 	 * du jeu
 	 * @param labyrinthe du jeu
-	 * @param niceGuyPosition de type Vertex correspond à la position du gentil
+	 * @param niceGuyPosition de type Vertex correspond a la position du gentil
 	 */
 	@Override
 	public void startPosition(Labyrinthe labyrinthe, Vertex niceGuyPosition) {

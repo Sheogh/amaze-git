@@ -7,7 +7,7 @@ import model.Labyrinthe.direction;
  * Classe qui defini un graphe simple
  * Compose de plusieurs aretes/sommets
  * 
- * @see SimpleGraph<>
+ * @see SimpleGraph
  * @see Vertex
  * @see Edge
  *

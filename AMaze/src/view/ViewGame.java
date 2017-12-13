@@ -88,7 +88,7 @@ public class ViewGame extends ViewElement {
 	/**
 	 * Affiche le resultat de la partie : victoire ou defaite
 	 * @param size taille de l'image
-	 * @param end determine si le jeu est fini ou non
+	 * @param end determine si le joueur a gagne ou non
 	 */
 	public void drawEnd(int size, boolean end) {
 		pane = ViewGame.getPane();

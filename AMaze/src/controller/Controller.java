@@ -57,7 +57,7 @@ public class Controller {
 	/**
 	 * Met le jeu en pause le temps d'afficher un ecran de fin
 	 * suivi d'un appel a stop() pour relancer une partie
-	 * @param end booleen qui signifie si c'est la fin du jeu ou non
+	 * @param end booleen qui signifie si le joueur a gagne ou non
 	 */
 	private void endGame(boolean end) {
 		timeline.stop();

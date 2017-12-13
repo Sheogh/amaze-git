@@ -22,7 +22,7 @@ public abstract class Item {
 	/**
 	 * Retourne la position dans le graphe
 	 * du sommet en parametre
-	 * @param graph
+	 * @param graph du labyrinthe
 	 * @return position
 	 */
 	public Vertex getRealPosition(GraphNOriented graph) {
@@ -31,7 +31,7 @@ public abstract class Item {
 	
 	/**
 	 * Modifie la position 
-	 * @param position
+	 * @param position de l'element
 	 */
 	public void setPosition(Vertex position) {
 		this.position = position;
