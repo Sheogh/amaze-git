@@ -67,6 +67,17 @@ public class GraphNOriented {
 	}
 	
 	/**
+	 * Ajoute une arete entre deux sommets
+	 * @param v1
+	 * @param v2
+	 */
+	public void addEdge(Vertex v1, Vertex v2, Edge.Type type) {
+		Edge e = new Edge(v1, v2);
+		e.setType(type);
+		this.g.addEdge(v1, v2, e);
+	}
+	
+	/**
 	 * Verifie s'il existe une arete entre v1 et v2
 	 * @param v1
 	 * @param v2
@@ -180,6 +191,17 @@ public class GraphNOriented {
 	public boolean edgeDoesntExist(Vertex v, direction dir) {
 		Vertex v2 = getEqualVertex(vertexByDir(v, dir));
 		return !this.containsEdge(v, v2);
+	}
+	
+	/**
+	 * Renvoie l'arete partant du sommet v dans la direction donnee
+	 * @param v
+	 * @param dir
+	 * @return boolean
+	 */
+	public Edge getEdgeByDir(Vertex v, direction dir) {
+		Vertex v2 = getEqualVertex(vertexByDir(v, dir));
+		return this.getG().getEdge(v, v2);
 	}
 	
 }

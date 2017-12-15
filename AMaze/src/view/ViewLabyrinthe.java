@@ -1,6 +1,7 @@
 package view;
 
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import model.Edge;
@@ -86,13 +87,14 @@ public class ViewLabyrinthe extends ViewElement {
 	}
 	
 	/**
-	 * Creation d'un mur
+	 * Creation d'un mur (ou d'une porte)
 	 * @param xs 
 	 * @param ys
 	 * @param xt
 	 * @param yt
+	 * @param color
 	 */
-	public void drawWall(int xs, int ys, int xt, int yt) {
+	public void drawWall(int xs, int ys, int xt, int yt, Paint color) {
 		int x = 0, y= 0, xspan = 0, yspan = 0, xbase = 0, ybase = 0;
 		if (xs > xt) {
 			xbase = xt;
@@ -119,7 +121,7 @@ public class ViewLabyrinthe extends ViewElement {
 			yspan = CELL * SPAN;
 		}
 		Rectangle square = new Rectangle(x, y, xspan, yspan);
-		square.setFill(WALLCOLOR);
+		square.setFill(color);
 		pane.getChildren().add(square);
 	}
 	
@@ -139,7 +141,13 @@ public class ViewLabyrinthe extends ViewElement {
 						v2 = laby.getG().vertexByDir(v, dir);
 						if (v2 != null) {
 							e = getWall(v, v2);
-							drawWall(e.getA().getX(), e.getA().getY(), e.getB().getX(), e.getB().getY());
+							drawWall(e.getA().getX(), e.getA().getY(), e.getB().getX(), e.getB().getY(), WALLCOLOR);
+						}
+					}
+					else if (laby.getG().getEdgeByDir(v, dir).getType() == Edge.Type.CLOSED_DOOR) {
+						v2 = laby.getG().vertexByDir(v, dir);
+						if (v2 != null) {
+							drawWall(v.getX(), v.getY(), v2.getX(), v2.getY(), CLOSEDDOORCOLOR);
 						}
 					}
 				}

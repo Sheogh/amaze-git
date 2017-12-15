@@ -132,7 +132,10 @@ public class Controller {
 		laby.getG().addVertex(v);
 		laby.buildPath(v);
 		for (int i = 0 ; i < 40 ; i++) {
-			laby.openDoorRandom();
+			laby.openDoorRandom(Edge.Type.CORRIDOR);
+		}
+		for (int i = 0 ; i < 10 ; i++) {
+			laby.openDoorRandom(Edge.Type.CLOSED_DOOR);
 		}
 		laby.getGuy().startPosition(laby, laby.getG().getEqualVertex(v));
 		for (int j = 0 ; j < badNbr ; j++) {

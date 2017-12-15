@@ -16,6 +16,8 @@ public abstract class ViewElement {
 	static final int WALL =  2 ; //  thickness  of  the  walls  ( in  units )
 	static final int CELL =  9 ; //  size of the cell	 (in units)
 	static final Paint WALLCOLOR = Color.BURLYWOOD;
+	static final Paint CLOSEDDOORCOLOR = Color.RED;
+	static final Paint OPENEDDOORCOLOR = Color.LIMEGREEN;
 	static final Paint SCENECOLOR = Color.WHITE;
 	
 	protected static Scene scene;

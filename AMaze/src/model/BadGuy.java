@@ -35,7 +35,8 @@ public class BadGuy extends Character {
 		for (direction dir : direction.values()) {
 			Vertex next = labyrinthe.getG().getEqualVertex(labyrinthe.getG().vertexByDir(vertex, dir));
 			if (labyrinthe.getG().containsEdge(vertex, next)
-			&& (next.getNbr() == vertex.getNbr()-1) && next != null) {
+			&& (next.getNbr() == vertex.getNbr()-1) && (next != null)
+			&& (labyrinthe.getG().getEdgeByDir(vertex, dir).getType() == Edge.Type.CORRIDOR)) {
 				return labyrinthe.getG().getEqualVertex(labyrinthe.getG().vertexByDir(position, dir));
 			}
 		}

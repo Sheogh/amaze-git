@@ -157,7 +157,7 @@ public class Labyrinthe {
 	 * labyrinthe : enleve des murs de maniere
 	 * aleatoire
 	 */
-	public void openDoorRandom() {
+	public void openDoorRandom(Edge.Type type) {
 		List<direction> direct = new ArrayList<>();
 		Collections.addAll(direct, direction.values());
 		
@@ -171,7 +171,7 @@ public class Labyrinthe {
 					if (v2 != null) {
 						Edge edge = g.getG().getEdge(v, v2);
 						if (edge == null) {
-							g.addEdge(v, v2);
+							g.addEdge(v, v2, type);
 							//System.out.println("added edge : "+"("+v.toString()+","+v2.toString()+")");
 							return;
 						}
@@ -194,7 +194,8 @@ public class Labyrinthe {
 		while(!fifo.isEmpty()) {
 			Vertex actual = fifo.remove();
 			for (direction dir : direction.values()) {
-				if (!this.g.edgeDoesntExist(actual, dir)) {
+				if (!this.g.edgeDoesntExist(actual, dir) 
+				&& this.getG().getEdgeByDir(actual, dir).getType() != Edge.Type.CORRIDOR) {
 					Vertex next = g.getEqualVertex(g.vertexByDir(actual, dir));
 					if (next.getNbr() == 0) {
 						next.setNbr(actual.getNbr()+1);

@@ -7,9 +7,16 @@ package model;
  *
  */
 public class Edge {
+	
+	public enum Type {
+		OPENED_DOOR,
+		CLOSED_DOOR,
+		CORRIDOR;
+	};
 
 	private Vertex a;
 	private Vertex b;
+	private Type type;
 	
 	/**
 	 * Constructeur avec deux arguments
@@ -20,6 +27,7 @@ public class Edge {
 		super();
 		this.a = a;
 		this.b = b;
+		this.type = Type.CORRIDOR;
 	}	
 	
 	/**
@@ -52,6 +60,22 @@ public class Edge {
 	 */
 	public void setB(Vertex b) {
 		this.b = b;
+	}
+
+	/**
+	 * 
+	 * @return type
+	 */
+	public Type getType() {
+		return type;
+	}
+
+	/**
+	 * Modifie le type associé
+	 * @param type
+	 */
+	public void setType(Type type) {
+		this.type = type;
 	}
 	
 }
