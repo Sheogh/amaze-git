@@ -146,7 +146,6 @@ public class ViewLabyrinthe extends ViewElement {
 	 */
 	public void drawLabyrinthe(Labyrinthe laby) {
 		Vertex v, v2;
-		Edge e;
 		for (int i = 0 ; i <= laby.getRIGHT_BORDER() ; i++) {
 			for (int j = 0 ; j <= laby.getDOWN_BORDER() ; j++) {
 				v = new Vertex(i, j);
@@ -155,16 +154,12 @@ public class ViewLabyrinthe extends ViewElement {
 					if (laby.getG().edgeDoesntExist(v, dir)) {
 						v2 = laby.getG().vertexByDir(v, dir);
 						if (v2 != null) {
-							/*e = getWall(v, v2);
-							drawWall(e.getA().getX(), e.getA().getY(), e.getB().getX(), e.getB().getY(), WALLCOLOR);*/
 							drawWall(v, v2, WALLCOLOR);
 						}
 					}
 					else if (laby.getG().getEdgeByDir(v, dir).getType() == Edge.Type.CLOSED_DOOR) {
 						v2 = laby.getG().vertexByDir(v, dir);
 						if (v2 != null) {
-							/*e = getWall(v, v2);
-							drawWall(e.getA().getX(), e.getA().getY(), e.getB().getX(), e.getB().getY(), CLOSEDDOORCOLOR);*/
 							drawWall(v, v2, CLOSEDDOORCOLOR);
 						}
 					}

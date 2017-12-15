@@ -30,6 +30,7 @@ public class ViewGame extends ViewElement {
 	protected ViewItem viewExit;
 	protected ViewItem viewBaddies[];
 	protected ViewItem viewSwitches[];
+	protected ViewItem viewCandies[];
 	protected Timeline beat;
 	
 	/**
@@ -41,8 +42,10 @@ public class ViewGame extends ViewElement {
 		this.viewGuy = new ViewItem();
 		this.viewExit = new ViewItem();
 		this.viewBaddies = new ViewItem[Controller.badNbr];
+		this.viewCandies = new ViewItem[Controller.badNbr];
 		for (int i = 0 ; i < Controller.badNbr ; i++) {
 			this.viewBaddies[i] = new ViewItem();
+			this.viewCandies[i] = new ViewItem();
 		}
 		this.viewSwitches = new ViewItem[Controller.doorNbr];
 		for (int i = 0 ; i < Controller.doorNbr ; i++) {
@@ -96,6 +99,14 @@ public class ViewGame extends ViewElement {
 	 */
 	public ViewItem[] getViewSwitches() {
 		return viewSwitches;
+	}
+
+	/**
+	 * Retourne la vue correspondant aux bonbons
+	 * @return ViewItem
+	 */
+	public ViewItem[] getViewCandies() {
+		return viewCandies;
 	}
 
 	/**
@@ -161,31 +172,34 @@ public class ViewGame extends ViewElement {
 		Vertex niceGuyPos = laby.getGuy().getRealPosition(laby.getG());
 		Vertex exitPos = laby.getExit().getRealPosition(laby.getG());
 		Vertex baddiesPos[] = new Vertex[Controller.badNbr];
-		for (int i = 0 ; i < Controller.badNbr ; i++) {
-			baddiesPos[i] = laby.getBadBoys()[i].getRealPosition(laby.getG());
-		}
+		Vertex candiesPos[] = new Vertex[Controller.badNbr];
 		Vertex switchesPos[] = new Vertex[Controller.doorNbr];
+		
+		createScene(primaryStage, laby.getRIGHT_BORDER()+1, laby.getDOWN_BORDER()+1);
+		
 		for (int i = 0 ; i < Controller.doorNbr ; i++) {
 			switchesPos[i] = laby.getSwitches()[i].getRealPosition(laby.getG());
-		}
-		createScene(primaryStage, laby.getRIGHT_BORDER()+1, laby.getDOWN_BORDER()+1);
-		viewLaby.start(primaryStage, laby);
-		viewGuy.start(primaryStage, laby, "player.png", 36);
-		viewExit.start(primaryStage, laby, "door_open.png", 36);
-		for (int i = 0 ; i < Controller.badNbr ; i++) {
-			viewBaddies[i].start(primaryStage, laby, "bad.png", 36);
-		}
-		viewGuy.setPosition(niceGuyPos);		
-		viewExit.setPosition(exitPos);
-		for (int i = 0 ; i < Controller.badNbr ; i++) {
-			viewBaddies[i].setPosition(baddiesPos[i]);
-		}
-		for (int i = 0 ; i < Controller.doorNbr ; i++) {
 			viewSwitches[i].start(primaryStage, laby, "button_close.png", 18);
 			viewSwitches[i].setPosition(switchesPos[i]);
 			viewSwitches[i].getViewSprite().setX((int) viewSwitches[i].getViewSprite().getX()+9);
 			viewSwitches[i].getViewSprite().setY((int) viewSwitches[i].getViewSprite().getY()+9);
 		}
+		
+		viewLaby.start(primaryStage, laby);
+		viewGuy.start(primaryStage, laby, "player.png", 36);
+		viewExit.start(primaryStage, laby, "door_open.png", 36);
+		viewGuy.setPosition(niceGuyPos);		
+		viewExit.setPosition(exitPos);
+		
+		for (int i = 0 ; i < Controller.badNbr ; i++) {
+			baddiesPos[i] = laby.getBadBoys()[i].getRealPosition(laby.getG());
+			candiesPos[i] = laby.getCandies()[i].getRealPosition(laby.getG());
+			viewBaddies[i].start(primaryStage, laby, "bad.png", 36);
+			viewCandies[i].start(primaryStage, laby, "candy-3.png", 36);
+			viewBaddies[i].setPosition(baddiesPos[i]);
+			viewCandies[i].setPosition(candiesPos[i]);
+		}
+		
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("AMaaze");
 		primaryStage.setResizable(false);

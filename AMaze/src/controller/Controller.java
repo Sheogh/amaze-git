@@ -25,6 +25,7 @@ public class Controller {
 	private ViewGame view;
 	private Labyrinthe laby;
 	private Timeline timeline;
+	private Timeline freezeBaddies;
 	
 	public static int badNbr = 4;
 	public static int doorNbr = 10;
@@ -50,7 +51,6 @@ public class Controller {
 	 * Arrete la timeline et relance le jeu
 	 */
 	private void stop() {
-		timeline = null;
 		Thread.yield();
 		Main.restart(Main.primaryStage);
 	}
@@ -62,6 +62,9 @@ public class Controller {
 	 */
 	private void endGame(boolean end) {
 		timeline.stop();
+		timeline = null;
+		freezeBaddies.stop();
+		freezeBaddies = null;
 		ViewGame.getScene().setOnKeyPressed(null);
 		view.drawEnd(laby.getRIGHT_BORDER(), end);
 		view.getBeat().setOnFinished(e -> stop());
@@ -95,6 +98,23 @@ public class Controller {
         		laby.getDoors()[j].setType(Edge.Type.OPENED_DOOR);
         		view.getViewLaby().switchDoorOpened(laby, j);
         		view.getViewSwitches()[j].changeImage("button_open.png", 18);
+        	}
+		}
+	}
+	
+	/**
+	 * Verifie si le gentil ramasse un bonbon 
+	 */
+	public void lootCandy() {
+		Vertex niceGuyPos = laby.getGuy().getRealPosition(laby.getG());
+    	Vertex candiesPos[] = new Vertex[badNbr];
+		for (int j = 0 ; j < badNbr ; j++) {
+			candiesPos[j] = laby.getCandies()[j].getRealPosition(laby.getG());
+        	if (niceGuyPos.equals(candiesPos[j])) {
+        		timeline.stop();
+        		view.getViewCandies()[j].hideImage();
+        		freezeBaddies.setOnFinished(e -> timeline.play());
+        		freezeBaddies.play();
         	}
 		}
 	}
@@ -144,21 +164,8 @@ public class Controller {
 		timeline.setCycleCount(Animation.INDEFINITE);
 		KeyFrame kf = new KeyFrame(Duration.seconds(1), EventHandlerTimeline);
 		timeline.getKeyFrames().add(kf);
-		laby.getExit().startPosition();
-		Vertex v = laby.getExit().getPosition();
-		laby.getG().addVertex(v);
-		laby.buildPath(v);
-		for (int i = 0 ; i < 40 ; i++) {
-			laby.openDoorRandom(Edge.Type.CORRIDOR);
-		}
-		for (int i = 0 ; i < doorNbr ; i++) {
-			laby.getDoors()[i] = laby.openDoorRandom(Edge.Type.CLOSED_DOOR);
-			laby.getSwitches()[i].startPosition(laby, laby.getDoors()[i].getA());
-		}
-		laby.getGuy().startPosition(laby, laby.getG().getEqualVertex(v));
-		for (int j = 0 ; j < badNbr ; j++) {
-			laby.getBadBoys()[j].startPosition(laby, laby.getGuy().getRealPosition(laby.getG()));
-		}
+		freezeBaddies = new Timeline(new KeyFrame(Duration.seconds(2)));
+		laby.startLabyrinthe();
 	}
 
 	/**
@@ -208,6 +215,7 @@ public class Controller {
                 		endGame(true);
                 	}
             		openSwitchDoor();
+            		lootCandy();
             		collide();
             	}
             }

@@ -66,9 +66,23 @@ public class ViewItem extends ViewElement {
 		pane.getChildren().add(viewSprite);
 	}
 	
+	/**
+	 * Change l'image affichee par l'item
+	 * @param fileName
+	 * @param wh
+	 */
 	public void changeImage(String fileName, int wh) {
 		String imagePath = Main.class.getResource("/"+fileName).toString();
 		viewSprite.setImage(new Image(imagePath, wh, wh, false, false));
+	}
+	
+	/**
+	 * Cache la vue associee
+	 * @param fileName
+	 * @param wh
+	 */
+	public void hideImage() {
+		viewSprite.setVisible(false);
 	}
 	
 	/**

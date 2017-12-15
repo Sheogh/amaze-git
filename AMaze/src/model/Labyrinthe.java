@@ -30,6 +30,7 @@ public class Labyrinthe {
 	protected BadGuy badBoys[];
 	protected Edge doors[];
 	protected DoorSwitch switches[];
+	protected Candy candies[];
 	
 	public enum direction {
 		North,
@@ -46,15 +47,15 @@ public class Labyrinthe {
 		guy = new NiceGuy();
 		exit = new Exit();
 		badBoys = new BadGuy[Controller.badNbr];
+		candies = new Candy[Controller.badNbr];
 		for (int i = 0 ; i < Controller.badNbr ; i++) {
 			badBoys[i] = new BadGuy();
+			candies[i] = new Candy();
 		}
 		doors = new Edge[Controller.doorNbr];
-		for (int i = 0 ; i < Controller.doorNbr ; i++) {
-			doors[i] = new Edge(new Vertex(0, 0), new Vertex(0, 0));
-		}
 		switches = new DoorSwitch[Controller.doorNbr];
 		for (int i = 0 ; i < Controller.doorNbr ; i++) {
+			doors[i] = new Edge(new Vertex(0, 0), new Vertex(0, 0));
 			switches[i] = new DoorSwitch();
 		}
 	}
@@ -85,7 +86,7 @@ public class Labyrinthe {
 	
 	/**
 	 * Retourne un tableau contenant les mechants
-	 * qui se trouve dans le labyrinthe
+	 * qui se trouvent dans le labyrinthe
 	 * @return badboys
 	 */
 	public BadGuy[] getBadBoys() {
@@ -94,7 +95,7 @@ public class Labyrinthe {
 
 	/**
 	 * Retourne un tableau contenant les portes
-	 * qui se trouve dans le labyrinthe
+	 * qui se trouvent dans le labyrinthe
 	 * @return doors
 	 */
 	public Edge[] getDoors() {
@@ -103,11 +104,20 @@ public class Labyrinthe {
 
 	/**
 	 * Retourne un tableau contenant les interrupteurs
-	 * qui se trouve dans le labyrinthe
+	 * qui se trouvent dans le labyrinthe
 	 * @return switches
 	 */
 	public DoorSwitch[] getSwitches() {
 		return switches;
+	}
+
+	/**
+	 * Retourne un tableau contenant les bonbons
+	 * qui se trouvent dans le labyrinthe
+	 * @return candies
+	 */
+	public Candy[] getCandies() {
+		return candies;
 	}
 
 	/**
@@ -208,6 +218,25 @@ public class Labyrinthe {
 			}
 		}
 		return null;
+	}
+	
+	public void startLabyrinthe() {
+		exit.startPosition();
+		Vertex v = exit.getPosition();
+		g.addVertex(v);
+		buildPath(v);
+		for (int i = 0 ; i < 40 ; i++) {
+			openDoorRandom(Edge.Type.CORRIDOR);
+		}
+		for (int i = 0 ; i < Controller.doorNbr ; i++) {
+			doors[i] = openDoorRandom(Edge.Type.CLOSED_DOOR);
+			switches[i].startPosition(this, doors[i].getA());
+		}
+		guy.startPosition(this, g.getEqualVertex(v));
+		for (int j = 0 ; j < Controller.badNbr ; j++) {
+			badBoys[j].startPosition(this, guy.getRealPosition(g));
+			candies[j].startPosition(this, guy.getRealPosition(g));
+		}
 	}
 	
 	/**

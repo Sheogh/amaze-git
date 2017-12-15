@@ -1,7 +1,5 @@
 package model;
 
-import model.Labyrinthe.direction;
-
 /**
  * Classe abstraite des personnages
  * @see Item

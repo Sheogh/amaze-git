@@ -144,7 +144,7 @@ public class Vertex {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		return ((x == ((Vertex) obj).x) && (y == ((Vertex) obj).y));
+		return ((obj!= null) && (x == ((Vertex) obj).x) && (y == ((Vertex) obj).y));
 	}
 
 }

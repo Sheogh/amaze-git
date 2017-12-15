@@ -1,7 +1,5 @@
 package model;
 
-import model.Labyrinthe.direction;
-
 /**
  * Classe du personnage principal
  * Herite de la classe abstraite Character
