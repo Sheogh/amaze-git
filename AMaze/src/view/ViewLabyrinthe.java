@@ -126,6 +126,21 @@ public class ViewLabyrinthe extends ViewElement {
 	}
 	
 	/**
+	 * Creation d'un mur (ou porte) a partir de deux sommets
+	 * @param v
+	 * @param v2
+	 * @param color
+	 */
+	public void drawWall(Vertex v, Vertex v2, Paint color) {
+		Edge e = getWall(v, v2);
+		drawWall(e.getA().getX(), e.getA().getY(), e.getB().getX(), e.getB().getY(), color);
+	}
+	
+	public void switchDoorOpened(Labyrinthe laby, int door) {
+		drawWall(laby.getDoors()[door].getA(), laby.getDoors()[door].getB(), OPENEDDOORCOLOR);
+	}
+	
+	/**
 	 * Place les murs dans le labyrinthe
 	 * @param laby le labyrinthe du jeu
 	 */
@@ -140,14 +155,17 @@ public class ViewLabyrinthe extends ViewElement {
 					if (laby.getG().edgeDoesntExist(v, dir)) {
 						v2 = laby.getG().vertexByDir(v, dir);
 						if (v2 != null) {
-							e = getWall(v, v2);
-							drawWall(e.getA().getX(), e.getA().getY(), e.getB().getX(), e.getB().getY(), WALLCOLOR);
+							/*e = getWall(v, v2);
+							drawWall(e.getA().getX(), e.getA().getY(), e.getB().getX(), e.getB().getY(), WALLCOLOR);*/
+							drawWall(v, v2, WALLCOLOR);
 						}
 					}
 					else if (laby.getG().getEdgeByDir(v, dir).getType() == Edge.Type.CLOSED_DOOR) {
 						v2 = laby.getG().vertexByDir(v, dir);
 						if (v2 != null) {
-							drawWall(v.getX(), v.getY(), v2.getX(), v2.getY(), CLOSEDDOORCOLOR);
+							/*e = getWall(v, v2);
+							drawWall(e.getA().getX(), e.getA().getY(), e.getB().getX(), e.getB().getY(), CLOSEDDOORCOLOR);*/
+							drawWall(v, v2, CLOSEDDOORCOLOR);
 						}
 					}
 				}

@@ -58,13 +58,17 @@ public class ViewItem extends ViewElement {
 	 * @param stage
 	 * @param fileName nom du fichier
 	 */
-	public void drawSprite(Stage stage, String fileName) {
+	public void drawSprite(Stage stage, String fileName, int wh) {
 		pane = ViewGame.getPane();
-		//String imagePath = new File("Assets/"+fileName).toURI().toString();
 		String imagePath = Main.class.getResource("/"+fileName).toString();
-		Image sprite = new Image(imagePath, 36, 36, false, false);
+		Image sprite = new Image(imagePath, wh, wh, false, false);
 		viewSprite = new ImageView(sprite);
 		pane.getChildren().add(viewSprite);
+	}
+	
+	public void changeImage(String fileName, int wh) {
+		String imagePath = Main.class.getResource("/"+fileName).toString();
+		viewSprite.setImage(new Image(imagePath, wh, wh, false, false));
 	}
 	
 	/**
@@ -73,7 +77,7 @@ public class ViewItem extends ViewElement {
 	 * @param laby labyrinthe du jeu
 	 * @param fileName nom du fichier
 	 */
-	public void start(Stage primaryStage, Labyrinthe laby, String fileName) {
-		drawSprite(primaryStage, fileName);
+	public void start(Stage primaryStage, Labyrinthe laby, String fileName, int wh) {
+		drawSprite(primaryStage, fileName, wh);
 	}
 }

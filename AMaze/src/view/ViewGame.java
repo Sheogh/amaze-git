@@ -29,6 +29,7 @@ public class ViewGame extends ViewElement {
 	protected ViewItem viewGuy;
 	protected ViewItem viewExit;
 	protected ViewItem viewBaddies[];
+	protected ViewItem viewSwitches[];
 	protected Timeline beat;
 	
 	/**
@@ -42,6 +43,10 @@ public class ViewGame extends ViewElement {
 		this.viewBaddies = new ViewItem[Controller.badNbr];
 		for (int i = 0 ; i < Controller.badNbr ; i++) {
 			this.viewBaddies[i] = new ViewItem();
+		}
+		this.viewSwitches = new ViewItem[Controller.doorNbr];
+		for (int i = 0 ; i < Controller.doorNbr ; i++) {
+			this.viewSwitches[i] = new ViewItem();
 		}
 	}
 
@@ -62,7 +67,15 @@ public class ViewGame extends ViewElement {
 	}
 	
 	/**
-	 * Retoune la vue correpondant au gentil
+	 * Retourne la vue correspondant au labyrinthe
+	 * @return
+	 */
+	public ViewLabyrinthe getViewLaby() {
+		return viewLaby;
+	}
+
+	/**
+	 * Retoune la vue correspondant au gentil
 	 * @return ViewItem
 	 */
 	public ViewItem getViewGuy() {
@@ -70,7 +83,7 @@ public class ViewGame extends ViewElement {
 	}
 
 	/**
-	 * Retoune la vue correpondant aux mechants
+	 * Retoune la vue correspondant aux mechants
 	 * @return ViewItem
 	 */
 	public ViewItem[] getViewBaddies() {
@@ -78,7 +91,15 @@ public class ViewGame extends ViewElement {
 	}
 	
 	/**
-	 * 
+	 * Retoune la vue correspondant aux interrupteurs
+	 * @return ViewItem
+	 */
+	public ViewItem[] getViewSwitches() {
+		return viewSwitches;
+	}
+
+	/**
+	 * Retourne la timeline animant l'écran de fin
 	 * @return Timeline
 	 */
 	public Timeline getBeat() {
@@ -143,17 +164,27 @@ public class ViewGame extends ViewElement {
 		for (int i = 0 ; i < Controller.badNbr ; i++) {
 			baddiesPos[i] = laby.getBadBoys()[i].getRealPosition(laby.getG());
 		}
+		Vertex switchesPos[] = new Vertex[Controller.doorNbr];
+		for (int i = 0 ; i < Controller.doorNbr ; i++) {
+			switchesPos[i] = laby.getSwitches()[i].getRealPosition(laby.getG());
+		}
 		createScene(primaryStage, laby.getRIGHT_BORDER()+1, laby.getDOWN_BORDER()+1);
 		viewLaby.start(primaryStage, laby);
-		viewGuy.start(primaryStage, laby, "player.png");
-		viewExit.start(primaryStage, laby, "door_open.png");
+		viewGuy.start(primaryStage, laby, "player.png", 36);
+		viewExit.start(primaryStage, laby, "door_open.png", 36);
 		for (int i = 0 ; i < Controller.badNbr ; i++) {
-			viewBaddies[i].start(primaryStage, laby, "bad.png");
+			viewBaddies[i].start(primaryStage, laby, "bad.png", 36);
 		}
 		viewGuy.setPosition(niceGuyPos);		
 		viewExit.setPosition(exitPos);
 		for (int i = 0 ; i < Controller.badNbr ; i++) {
 			viewBaddies[i].setPosition(baddiesPos[i]);
+		}
+		for (int i = 0 ; i < Controller.doorNbr ; i++) {
+			viewSwitches[i].start(primaryStage, laby, "button_close.png", 18);
+			viewSwitches[i].setPosition(switchesPos[i]);
+			viewSwitches[i].getViewSprite().setX((int) viewSwitches[i].getViewSprite().getX()+9);
+			viewSwitches[i].getViewSprite().setY((int) viewSwitches[i].getViewSprite().getY()+9);
 		}
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("AMaaze");

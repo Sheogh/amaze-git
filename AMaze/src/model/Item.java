@@ -12,6 +12,13 @@ public abstract class Item {
 	Vertex position;
 	
 	/**
+	 * Constructeur par defaut
+	 */
+	public Item() {
+		setPosition(new Vertex(0, 0));
+	}
+	
+	/**
 	 * retourne la position du sommet
 	 * @return position
 	 */

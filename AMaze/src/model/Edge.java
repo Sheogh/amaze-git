@@ -16,7 +16,7 @@ public class Edge {
 
 	private Vertex a;
 	private Vertex b;
-	private Type type;
+	private Type type = Type.CORRIDOR;
 	
 	/**
 	 * Constructeur avec deux arguments
@@ -27,7 +27,6 @@ public class Edge {
 		super();
 		this.a = a;
 		this.b = b;
-		this.type = Type.CORRIDOR;
 	}	
 	
 	/**

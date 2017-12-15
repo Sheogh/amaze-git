@@ -28,6 +28,8 @@ public class Labyrinthe {
 	protected NiceGuy guy;
 	protected Exit exit;
 	protected BadGuy badBoys[];
+	protected Edge doors[];
+	protected DoorSwitch switches[];
 	
 	public enum direction {
 		North,
@@ -46,6 +48,14 @@ public class Labyrinthe {
 		badBoys = new BadGuy[Controller.badNbr];
 		for (int i = 0 ; i < Controller.badNbr ; i++) {
 			badBoys[i] = new BadGuy();
+		}
+		doors = new Edge[Controller.doorNbr];
+		for (int i = 0 ; i < Controller.doorNbr ; i++) {
+			doors[i] = new Edge(new Vertex(0, 0), new Vertex(0, 0));
+		}
+		switches = new DoorSwitch[Controller.doorNbr];
+		for (int i = 0 ; i < Controller.doorNbr ; i++) {
+			switches[i] = new DoorSwitch();
 		}
 	}
 	
@@ -80,6 +90,24 @@ public class Labyrinthe {
 	 */
 	public BadGuy[] getBadBoys() {
 		return badBoys;
+	}
+
+	/**
+	 * Retourne un tableau contenant les portes
+	 * qui se trouve dans le labyrinthe
+	 * @return doors
+	 */
+	public Edge[] getDoors() {
+		return doors;
+	}
+
+	/**
+	 * Retourne un tableau contenant les interrupteurs
+	 * qui se trouve dans le labyrinthe
+	 * @return switches
+	 */
+	public DoorSwitch[] getSwitches() {
+		return switches;
 	}
 
 	/**
@@ -157,7 +185,7 @@ public class Labyrinthe {
 	 * labyrinthe : enleve des murs de maniere
 	 * aleatoire
 	 */
-	public void openDoorRandom(Edge.Type type) {
+	public Edge openDoorRandom(Edge.Type type) {
 		List<direction> direct = new ArrayList<>();
 		Collections.addAll(direct, direction.values());
 		
@@ -173,12 +201,13 @@ public class Labyrinthe {
 						if (edge == null) {
 							g.addEdge(v, v2, type);
 							//System.out.println("added edge : "+"("+v.toString()+","+v2.toString()+")");
-							return;
+							return g.getG().getEdge(v, v2);
 						}
  					}
 				}
 			}
 		}
+		return null;
 	}
 	
 	/**
@@ -195,7 +224,7 @@ public class Labyrinthe {
 			Vertex actual = fifo.remove();
 			for (direction dir : direction.values()) {
 				if (!this.g.edgeDoesntExist(actual, dir) 
-				&& this.getG().getEdgeByDir(actual, dir).getType() != Edge.Type.CORRIDOR) {
+				&& this.getG().getEdgeByDir(actual, dir).getType() == Edge.Type.CORRIDOR) {
 					Vertex next = g.getEqualVertex(g.vertexByDir(actual, dir));
 					if (next.getNbr() == 0) {
 						next.setNbr(actual.getNbr()+1);

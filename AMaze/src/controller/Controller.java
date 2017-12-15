@@ -27,6 +27,7 @@ public class Controller {
 	private Timeline timeline;
 	
 	public static int badNbr = 4;
+	public static int doorNbr = 10;
 	
 	private static Controller instance = new Controller();
 	
@@ -83,6 +84,22 @@ public class Controller {
 	}
 	
 	/**
+	 * Verifie si le gentil active un interrupteur 
+	 */
+	public void openSwitchDoor() {
+		Vertex niceGuyPos = laby.getGuy().getRealPosition(laby.getG());
+    	Vertex switchesPos[] = new Vertex[doorNbr];
+		for (int j = 0 ; j < doorNbr ; j++) {
+			switchesPos[j] = laby.getSwitches()[j].getRealPosition(laby.getG());
+        	if (niceGuyPos.equals(switchesPos[j])) {
+        		laby.getDoors()[j].setType(Edge.Type.OPENED_DOOR);
+        		view.getViewLaby().switchDoorOpened(laby, j);
+        		view.getViewSwitches()[j].changeImage("button_open.png", 18);
+        	}
+		}
+	}
+	
+	/**
 	 * Gere les mouvements des mechants a l'aide de
 	 * l'algorithme de manhattan
 	 * 
@@ -134,8 +151,9 @@ public class Controller {
 		for (int i = 0 ; i < 40 ; i++) {
 			laby.openDoorRandom(Edge.Type.CORRIDOR);
 		}
-		for (int i = 0 ; i < 10 ; i++) {
-			laby.openDoorRandom(Edge.Type.CLOSED_DOOR);
+		for (int i = 0 ; i < doorNbr ; i++) {
+			laby.getDoors()[i] = laby.openDoorRandom(Edge.Type.CLOSED_DOOR);
+			laby.getSwitches()[i].startPosition(laby, laby.getDoors()[i].getA());
 		}
 		laby.getGuy().startPosition(laby, laby.getG().getEqualVertex(v));
 		for (int j = 0 ; j < badNbr ; j++) {
@@ -180,7 +198,8 @@ public class Controller {
             		baddiesPos[i] = laby.getBadBoys()[i].getRealPosition(laby.getG());
             	}
             	v = laby.getG().getEqualVertex(laby.getG().vertexByDir(niceGuyPos, dir));
-            	if (v != null && !laby.isWall(niceGuyPos, dir)) {
+            	if ((v != null) && (!laby.isWall(niceGuyPos, dir))
+            	&& (laby.getG().getEdgeByDir(niceGuyPos, dir).getType() != Edge.Type.CLOSED_DOOR)) {
             		laby.getGuy().setPosition(v);
             		niceGuyPos = laby.getGuy().getRealPosition(laby.getG());
             		view.getViewGuy().setPosition(v);
@@ -188,6 +207,7 @@ public class Controller {
                 		System.out.println("YOU WON !");
                 		endGame(true);
                 	}
+            		openSwitchDoor();
             		collide();
             	}
             }

@@ -1,5 +1,7 @@
 package model;
 
+import model.Labyrinthe.direction;
+
 /**
  * Classe du personnage principal
  * Herite de la classe abstraite Character
@@ -8,13 +10,6 @@ package model;
  */
 
 public class NiceGuy extends Character {
-	
-	/**
-	 * Constructeur par defaut
-	 */
-	public NiceGuy() {
-		setPosition(new Vertex(0, 0));
-	}
 	
 	/**
 	 * Positionne le personnage au lancement
