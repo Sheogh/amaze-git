@@ -102,18 +102,26 @@ public class Controller {
 		}
 	}
 	
+	private void unfreezeBaddies() {
+		view.changeBaddiesImage("bad.png", 36);
+		timeline.play();
+	}
+	
 	/**
 	 * Verifie si le gentil ramasse un bonbon 
 	 */
-	public void lootCandy() {
+	private void lootCandy() {
 		Vertex niceGuyPos = laby.getGuy().getRealPosition(laby.getG());
     	Vertex candiesPos[] = new Vertex[badNbr];
 		for (int j = 0 ; j < badNbr ; j++) {
 			candiesPos[j] = laby.getCandies()[j].getRealPosition(laby.getG());
         	if (niceGuyPos.equals(candiesPos[j])) {
-        		timeline.stop();
+        		if (timeline != null) {
+        			timeline.stop();
+        		}
         		view.getViewCandies()[j].hideImage();
-        		freezeBaddies.setOnFinished(e -> timeline.play());
+        		view.changeBaddiesImage("icecube.png", 36);
+        		freezeBaddies.setOnFinished(e -> unfreezeBaddies());
         		freezeBaddies.play();
         	}
 		}

@@ -24,7 +24,9 @@ public class DoorSwitch extends Character {
 		do {
 			v = labyrinthe.getG().getEqualVertex(labyrinthe.getG().randomVertex());
 			labyrinthe.launchManhattan(v, doorEdge);
-		} while ((v.getNbr() > maxDist) || (v.getNbr() < minDist));
+		} while ((v.getNbr() > maxDist) || (v.getNbr() < minDist)
+		&& (!v.equals(labyrinthe.getExit().getPosition()))
+		&& (!v.equals(labyrinthe.getGuy().getPosition())));
 		setPosition(v);
 	}
 

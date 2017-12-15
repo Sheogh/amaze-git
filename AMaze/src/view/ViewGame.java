@@ -116,6 +116,12 @@ public class ViewGame extends ViewElement {
 	public Timeline getBeat() {
 		return beat;
 	}
+	
+	public void changeBaddiesImage(String fileName, int wh) {
+		for (ViewItem baddy : viewBaddies) {
+			baddy.changeImage(fileName, wh);
+		}
+	}
 
 	/**
 	 * Affiche le resultat de la partie : victoire ou defaite
