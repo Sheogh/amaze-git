@@ -120,6 +120,7 @@ public class Controller {
         			timeline.stop();
         		}
         		view.getViewCandies()[j].hideImage();
+        		laby.getCandies()[j].setPosition(new Vertex(-1, -1));
         		view.changeBaddiesImage("icecube.png", 36);
         		freezeBaddies.setOnFinished(e -> unfreezeBaddies());
         		freezeBaddies.play();
