@@ -7,7 +7,7 @@ package model;
  *
  */
 
-public class NiceGuy extends Character {
+public class NiceGuy extends Item {
 	
 	/**
 	 * Positionne le personnage au lancement

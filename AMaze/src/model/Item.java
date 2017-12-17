@@ -43,5 +43,13 @@ public abstract class Item {
 	public void setPosition(Vertex position) {
 		this.position = position;
 	}
+	
+	/**
+	 * Definis la position d'un element au
+	 * lancement du jeu
+	 * @param labyrinthe du jeu
+	 * @param v sommet qui sera une position de reference
+	 */
+	abstract void startPosition(Labyrinthe labyrinthe, Vertex v);
 
 }

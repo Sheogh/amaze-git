@@ -7,7 +7,7 @@ package model;
  *
  */
 
-public class DoorSwitch extends Character {
+public class DoorSwitch extends Item {
 	
 	static final int minDist = 3;
 	static final int maxDist = 5;
@@ -25,7 +25,7 @@ public class DoorSwitch extends Character {
 			v = labyrinthe.getG().getEqualVertex(labyrinthe.getG().randomVertex());
 			labyrinthe.launchManhattan(v, doorEdge);
 		} while ((v.getNbr() > maxDist) || (v.getNbr() < minDist)
-		&& (!v.equals(labyrinthe.getExit().getPosition()))
+		&& (!v.equals(labyrinthe.getExit()))
 		&& (!v.equals(labyrinthe.getGuy().getPosition())));
 		setPosition(v);
 	}

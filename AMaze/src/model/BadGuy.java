@@ -9,7 +9,7 @@ import model.Labyrinthe.direction;
  *
  */
 
-public class BadGuy extends Character {
+public class BadGuy extends Item {
 	
 	static final int minDist = 16;
 	

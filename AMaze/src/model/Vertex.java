@@ -101,9 +101,9 @@ public class Vertex {
 	 * @return boolean
 	 */
 	public boolean inBounds() {
-		if ((this.getX() < Labyrinthe.LEFT_BORDER) 
+		if ((this.getX() < 0) 
 		|| (this.getX() > Labyrinthe.RIGHT_BORDER) 
-		|| (this.getY() < Labyrinthe.TOP_BORDER) 
+		|| (this.getY() < 0) 
 		|| (this.getY() > Labyrinthe.DOWN_BORDER)) {
 			return false;
 		}

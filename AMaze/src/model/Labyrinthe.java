@@ -19,14 +19,12 @@ import controller.Controller;
  */
 public class Labyrinthe {
 	
-	protected static final int TOP_BORDER = 0;
 	protected static final int DOWN_BORDER = 15;
-	protected static final int LEFT_BORDER = 0;
 	protected static final int RIGHT_BORDER = 15;
 	
 	protected GraphNOriented g;
 	protected NiceGuy guy;
-	protected Exit exit;
+	protected Vertex exit;
 	protected BadGuy badBoys[];
 	protected Edge doors[];
 	protected DoorSwitch switches[];
@@ -45,7 +43,7 @@ public class Labyrinthe {
 	public Labyrinthe() {
 		g = new GraphNOriented();
 		guy = new NiceGuy();
-		exit = new Exit();
+		exit = g.randomVertex();
 		badBoys = new BadGuy[Controller.badNbr];
 		candies = new Candy[Controller.badNbr];
 		for (int i = 0 ; i < Controller.badNbr ; i++) {
@@ -77,10 +75,10 @@ public class Labyrinthe {
 	}
 	
 	/**
-	 * Retourne la porte de sortie qui se trouve dans le labyrinthe
+	 * Retourne la position de la porte de sortie qui se trouve dans le labyrinthe
 	 * @return exit
 	 */
-	public Exit getExit() {
+	public Vertex getExit() {
 		return exit;
 	}
 	
@@ -221,10 +219,8 @@ public class Labyrinthe {
 	}
 	
 	public void startLabyrinthe() {
-		exit.startPosition();
-		Vertex v = exit.getPosition();
-		g.addVertex(v);
-		buildPath(v);
+		g.addVertex(exit);
+		buildPath(exit);
 		for (int i = 0 ; i < 40 ; i++) {
 			openDoorRandom(Edge.Type.CORRIDOR);
 		}
@@ -232,7 +228,7 @@ public class Labyrinthe {
 			doors[i] = openDoorRandom(Edge.Type.CLOSED_DOOR);
 			switches[i].startPosition(this, doors[i].getA());
 		}
-		guy.startPosition(this, g.getEqualVertex(v));
+		guy.startPosition(this, g.getEqualVertex(exit));
 		for (int j = 0 ; j < Controller.badNbr ; j++) {
 			badBoys[j].startPosition(this, guy.getRealPosition(g));
 			candies[j].startPosition(this, guy.getRealPosition(g));

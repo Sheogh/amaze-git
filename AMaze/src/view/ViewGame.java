@@ -176,7 +176,7 @@ public class ViewGame extends ViewElement {
 	 */
 	public void start(Stage primaryStage, Labyrinthe laby) {
 		Vertex niceGuyPos = laby.getGuy().getRealPosition(laby.getG());
-		Vertex exitPos = laby.getExit().getRealPosition(laby.getG());
+		Vertex exitPos = laby.getG().getEqualVertex(laby.getExit());
 		Vertex baddiesPos[] = new Vertex[Controller.badNbr];
 		Vertex candiesPos[] = new Vertex[Controller.badNbr];
 		Vertex switchesPos[] = new Vertex[Controller.doorNbr];

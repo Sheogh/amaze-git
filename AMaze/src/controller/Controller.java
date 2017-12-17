@@ -208,7 +208,7 @@ public class Controller {
         			break;
                 }
             	Vertex niceGuyPos = laby.getGuy().getRealPosition(laby.getG());
-            	Vertex exitPos = laby.getExit().getRealPosition(laby.getG());
+            	Vertex exitPos = laby.getG().getEqualVertex(laby.getExit());
             	Vertex baddiesPos[] = new Vertex[badNbr];
             	for (int i = 0 ; i < badNbr ; i++) {
             		baddiesPos[i] = laby.getBadBoys()[i].getRealPosition(laby.getG());

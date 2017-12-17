@@ -7,7 +7,7 @@ package model;
  *
  */
 
-public class Candy extends Character {
+public class Candy extends Item {
 	
 	static final int minDist = 10;
 	
@@ -24,7 +24,7 @@ public class Candy extends Character {
 			v = labyrinthe.getG().getEqualVertex(labyrinthe.getG().randomVertex());
 			labyrinthe.launchManhattan(v, niceGuyPosition);
 		} while ((v.getNbr() < minDist) 
-		&& (!v.equals(labyrinthe.getExit().getPosition()))
+		&& (!v.equals(labyrinthe.getExit()))
 		&& (!v.equals(labyrinthe.getGuy().getPosition())));
 		setPosition(v);
 	}
