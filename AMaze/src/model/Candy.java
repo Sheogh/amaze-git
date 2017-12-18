@@ -24,8 +24,8 @@ public class Candy extends Item {
 			v = labyrinthe.getG().getEqualVertex(labyrinthe.getG().randomVertex());
 			labyrinthe.launchManhattan(v, niceGuyPosition);
 		} while ((v.getNbr() < minDist) 
-		&& (!v.equals(labyrinthe.getExit()))
-		&& (!v.equals(labyrinthe.getGuy().getPosition())));
+		|| (v.equals(labyrinthe.getExit()))
+		|| (v.equals(niceGuyPosition)));
 		setPosition(v);
 	}
 
