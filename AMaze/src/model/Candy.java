@@ -12,8 +12,8 @@ public class Candy extends Item {
 	static final int minDist = 10;
 	
 	/**
-	 * Positionne le bonbon au lancement
-	 * du jeu, a un moins 10 cases du gentil
+	 * Positionne le bonbon au lancement du
+	 * jeu, a un moins 10 cases du gentil
 	 * @param labyrinthe du jeu
 	 * @param exitPosition position de la porte de sortie
 	 */
