@@ -110,7 +110,7 @@ public class ViewGame extends ViewElement {
 	}
 
 	/**
-	 * Retourne la timeline animant l'écran de fin
+	 * Retourne la timeline animant l'ï¿½cran de fin
 	 * @return Timeline
 	 */
 	public Timeline getBeat() {
@@ -200,10 +200,10 @@ public class ViewGame extends ViewElement {
 		for (int i = 0 ; i < Controller.badNbr ; i++) {
 			baddiesPos[i] = laby.getBadBoys()[i].getRealPosition(laby.getG());
 			candiesPos[i] = laby.getCandies()[i].getRealPosition(laby.getG());
-			viewBaddies[i].start(primaryStage, laby, "bad.png", 36);
 			viewCandies[i].start(primaryStage, laby, "candy-3.png", 36);
-			viewBaddies[i].setPosition(baddiesPos[i]);
+			viewBaddies[i].start(primaryStage, laby, "bad.png", 36);
 			viewCandies[i].setPosition(candiesPos[i]);
+			viewBaddies[i].setPosition(baddiesPos[i]);
 		}
 		
 		primaryStage.setScene(scene);
