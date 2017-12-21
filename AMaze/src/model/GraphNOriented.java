@@ -4,8 +4,7 @@ import org.jgrapht.graph.SimpleGraph;
 import model.Labyrinthe.direction;
 
 /**
- * Classe qui defini un graphe simple
- * Compose de plusieurs aretes/sommets
+ * Classe qui defini un graphe simple compose de plusieurs aretes/sommets
  * 
  * @see SimpleGraph
  * @see Vertex
@@ -17,7 +16,7 @@ public class GraphNOriented {
 	private SimpleGraph<Vertex, Edge> g;
 
 	/**
-	 * Constructeur par defaut
+	 * Constructeur.
 	 */
 	public GraphNOriented() {
 		super();
@@ -31,7 +30,7 @@ public class GraphNOriented {
 	}
 	
 	/**
-	 * Ajoute un sommet dans le graphe
+	 * Ajoute un sommet dans le graphe.
 	 * @param v le sommet a ajouter
 	 */
 	public void addVertex(Vertex v) {
@@ -39,8 +38,7 @@ public class GraphNOriented {
 	}
 	
 	/**
-	 * Verifie si le graphe contient le sommet v
-	 * (a ne pas confondre avec vertexInGraph)
+	 * Verifie si le graphe contient le sommet v (a ne pas confondre avec vertexInGraph).
 	 * @param v
 	 * @return boolean si contient le sommet ou non
 	 */
@@ -49,7 +47,7 @@ public class GraphNOriented {
 	}
 	
 	/**
-	 * Retourne un tableau des sommets du graphe
+	 * Retourne un tableau des sommets du graphe.
 	 * @return Object[]
 	 */
 	public Object[] vertexSet() {
@@ -57,7 +55,7 @@ public class GraphNOriented {
 	}
 	
 	/**
-	 * Ajoute une arete entre deux sommets
+	 * Ajoute une arete entre deux sommets.
 	 * @param v1
 	 * @param v2
 	 */
@@ -67,7 +65,7 @@ public class GraphNOriented {
 	}
 	
 	/**
-	 * Ajoute une arete entre deux sommets
+	 * Ajoute une arete entre deux sommets avec un type specifie.s
 	 * @param v1
 	 * @param v2
 	 */
@@ -78,7 +76,7 @@ public class GraphNOriented {
 	}
 	
 	/**
-	 * Verifie s'il existe une arete entre v1 et v2
+	 * Verifie s'il existe une arete entre v1 et v2.
 	 * @param v1
 	 * @param v2
 	 * @return boolean
@@ -95,7 +93,7 @@ public class GraphNOriented {
 	}
 	
 	/**
-	 * Retourne un sommet aleatoire
+	 * Genere et retourne un sommet aleatoire.
 	 * @return v
 	 */
 	public Vertex randomVertex() {
@@ -106,8 +104,7 @@ public class GraphNOriented {
 	}
 	
 	/**
-	 * Regarde si le graphe contient un sommet equivalent au sommet en entree
-	 * (a ne pas confondre avec containsVertex)
+	 * Regarde si le graphe contient un sommet equivalent au sommet en entree (a ne pas confondre avec containsVertex).
 	 * @param v
 	 * @return boolean
 	 */
@@ -122,8 +119,7 @@ public class GraphNOriented {
 	}
 	
 	/**
-	 * Retourne le vertex du graphe egal au vertex en
-	 * parametre
+	 * Retourne le sommet du graphe equivalent au sommet en parametre.
 	 * @param v
 	 * @return v2
 	 */
@@ -141,8 +137,7 @@ public class GraphNOriented {
 	}
 	
 	/**
-	 * Retourne le sommet se trouvant dans la direction
-	 * donne en argument
+	 * Retourne le sommet se trouvant dans la direction donnee en argument.
 	 * @param v
 	 * @param dir
 	 * @return v2
@@ -172,7 +167,7 @@ public class GraphNOriented {
 	}
 	
 	/**
-	 * Verifie si un sommet existe dans la direction donnee
+	 * Verifie si un sommet existe dans la direction donnee.
 	 * @param v
 	 * @param dir
 	 * @return boolean
@@ -183,7 +178,7 @@ public class GraphNOriented {
 	}
 	
 	/**
-	 * Verifie si une arete existe dans la direction donnee
+	 * Verifie si une arete existe dans la direction donnee.
 	 * @param v
 	 * @param dir
 	 * @return boolean
@@ -194,7 +189,7 @@ public class GraphNOriented {
 	}
 	
 	/**
-	 * Renvoie l'arete partant du sommet v dans la direction donnee
+	 * Renvoie l'arete partant du sommet v dans la direction donnee.
 	 * @param v
 	 * @param dir
 	 * @return boolean

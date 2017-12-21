@@ -1,17 +1,14 @@
 package model;
 
 /**
- * Classe du personnage principal
- * Herite de la classe abstraite Character
- * @see Character
- *
+ * Classe representant le personnage principal ; herite de la classe abstraite Item.
+ * @see Item
  */
 
 public class NiceGuy extends Item {
 	
 	/**
-	 * Positionne le personnage au lancement
-	 * du jeu, en fonction de la position de la porte de sortie
+	 * Positionne le personnage au lancement du jeu, en fonction de la position de la porte de sortie.
 	 * @param labyrinthe du jeu
 	 * @param exitPosition position de la porte de sortie
 	 */

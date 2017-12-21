@@ -1,10 +1,8 @@
 package model;
 
 /**
- * Classe du personnage principal
- * Herite de la classe abstraite Character
- * @see Character
- *
+ * Classe representant le personnage principal, herite de la classe abstraite Item.
+ * @see Item
  */
 
 public class Candy extends Item {
@@ -12,10 +10,9 @@ public class Candy extends Item {
 	static final int minDist = 10;
 	
 	/**
-	 * Positionne le bonbon au lancement du
-	 * jeu, a un moins 10 cases du gentil
+	 * Positionne le bonbon au lancement du jeu, suffisamment loin du gentil
 	 * @param labyrinthe du jeu
-	 * @param exitPosition position de la porte de sortie
+	 * @param niceGuyPosition (position du gentil)
 	 */
 	@Override
 	public void startPosition(Labyrinthe labyrinthe, Vertex niceGuyPosition) {

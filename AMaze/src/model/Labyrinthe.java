@@ -9,11 +9,10 @@ import java.util.Queue;
 import controller.Controller;
 
 /**
- * Classe qui definit le plateau jeu
+ * Classe qui definit le plateau de jeu.
  * 
  * @see GraphNOriented
  * @see NiceGuy
- * @see Exit
  * @see BadGuy
  *
  */
@@ -38,7 +37,7 @@ public class Labyrinthe {
 	}
 	
 	/**
-	 * Constructeur par defaut
+	 * Constructeur.
 	 */
 	public Labyrinthe() {
 		g = new GraphNOriented();
@@ -59,7 +58,7 @@ public class Labyrinthe {
 	}
 	
 	/**
-	 * Retourne le graphe g
+	 * Retourne le graphe associe.
 	 * @return g
 	 */
 	public GraphNOriented getG() {
@@ -67,7 +66,7 @@ public class Labyrinthe {
 	}
 	
 	/**
-	 * Retourne le gentil qui se trouve dans le labyrinthe
+	 * Retourne le gentil qui se trouve dans le labyrinthe.
 	 * @return guy
 	 */
 	public NiceGuy getGuy() {
@@ -75,7 +74,7 @@ public class Labyrinthe {
 	}
 	
 	/**
-	 * Retourne la position de la porte de sortie qui se trouve dans le labyrinthe
+	 * Retourne la position de la porte de sortie qui se trouve dans le labyrinthe.
 	 * @return exit
 	 */
 	public Vertex getExit() {
@@ -83,8 +82,7 @@ public class Labyrinthe {
 	}
 	
 	/**
-	 * Retourne un tableau contenant les mechants
-	 * qui se trouvent dans le labyrinthe
+	 * Retourne un tableau contenant les mechants qui se trouvent dans le labyrinthe.
 	 * @return badboys
 	 */
 	public BadGuy[] getBadBoys() {
@@ -92,8 +90,7 @@ public class Labyrinthe {
 	}
 
 	/**
-	 * Retourne un tableau contenant les portes
-	 * qui se trouvent dans le labyrinthe
+	 * Retourne un tableau contenant les portes qui se trouvent dans le labyrinthe.
 	 * @return doors
 	 */
 	public Edge[] getDoors() {
@@ -101,8 +98,7 @@ public class Labyrinthe {
 	}
 
 	/**
-	 * Retourne un tableau contenant les interrupteurs
-	 * qui se trouvent dans le labyrinthe
+	 * Retourne un tableau contenant les interrupteurs qui se trouvent dans le labyrinthe.
 	 * @return switches
 	 */
 	public DoorSwitch[] getSwitches() {
@@ -110,8 +106,7 @@ public class Labyrinthe {
 	}
 
 	/**
-	 * Retourne un tableau contenant les bonbons
-	 * qui se trouvent dans le labyrinthe
+	 * Retourne un tableau contenant les bonbons qui se trouvent dans le labyrinthe.
 	 * @return candies
 	 */
 	public Candy[] getCandies() {
@@ -119,7 +114,7 @@ public class Labyrinthe {
 	}
 
 	/**
-	 * Retourne le bord droit du labyrinthe
+	 * Retourne la limite du bord droit du labyrinthe.
 	 * @return RIGHT_BORDER
 	 */
 	public int getRIGHT_BORDER() {
@@ -127,7 +122,7 @@ public class Labyrinthe {
 	}
 	
 	/**
-	 * Retourne le bord en bas du labyrinthe
+	 * Retourne la limite du bord bas du labyrinthe.
 	 * @return DOWN_BORDER
 	 */
 	public int getDOWN_BORDER() {
@@ -135,7 +130,7 @@ public class Labyrinthe {
 	}
 	
 	/**
-	 * Verifie si il y a un mur sur la position donnee
+	 * Verifie si il y a un mur a la position donnee.
 	 * @param v
 	 * @param dir 
 	 * @return boolean
@@ -145,8 +140,7 @@ public class Labyrinthe {
 	}
 	
 	/**
-	 * Permet d'eviter que les mechants entrent
-	 * en collision
+	 * Permet d'eviter que les mechants entrent en collision.
 	 * @param baddy le mechant en question
 	 * @param id
 	 * @return boolean
@@ -164,8 +158,7 @@ public class Labyrinthe {
 	}
 
 	/**
-	 * Construit le chemin parfait du labyrtinhe a 
-	 * partir du sommet donnee en parametre
+	 * Construit le chemin parfait du labyrtinhe a partir du sommet donne en parametre.
 	 * @param v
 	 */
 	public void buildPath(Vertex v) {
@@ -189,9 +182,7 @@ public class Labyrinthe {
 	}
 	
 	/**
-	 * Permet de rajouter des chemins dans le 
-	 * labyrinthe : enleve des murs de maniere
-	 * aleatoire
+	 * Permet de rajouter des ouvertures dans le labyrinthe (enleve des murs de maniere aleatoire).
 	 */
 	public Edge openDoorRandom(Edge.Type type) {
 		List<direction> direct = new ArrayList<>();
@@ -218,6 +209,9 @@ public class Labyrinthe {
 		return null;
 	}
 	
+	/**
+	 * Mise en place du labyrinthe et de ses elements.
+	 */
 	public void startLabyrinthe() {
 		g.addVertex(exit);
 		buildPath(exit);
@@ -236,8 +230,7 @@ public class Labyrinthe {
 	}
 	
 	/**
-	 * Calcul l'algorithme de manhattan entre
-	 * deux sommets
+	 * Calcul la distance de manhattan entre deux sommets.
 	 * @param source sommet de depart
 	 * @param target sommet cible
 	 */
@@ -263,8 +256,7 @@ public class Labyrinthe {
 	}
 	
 	/**
-	 * Lance l'algorithme de manhattan entre 
-	 * deux sommets
+	 * Lance l'algorithme de manhattan entre deux sommets.
 	 * @param source sommet de depart
 	 * @param target sommet cible
 	 */

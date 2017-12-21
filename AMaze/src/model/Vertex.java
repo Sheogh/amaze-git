@@ -3,10 +3,7 @@ package model;
 import model.Labyrinthe.direction;
 
 /**
- * Classe qui definit un sommet
- * Contient des coordonnees x et y
- * ainsi qu'un numero
- *
+ * Classe qui definit un sommet ; contient des coordonnees x et y, ainsi qu'un entier pour les calculs de distances.
  */
 public class Vertex {
 	
@@ -15,8 +12,7 @@ public class Vertex {
 	private int nbr;
 	
 	/**
-	 * Constructeur par defaut
-	 * Sans numeros
+	 * Constructeur avec nbr par defaut.
 	 * @param x
 	 * @param y
 	 */
@@ -28,7 +24,7 @@ public class Vertex {
 	}
 	
 	/**
-	 * Constructeur avec numero
+	 * Constructeur complet.
 	 * @param x
 	 * @param y
 	 * @param nbr
@@ -41,7 +37,7 @@ public class Vertex {
 	}
 	
 	/**
-	 * Retourne la coordonnee x 
+	 * Retourne la coordonnee x.
 	 * @return x
 	 */
 	public int getX() {
@@ -49,14 +45,14 @@ public class Vertex {
 	}
 	
 	/**
-	 * Modifie la coordonnnee x
+	 * Modifie la coordonnnee x.
 	 * @param x
 	 */
 	public void setX(int x) {
 		this.x = x;
 	}
 	/**
-	 * Retourne la coordonnee y
+	 * Retourne la coordonnee y.
 	 * @return y
 	 */
 	public int getY() {
@@ -64,7 +60,7 @@ public class Vertex {
 	}
 	
 	/**
-	 * Modifie la coordonnnee y
+	 * Modifie la coordonnnee y.
 	 * @param y
 	 */
 	public void setY(int y) {
@@ -72,7 +68,7 @@ public class Vertex {
 	}
 	
 	/**
-	 * Retourne le numero nbr
+	 * Retourne l'entier nbr.
 	 * @return nbr
 	 */
 	public int getNbr() {
@@ -80,7 +76,7 @@ public class Vertex {
 	}
 	
 	/**
-	 * Modifie le numero nbr
+	 * Modifie le numero nbr.
 	 * @param nbr
 	 */
 	public void setNbr(int nbr) {
@@ -88,7 +84,7 @@ public class Vertex {
 	}
 	
 	/**
-	 * Affiche les coordonnees du sommet
+	 * Affiche les coordonnees du sommet.
 	 * return String
 	 */
 	public String toString() {
@@ -96,8 +92,7 @@ public class Vertex {
 	}
 	
 	/**
-	 * Verifie si on se trouve
-	 * dans le labyrinthe ou non
+	 * Verifie si le sommet se trouve dans les limites du labyrinthe.
 	 * @return boolean
 	 */
 	public boolean inBounds() {
@@ -113,8 +108,7 @@ public class Vertex {
 	}
 	
 	/**
-	 * Verifie si la direction en parametre se trouve
-	 * dans le labyrinthe ou non
+	 * Verifie si le sommet dans la direction donnee se trouve dans le labyrinthe.
 	 * @param dir la direction
 	 * @return boolean
 	 */
@@ -138,7 +132,7 @@ public class Vertex {
 	}
 	
 	/**
-	 * Teste si deux sommets sont egaux
+	 * Teste si deux sommets sont equivalents.
 	 * @param obj
 	 * @return boolean
 	 */

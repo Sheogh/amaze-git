@@ -1,10 +1,8 @@
 package model;
 
 /**
- * Classe definissant une arete
- * Possede deux Vertex en attribut
+ * Classe representant une arete constituee de deux Vertex.
  * @see Vertex
- *
  */
 public class Edge {
 	
@@ -19,7 +17,7 @@ public class Edge {
 	private Type type = Type.CORRIDOR;
 	
 	/**
-	 * Constructeur avec deux arguments
+	 * Constructeur.
 	 * @param a 
 	 * @param b
 	 */
@@ -30,7 +28,6 @@ public class Edge {
 	}	
 	
 	/**
-	 * 
 	 * @return le sommet a
 	 */
 	public Vertex getA() {
@@ -38,7 +35,7 @@ public class Edge {
 	}
 	
 	/**
-	 * Modifie le sommet a
+	 * Modifie le sommet a.
 	 * @param a
 	 */
 	public void setA(Vertex a) {
@@ -46,7 +43,6 @@ public class Edge {
 	}
 	
 	/**
-	 * 
 	 * @return le sommet b
 	 */
 	public Vertex getB() {
@@ -54,7 +50,7 @@ public class Edge {
 	}
 	
 	/**
-	 * Modifie le sommet b
+	 * Modifie le sommet b.
 	 * @param b
 	 */
 	public void setB(Vertex b) {
@@ -62,7 +58,6 @@ public class Edge {
 	}
 
 	/**
-	 * 
 	 * @return type
 	 */
 	public Type getType() {
@@ -70,7 +65,7 @@ public class Edge {
 	}
 
 	/**
-	 * Modifie le type associé
+	 * Modifie le type associe.
 	 * @param type
 	 */
 	public void setType(Type type) {

@@ -10,17 +10,15 @@ import model.Labyrinthe;
 import model.Vertex;
 
 /**
- * Classe qui affiche les items 
- * du jeu
+ * Classe qui affiche un item du jeu
  * @see ViewElement
- *
  */
 public class ViewItem extends ViewElement {
 	
 	private ImageView viewSprite;
 	
 	/**
-	 * 	Constructeur par defaut
+	 * 	Constructeur.
 	 */
 	public ViewItem() {
 		viewSprite = new ImageView();
@@ -34,8 +32,7 @@ public class ViewItem extends ViewElement {
 	}
 	
 	/**
-	 * Positionne un item dans une cellule
-	 * du labyrinthe
+	 * Positionne un item dans une cellule du labyrinthe.
 	 * @param x coordonnee x
 	 * @param y coordonnee y
 	 */
@@ -45,8 +42,7 @@ public class ViewItem extends ViewElement {
 	}
 	
 	/**
-	 * Positionne un item par rapport
-	 * a un sommets
+	 * Positionne un item par rapport a un sommet.
 	 * @param v sera le sommet en question
 	 */
 	public void setPosition(Vertex v) {
@@ -54,7 +50,7 @@ public class ViewItem extends ViewElement {
 	}
 	
 	/**
-	 * Affiche un item
+	 * Affiche un item.
 	 * @param stage
 	 * @param fileName nom du fichier
 	 */
@@ -67,7 +63,7 @@ public class ViewItem extends ViewElement {
 	}
 	
 	/**
-	 * Change l'image affichee par l'item
+	 * Change l'image affichee par l'item.
 	 * @param fileName
 	 * @param wh
 	 */
@@ -77,16 +73,14 @@ public class ViewItem extends ViewElement {
 	}
 	
 	/**
-	 * Cache la vue associee
-	 * @param fileName
-	 * @param wh
+	 * Cache la vue associee.
 	 */
 	public void hideImage() {
 		viewSprite.setVisible(false);
 	}
 	
 	/**
-	 * Lance l'affichage des items
+	 * Lance l'affichage de l'item.
 	 * @param primaryStage
 	 * @param laby labyrinthe du jeu
 	 * @param fileName nom du fichier

@@ -3,10 +3,8 @@ package model;
 import model.Labyrinthe.direction;
 
 /**
- * Classe des mechants, herite de la 
- * classe abstraite des personnages
- * @see Character
- *
+ * Classe representant les mechants, herite de la classe abstraite Item.
+ * @see Item
  */
 
 public class BadGuy extends Item {
@@ -14,7 +12,7 @@ public class BadGuy extends Item {
 	static final int minDist = 16;
 	
 	/**
-	 * Fait bouger un mechant
+	 * Calcul et effectue le mouvement du mechant.
 	 * @param labyrinthe du jeu
 	 */
 	public void	move(Labyrinthe labyrinthe) {
@@ -25,8 +23,8 @@ public class BadGuy extends Item {
 	}
 	
 	/**
-	 * Predis le mouvement futur du mechant. 
-	 * Si deja occupe, le mechant reste sur place
+	 * Predit le mouvement futur du mechant. 
+	 * Si la case visee est deja "reservee", le mechant reste sur place.
 	 * @param labyrinthe du jeu
 	 * @return sommet d'arrivee du futur mouvement
 	 */
@@ -44,8 +42,7 @@ public class BadGuy extends Item {
 	}
 
 	/**
-	 * Initialise la position du mechant au lancement
-	 * du jeu
+	 * Initialise la position du mechant au lancement du jeu, suffisamment loin du gentil.
 	 * @param labyrinthe du jeu
 	 * @param niceGuyPosition de type Vertex correspond a la position du gentil
 	 */

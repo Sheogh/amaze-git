@@ -6,9 +6,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
 /**
- * Classe abstraite comprenant les constantes
- * partagees dans la vue 
- *
+ * Classe abstraite posant les constantes partagees par les vues et definissant des attributs partages.
  */
 public abstract class ViewElement {
 	

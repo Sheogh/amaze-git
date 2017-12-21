@@ -16,8 +16,7 @@ import model.Labyrinthe;
 import model.Vertex;
 
 /**
- * Classe qui affiche les differents elements
- * du jeu (labyrtinhe, items)
+ * Classe qui affiche les differents elements du jeu (labyrinthe, items).
  * @see ViewElement
  * @see ViewItem
  * @see ViewLabyrinthe
@@ -34,7 +33,7 @@ public class ViewGame extends ViewElement {
 	protected Timeline beat;
 	
 	/**
-	 * Constructeur par defaut
+	 * Constructeur.
 	 */
 	public ViewGame() {
 		super();
@@ -54,7 +53,7 @@ public class ViewGame extends ViewElement {
 	}
 
 	/**
-	 * Retourne la scene
+	 * Retourne la scene.
 	 * @return Scene
 	 */
 	public static Scene getScene() {
@@ -62,7 +61,7 @@ public class ViewGame extends ViewElement {
 	}
 	
 	/**
-	 * Retourne le pane
+	 * Retourne le pane.
 	 * @return Pane
 	 */
 	public static Pane getPane() {
@@ -70,7 +69,7 @@ public class ViewGame extends ViewElement {
 	}
 	
 	/**
-	 * Retourne la vue correspondant au labyrinthe
+	 * Retourne la vue correspondant au labyrinthe.
 	 * @return
 	 */
 	public ViewLabyrinthe getViewLaby() {
@@ -78,7 +77,7 @@ public class ViewGame extends ViewElement {
 	}
 
 	/**
-	 * Retoune la vue correspondant au gentil
+	 * Retoune la vue correspondant au gentil.
 	 * @return ViewItem
 	 */
 	public ViewItem getViewGuy() {
@@ -86,7 +85,7 @@ public class ViewGame extends ViewElement {
 	}
 
 	/**
-	 * Retoune la vue correspondant aux mechants
+	 * Retoune les vues correspondant aux mechants.
 	 * @return ViewItem
 	 */
 	public ViewItem[] getViewBaddies() {
@@ -94,7 +93,7 @@ public class ViewGame extends ViewElement {
 	}
 	
 	/**
-	 * Retoune la vue correspondant aux interrupteurs
+	 * Retoune les vues correspondant aux interrupteurs.
 	 * @return ViewItem
 	 */
 	public ViewItem[] getViewSwitches() {
@@ -102,7 +101,7 @@ public class ViewGame extends ViewElement {
 	}
 
 	/**
-	 * Retourne la vue correspondant aux bonbons
+	 * Retourne les vues correspondant aux bonbons.
 	 * @return ViewItem
 	 */
 	public ViewItem[] getViewCandies() {
@@ -110,13 +109,18 @@ public class ViewGame extends ViewElement {
 	}
 
 	/**
-	 * Retourne la timeline animant l'�cran de fin
+	 * Retourne la timeline animant l'ecran de fin.
 	 * @return Timeline
 	 */
 	public Timeline getBeat() {
 		return beat;
 	}
 	
+	/**
+	 * Change l'image associee aux mechants.
+	 * @param fileName
+	 * @param wh
+	 */
 	public void changeBaddiesImage(String fileName, int wh) {
 		for (ViewItem baddy : viewBaddies) {
 			baddy.changeImage(fileName, wh);
@@ -124,7 +128,7 @@ public class ViewGame extends ViewElement {
 	}
 
 	/**
-	 * Affiche le resultat de la partie : victoire ou defaite
+	 * Affiche le resultat de la partie : victoire ou defaite.
 	 * @param size taille de l'image
 	 * @param end determine si le joueur a gagne ou non
 	 */
@@ -156,7 +160,7 @@ public class ViewGame extends ViewElement {
 	}
 
 	/**
-	 * Cree le cadre du labyrinthe
+	 * Cree le cadre du labyrinthe.
 	 * @param stage
 	 * @param nbrX longueur max 
 	 * @param nbrY largeur max
@@ -170,7 +174,7 @@ public class ViewGame extends ViewElement {
 	}
 	
 	/**
-	 * Affiche le labyrinthe et les items
+	 * Affiche le labyrinthe et les items.
 	 * @param primaryStage
 	 * @param laby le labyrinthe du jeu
 	 */

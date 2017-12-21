@@ -1,10 +1,8 @@
 package model;
 
 /**
- * Classe du personnage principal
- * Herite de la classe abstraite Character
- * @see Character
- *
+ * Classe representant les interrupteurs des portes, herite de la classe abstraite Item.
+ * @see Item
  */
 
 public class DoorSwitch extends Item {
@@ -13,10 +11,9 @@ public class DoorSwitch extends Item {
 	static final int maxDist = 5;
 	
 	/**
-	 * Initialise la position de l'interrupteur au lancement
-	 * du jeu
+	 * Initialise la position de l'interrupteur au lancement du jeu, a distance raisonnable de la porte.
 	 * @param labyrinthe du jeu
-	 * @param niceGuyPosition de type Vertex correspond a la position du gentil
+	 * @param doorEdge (position de la porte associee a l'interrupteur)
 	 */
 	@Override
 	public void startPosition(Labyrinthe labyrinthe, Vertex doorEdge) {

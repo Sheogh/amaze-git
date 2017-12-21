@@ -10,15 +10,13 @@ import model.Labyrinthe.direction;
 import model.Vertex;
 
 /**
- * Classe qui affiche le labyrinthe
- * 
+ * Classe qui affiche le labyrinthe.
  * @see ViewElement
- *
  */
 public class ViewLabyrinthe extends ViewElement {
 	
 	/**
-	 * Affiche le squelette du labyrtinthe
+	 * Affiche le squelette du labyrtinthe.
 	 * @param stage
 	 * @param nbrX longueur max
 	 * @param nbrY largeur max
@@ -52,7 +50,7 @@ public class ViewLabyrinthe extends ViewElement {
 	}
 	
 	/**
-	 * Definit ou placer le mur par rapport a deux sommets
+	 * Definit le placement d'un mur par rapport a deux sommets.
 	 * @param s sommet source
 	 * @param t sommet cible
 	 * @return wall
@@ -87,7 +85,7 @@ public class ViewLabyrinthe extends ViewElement {
 	}
 	
 	/**
-	 * Creation d'un mur (ou d'une porte)
+	 * Creation d'un mur (ou d'une porte).
 	 * @param xs 
 	 * @param ys
 	 * @param xt
@@ -126,7 +124,7 @@ public class ViewLabyrinthe extends ViewElement {
 	}
 	
 	/**
-	 * Creation d'un mur (ou porte) a partir de deux sommets
+	 * Creation d'un mur (ou porte) a partir de deux sommets.
 	 * @param v
 	 * @param v2
 	 * @param color
@@ -136,12 +134,17 @@ public class ViewLabyrinthe extends ViewElement {
 		drawWall(e.getA().getX(), e.getA().getY(), e.getB().getX(), e.getB().getY(), color);
 	}
 	
+	/**
+	 * Change l'affichage de la porte donnee a sa version "ouverte".
+	 * @param laby
+	 * @param door
+	 */
 	public void switchDoorOpened(Labyrinthe laby, int door) {
 		drawWall(laby.getDoors()[door].getA(), laby.getDoors()[door].getB(), OPENEDDOORCOLOR);
 	}
 	
 	/**
-	 * Place les murs dans le labyrinthe
+	 * Place les murs dans le labyrinthe.
 	 * @param laby le labyrinthe du jeu
 	 */
 	public void drawLabyrinthe(Labyrinthe laby) {
@@ -170,7 +173,7 @@ public class ViewLabyrinthe extends ViewElement {
 	
 
 	/**
-	 * Affichage du labyrinthe
+	 * Affichage du labyrinthe.
 	 * @param primaryStage
 	 * @param laby le labyrinthe du jeu
 	 */

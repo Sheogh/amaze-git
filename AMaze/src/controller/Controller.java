@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
- * Classe qui interagira avec la vue et le modele
+ * Classe qui interagira avec la vue et le modele.
  * Singleton
  * @see ViewGame
  * @see Labyrinthe
@@ -56,8 +56,8 @@ public class Controller {
 	}
 	
 	/**
-	 * Met le jeu en pause le temps d'afficher un ecran de fin
-	 * suivi d'un appel a stop() pour relancer une partie
+	 * Met le jeu en pause le temps d'afficher un ecran de fin,
+	 * suivi d'un appel a stop() pour relancer une partie.
 	 * @param end booleen qui signifie si le joueur a gagne ou non
 	 */
 	private void endGame(boolean end) {
@@ -71,8 +71,7 @@ public class Controller {
 	}
 	
 	/**
-	 * Verifie si un mechant entre en collision 
-	 * avec un gentil
+	 * Gere la collision entre mechants et gentil.
 	 */
 	public void collide() {
 		Vertex niceGuyPos = laby.getGuy().getRealPosition(laby.getG());
@@ -87,7 +86,7 @@ public class Controller {
 	}
 	
 	/**
-	 * Verifie si le gentil active un interrupteur 
+	 * Gere l'interaction entre les interrupteurs et le gentil.
 	 */
 	public void openSwitchDoor() {
 		Vertex niceGuyPos = laby.getGuy().getRealPosition(laby.getG());
@@ -102,13 +101,16 @@ public class Controller {
 		}
 	}
 	
+	/**
+	 * Reactive les ennemis prealablement geles.
+	 */
 	private void unfreezeBaddies() {
 		view.changeBaddiesImage("bad.png", 36);
 		timeline.play();
 	}
 	
 	/**
-	 * Verifie si le gentil ramasse un bonbon 
+	 * Gere l'interaction entre les bonbons et le gentil.
 	 */
 	private void lootCandy() {
 		Vertex niceGuyPos = laby.getGuy().getRealPosition(laby.getG());
@@ -129,9 +131,7 @@ public class Controller {
 	}
 	
 	/**
-	 * Gere les mouvements des mechants a l'aide de
-	 * l'algorithme de manhattan
-	 * 
+	 * Gere les mouvements des mechants a l'aide de l'algorithme de manhattan.
 	 * @param baddiesPos position des mechants qui se deplacent
 	 * @param niceGuyPos position du gentil
 	 */
@@ -164,7 +164,7 @@ public class Controller {
 	};
 	
 	/**
-	 *  Relance le jeu
+	 *  Relance le jeu.
 	 */
 	public void refreshInstance() {
 		view = new ViewGame();
@@ -178,10 +178,9 @@ public class Controller {
 	}
 
 	/**
-	 * Initialise le labyrinthe avec les personnages
-	 * et la porte de sortie
-	 * Handle	Directions recuperees du clavier
-	 * Verifie si le joueur a gagne ou non
+	 * Initialise le labyrinthe avec les personnages et la porte de sortie.
+	 * Gere les interactions clavier.
+	 * Verifie si le joueur a gagne ou non.
 	 * @param primaryStage de type Stage
 	 */
 	public void start(Stage primaryStage) {
